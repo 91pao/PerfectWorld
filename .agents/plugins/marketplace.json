@@ -1,0 +1,20 @@
+{
+  "name": "perfectworld",
+  "interface": {
+    "displayName": "PerfectWorld Marketplace"
+  },
+  "plugins": [
+    {
+      "name": "perfectworld",
+      "source": {
+        "source": "local",
+        "path": "./plugins/perfectworld"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Engineering"
+    }
+  ]
+}
