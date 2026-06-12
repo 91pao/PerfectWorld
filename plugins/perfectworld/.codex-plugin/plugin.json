@@ -1,0 +1,47 @@
+{
+  "name": "perfectworld",
+  "version": "0.2.0",
+  "description": "PerfectWorld is a Codex-native merged specialist-role plugin for full-cycle development.",
+  "author": {
+    "name": "Liutianyuan / PerfectWorld",
+    "url": "https://games.wanmei.com/"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "PerfectWorld",
+    "shortDescription": "自动选择完美世界专家角色。",
+    "longDescription": "PerfectWorld 是一套覆盖完整开发流程的 Codex 原生专家角色插件，可自动路由到产品、规格、计划、架构、调试、审查、QA、设计、安全、发布、文档、记忆、iOS 和性能等合并角色。在目标模式和多轮项目中，它会每一轮重新判断当前最合适的角色，并用中文说明：我是谁、我擅长什么、本轮我负责什么。",
+    "developerName": "Liutianyuan / PerfectWorld",
+    "category": "Engineering",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://games.wanmei.com/",
+    "privacyPolicyURL": "https://openai.com/policies/privacy-policy/",
+    "termsOfServiceURL": "https://openai.com/policies/terms-of-use/",
+    "defaultPrompt": [
+      "用 PerfectWorld 帮我 QA localhost:3000",
+      "用 PerfectWorld 查这个 bug 的根因",
+      "用 PerfectWorld review 当前改动"
+    ],
+    "brandColor": "#111827",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "screenshots": []
+  },
+  "homepage": "https://games.wanmei.com/",
+  "repository": "https://games.wanmei.com/",
+  "license": "MIT",
+  "keywords": [
+    "perfectworld",
+    "perfectworld",
+    "codex",
+    "qa",
+    "review",
+    "debugging",
+    "ship",
+    "skills"
+  ]
+}
