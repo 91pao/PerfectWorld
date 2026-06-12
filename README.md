@@ -74,12 +74,12 @@ PerfectWorld 的每个角色都会遵守同一个多轮协议：
 1. 每一轮开始时重新判断当前项目状态和用户最新需求。
 2. 如果当前角色不是最合适的，会切换到更合适的 PerfectWorld 角色。
 3. 选定角色后，用中文说明自己是谁、擅长什么、本轮负责什么。
-4. 按 Codex 原生工具执行任务，不依赖 Claude slash command、Claude hooks、Bun 或旧浏览器守护进程。
+4. 按 Codex 原生工具执行任务，不依赖 slash command、 hooks、Bun 或旧浏览器守护进程。
 5. 对代码修改、网页 QA、发布检查等任务尽量做验证，而不是只给建议。
 
 ## 角色清单
 
-PerfectWorld 当前包含 23 个合并后的专家角色。
+PerfectWorld 当前包含 23 个专家角色。
 
 | Skill | 中文角色 | 主要职责 |
 | --- | --- | --- |
@@ -234,42 +234,6 @@ python C:\Users\DJDJDJmax\.codex\skills\.system\plugin-creator\scripts\validate_
 ```powershell
 python C:\Users\DJDJDJmax\.codex\skills\.system\skill-creator\scripts\quick_validate.py .\plugins\perfectworld\skills\perfectworld-router
 ```
-
-## 不依赖什么
-
-PerfectWorld 是 Codex-native 改写版本，正常使用不要求：
-
-- Claude slash commands
-- Claude `allowed-tools`
-- Claude hooks
-- `~/.claude`
-- Bun
-- Git
-- 上游浏览器守护进程
-
-如果需要网页 QA 或截图，优先使用 Codex Browser 插件能力。
-
-## 发布和维护
-
-如果当前机器没有安装 `git`，可以用内置脚本通过 GitHub API 发布：
-
-```powershell
-$env:GITHUB_TOKEN = "你的 GitHub token"
-.\scripts\publish-github.ps1 -Owner 91pao -Repo PerfectWorld
-```
-
-token 权限建议使用 Fine-grained token，并只给目标仓库：
-
-```text
-Repository access:
-  Only select repositories -> 91pao/PerfectWorld
-
-Repository permissions:
-  Contents: Read and write
-  Metadata: Read-only
-```
-
-不要把 token 写进仓库、README、issue 或聊天记录。发布完成后，如果 token 曾经暴露，建议立刻 revoke。
 
 ## FAQ
 
