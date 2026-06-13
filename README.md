@@ -25,17 +25,7 @@ PerfectWorld 是一套面向 Codex 的专家角色插件，用来覆盖从 0 立
 
 ## 安装
 
-在 Codex CLI 中添加这个 marketplace：
-
-```powershell
-codex plugin marketplace add 91pao/PerfectWorld
-```
-
-然后安装插件：
-
-```powershell
-codex plugin add perfectworld@perfectworld
-```
+把本网页链接复制给你的Codex和他说让他为你进行安装
 
 安装完成后，建议开启一个新的 Codex 线程，让 Codex 重新加载插件技能。
 
