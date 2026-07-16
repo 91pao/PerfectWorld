@@ -284,52 +284,6 @@ python C:\Users\DJDJDJmax\.codex\skills\.system\plugin-creator\scripts\validate_
 python C:\Users\DJDJDJmax\.codex\skills\.system\skill-creator\scripts\quick_validate.py .\plugins\perfectworld\skills\perfectworld-router
 ```
 
-## 不依赖什么
-
-PerfectWorld 是 Codex-native 改写版本，正常使用不要求：
-
-- Claude slash commands
-- Claude `allowed-tools`
-- Claude hooks
-- `~/.claude`
-- Bun
-- Git
-- 上游浏览器守护进程
-
-如果需要网页 QA 或截图，优先使用 Codex Browser 插件能力。
-
-## 发布和维护
-
-推荐使用 Git + SSH 长期维护，不需要反复创建或发送 GitHub token：
-
-```powershell
-.\scripts\publish-git.ps1 `
-  -Message "Optimize PerfectWorld execution" `
-  -Summary "减少中间轮次测试和上下文消耗"
-```
-
-脚本会先同步远程、自动更新 `CHANGELOG.md`、暂存当前改动、创建提交并推送到 `main`。没有实际改动时不会制造更新日志或空提交；推送中断后再次运行也不会重复写相同记录。首次使用前需要把本机 SSH 公钥添加到 GitHub，并确保仓库 remote 指向 `git@github.com:91pao/PerfectWorld.git`。
-
-如果当前机器没有安装 `git`，可以用内置脚本通过 GitHub API 发布：
-
-```powershell
-$env:GITHUB_TOKEN = "你的 GitHub token"
-.\scripts\publish-github.ps1 -Owner 91pao -Repo PerfectWorld
-```
-
-token 权限建议使用 Fine-grained token，并只给目标仓库：
-
-```text
-Repository access:
-  Only select repositories -> 91pao/PerfectWorld
-
-Repository permissions:
-  Contents: Read and write
-  Metadata: Read-only
-```
-
-不要把 token 写进仓库、README、issue 或聊天记录。发布完成后，如果 token 曾经暴露，建议立刻 revoke。
-
 ## FAQ
 
 ### PerfectWorld 会自动选角色吗？
