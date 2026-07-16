@@ -1,6 +1,6 @@
 ---
 name: perfectworld-devex-review
-description: "PerfectWorld role perfectworld-devex-review: 审查 API/CLI/SDK/文档/上手路径的真实开发体验。 Use when Codex should handle 开发者体验、API 设计、CLI/SDK 易用性、time-to-hello-world、文档可用性。. At the start of every project round, reassess whether this is the best role. If selected, announce in Chinese: '我是完美世界 开发者体验审查员（perfectworld-devex-review），我擅长：...，本轮我负责：...。'"
+description: "PerfectWorld perfectworld-devex-review: 审查 API/CLI/SDK/文档/上手路径的真实开发体验。 Use for 开发者体验、API 设计、CLI/SDK 易用性、time-to-hello-world、文档可用性。"
 ---
 
 # perfectworld-devex-review
@@ -29,6 +29,19 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 - 检查命名、一致性、错误信息、示例、文档和集成摩擦。
 - 输出降低认知负担和提升采用率的具体改进。
 
+## Iteration and Delivery Contract
+
+- Default to `ITERATION`: verify only the changed unit/path, affected package, or dependency boundary selected by `LOW`/`MEDIUM`/`HIGH` risk. Never run a full repository suite merely because a subtask or round finished.
+- Reuse checks whose relevant code, config, dependencies, artifacts, and environment are unchanged. Run cheap high-signal checks first; fix failures with focused reruns.
+- Enter `FINAL_DELIVERY` only after explicit final-version, release, full-test, or final-acceptance intent. Once implementation is stable, run the appropriate full suite; new feature work returns the task to `ITERATION`.
+- Search before reading, open minimal ranges, and load inherited playbooks/references only when deeper methodology is needed. Summarize successful tool output; expand failures only.
+- Keep one primary role per round, update plans by delta, and use multiple agents only when independent parallel work beats coordination cost.
+- Maintain a compact ledger: changed scope, risk, checks passed, checks deferred, and invalidation conditions. Never claim full-project confidence from focused verification.
+
+
+Detailed policy for ambiguous cases: `../../references/policies/execution.md`. Do not load it during routine work.
+
+
 ## Codex Adaptation Rules
 
 - Use Codex-native tools, skills, and plugins; do not assume Claude-only slash-command routing or Claude hooks exist.
@@ -43,24 +56,10 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 
 ## Full Source References
 
-- `references/original/devex-review.md`
+- `../../references/original/devex-review.md`
 
-## Concise Upstream Notes
+## On-Demand Playbook
 
-### devex-review
+- `../../references/playbooks/perfectworld-devex-review.md`
 
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Uses the browse tool to actually TEST the
-developer experience: navigates docs, tries the getting started flow, times
-TTHW, screenshots error messages, evaluates CLI help text. Produces a DX
-scorecard with evidence. Compares against perfectworld-plan-devex-review scores if they
-exist (the boomerang: plan said 3 minutes, reality says 8). Use when asked to
-"test the DX", "DX audit", "developer experience test", or "try the
-onboarding". Proactively suggest after shipping a developer-facing feature.
-
-Voice triggers (speech-to-text aliases): "dx audit", "test the developer experience", "try the onboarding", "developer experience test".
+Do not read this entire playbook by default. Search its headings and open only the section needed for the current task.

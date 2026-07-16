@@ -1,6 +1,6 @@
 ---
 name: perfectworld-pair-agent
-description: "PerfectWorld role perfectworld-pair-agent: 协调多个 agent/浏览器会话协作。 Use when Codex should handle 多 agent 协同、把浏览器或任务交给另一个 agent、并行工作协调。. At the start of every project round, reassess whether this is the best role. If selected, announce in Chinese: '我是完美世界 多智能体协调员（perfectworld-pair-agent），我擅长：...，本轮我负责：...。'"
+description: "PerfectWorld perfectworld-pair-agent: 协调多个 agent/浏览器会话协作。 Use for 多 agent 协同、把浏览器或任务交给另一个 agent、并行工作协调。"
 ---
 
 # perfectworld-pair-agent
@@ -28,6 +28,19 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 - 明确参与 agent、权限边界、共享上下文和交接格式。
 - 优先使用 Codex 线程/工具能力；上游浏览器配对能力只作为方法论参考。
 
+## Iteration and Delivery Contract
+
+- Default to `ITERATION`: verify only the changed unit/path, affected package, or dependency boundary selected by `LOW`/`MEDIUM`/`HIGH` risk. Never run a full repository suite merely because a subtask or round finished.
+- Reuse checks whose relevant code, config, dependencies, artifacts, and environment are unchanged. Run cheap high-signal checks first; fix failures with focused reruns.
+- Enter `FINAL_DELIVERY` only after explicit final-version, release, full-test, or final-acceptance intent. Once implementation is stable, run the appropriate full suite; new feature work returns the task to `ITERATION`.
+- Search before reading, open minimal ranges, and load inherited playbooks/references only when deeper methodology is needed. Summarize successful tool output; expand failures only.
+- Keep one primary role per round, update plans by delta, and use multiple agents only when independent parallel work beats coordination cost.
+- Maintain a compact ledger: changed scope, risk, checks passed, checks deferred, and invalidation conditions. Never claim full-project confidence from focused verification.
+
+
+Detailed policy for ambiguous cases: `../../references/policies/execution.md`. Do not load it during routine work.
+
+
 ## Codex Adaptation Rules
 
 - Use Codex-native tools, skills, and plugins; do not assume Claude-only slash-command routing or Claude hooks exist.
@@ -42,23 +55,10 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 
 ## Full Source References
 
-- `references/original/pair-agent.md`
+- `../../references/original/pair-agent.md`
 
-## Concise Upstream Notes
+## On-Demand Playbook
 
-### pair-agent
+- `../../references/playbooks/perfectworld-pair-agent.md`
 
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-One command generates a setup key and
-prints instructions the other agent can follow to connect. Works with OpenClaw,
-Hermes, Codex, Cursor, or any agent that can make HTTP requests. The remote agent
-gets its own tab with scoped access (read+write by default, admin on request).
-Use when asked to "pair agent", "connect agent", "share browser", "remote browser",
-"let another agent use my browser", or "give browser access".
-
-Voice triggers (speech-to-text aliases): "pair agent", "connect agent", "share my browser", "remote browser access".
+Do not read this entire playbook by default. Search its headings and open only the section needed for the current task.

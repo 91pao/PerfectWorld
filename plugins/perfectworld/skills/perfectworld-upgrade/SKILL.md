@@ -1,6 +1,6 @@
 ---
 name: perfectworld-upgrade
-description: "PerfectWorld role perfectworld-upgrade: 维护 PerfectWorld 插件自身的更新和再生成。 Use when Codex should handle 升级 PerfectWorld、同步上游方法论、重新生成插件角色。. At the start of every project round, reassess whether this is the best role. If selected, announce in Chinese: '我是完美世界 自升级维护员（perfectworld-upgrade），我擅长：...，本轮我负责：...。'"
+description: "PerfectWorld perfectworld-upgrade: 维护 PerfectWorld 插件自身的更新和再生成。 Use for 升级 PerfectWorld、同步上游方法论、重新生成插件角色。"
 ---
 
 # perfectworld-upgrade
@@ -28,6 +28,19 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 - 检查当前生成脚本、插件 manifest、marketplace 和角色目录。
 - 从上游方法论重新生成并验证 PerfectWorld 插件。
 
+## Iteration and Delivery Contract
+
+- Default to `ITERATION`: verify only the changed unit/path, affected package, or dependency boundary selected by `LOW`/`MEDIUM`/`HIGH` risk. Never run a full repository suite merely because a subtask or round finished.
+- Reuse checks whose relevant code, config, dependencies, artifacts, and environment are unchanged. Run cheap high-signal checks first; fix failures with focused reruns.
+- Enter `FINAL_DELIVERY` only after explicit final-version, release, full-test, or final-acceptance intent. Once implementation is stable, run the appropriate full suite; new feature work returns the task to `ITERATION`.
+- Search before reading, open minimal ranges, and load inherited playbooks/references only when deeper methodology is needed. Summarize successful tool output; expand failures only.
+- Keep one primary role per round, update plans by delta, and use multiple agents only when independent parallel work beats coordination cost.
+- Maintain a compact ledger: changed scope, risk, checks passed, checks deferred, and invalidation conditions. Never claim full-project confidence from focused verification.
+
+
+Detailed policy for ambiguous cases: `../../references/policies/execution.md`. Do not load it during routine work.
+
+
 ## Codex Adaptation Rules
 
 - Use Codex-native tools, skills, and plugins; do not assume Claude-only slash-command routing or Claude hooks exist.
@@ -42,52 +55,10 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 
 ## Full Source References
 
-- `references/original/upgrade.md`
+- `../../references/original/upgrade.md`
 
-## Concise Upstream Notes
+## On-Demand Playbook
 
-### upgrade
+- `../../references/playbooks/perfectworld-upgrade.md`
 
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Detects global vs vendored install,
-runs the upgrade, and shows what's new. Use when asked to "upgrade perfectworld",
-"update perfectworld", or "get latest version".
-
-Voice triggers (speech-to-text aliases): "upgrade the tools", "update the tools", "gee stack upgrade", "g stack upgrade".
-
-# perfectworld-perfectworld-upgrade
-
-Upgrade perfectworld to the latest version and show what's new.
-
-## Inline upgrade flow
-
-This section is referenced by all skill preambles when they detect `UPGRADE_AVAILABLE`.
-
-### Step 1: Ask the user (or auto-upgrade)
-
-First, check if auto-upgrade is enabled:
-```bash
-_AUTO=""
-[ "${PERFECTWORLD_AUTO_UPGRADE:-}" = "1" ] && _AUTO="true"
-[ -z "$_AUTO" ] && _AUTO=$($PERFECTWORLD_SOURCE/bin/perfectworld-config get auto_upgrade 2>perfectworld-dev/null || true)
-echo "AUTO_UPGRADE=$_AUTO"
-```
-
-**If `AUTO_UPGRADE=true` or `AUTO_UPGRADE=1`:** Skip AskUserQuestion. Log "Auto-upgrading perfectworld v{old}  v{new}..." and proceed directly to Step 2. If `./setup` fails during auto-upgrade, restore from backup (`.bak` directory) and warn the user: "Auto-upgrade failed  restored previous version. Run `perfectworld-perfectworld-upgrade` manually to retry."
-
-**Otherwise**, use AskUserQuestion:
-- Question: "perfectworld **v{new}** is available (you're on v{old}). Upgrade now?"
-- Options: ["Yes, upgrade now", "Always keep me up to date", "Not now", "Never ask again"]
-
-**If "Yes, upgrade now":** Proceed to Step 2.
-
-**If "Always keep me up to date":**
-```bash
-$PERFECTWORLD_SOURCE/bin/perfectworld-config set auto_upgrade true
-```
-Tell user: "Auto-upgrade enabled. Future updates will install automatically." Then proceed to Step 2.
+Do not read this entire playbook by default. Search its headings and open only the section needed for the current task.

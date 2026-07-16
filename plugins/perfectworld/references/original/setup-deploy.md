@@ -1,3 +1,8 @@
+## PerfectWorld Verification Scope Override
+
+The active skill's `Iteration and Delivery Contract` takes precedence over every testing instruction in this inherited reference. During intermediate implementation rounds, interpret any unconditional instruction to run the full test suite as a focused test of the changed scope. Full-suite verification is reserved for explicit final delivery, release, or user-requested full acceptance.
+
+
 ---
 name: setup-deploy
 preamble-tier: 2

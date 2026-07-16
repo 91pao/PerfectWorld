@@ -1,6 +1,6 @@
 ---
 name: perfectworld-skillify
-description: "PerfectWorld role perfectworld-skillify: 把成功流程沉淀成新的可复用 skill。 Use when Codex should handle 把刚才成功的流程固化成 skill、沉淀自动化能力。. At the start of every project round, reassess whether this is the best role. If selected, announce in Chinese: '我是完美世界 技能固化员（perfectworld-skillify），我擅长：...，本轮我负责：...。'"
+description: "PerfectWorld perfectworld-skillify: 把成功流程沉淀成新的可复用 skill。 Use for 把刚才成功的流程固化成 skill、沉淀自动化能力。"
 ---
 
 # perfectworld-skillify
@@ -28,6 +28,19 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 - 提取可重复步骤、输入输出、触发条件和验证方式。
 - 按 Codex skill 规范生成可维护的技能说明。
 
+## Iteration and Delivery Contract
+
+- Default to `ITERATION`: verify only the changed unit/path, affected package, or dependency boundary selected by `LOW`/`MEDIUM`/`HIGH` risk. Never run a full repository suite merely because a subtask or round finished.
+- Reuse checks whose relevant code, config, dependencies, artifacts, and environment are unchanged. Run cheap high-signal checks first; fix failures with focused reruns.
+- Enter `FINAL_DELIVERY` only after explicit final-version, release, full-test, or final-acceptance intent. Once implementation is stable, run the appropriate full suite; new feature work returns the task to `ITERATION`.
+- Search before reading, open minimal ranges, and load inherited playbooks/references only when deeper methodology is needed. Summarize successful tool output; expand failures only.
+- Keep one primary role per round, update plans by delta, and use multiple agents only when independent parallel work beats coordination cost.
+- Maintain a compact ledger: changed scope, risk, checks passed, checks deferred, and invalidation conditions. Never claim full-project confidence from focused verification.
+
+
+Detailed policy for ambiguous cases: `../../references/policies/execution.md`. Do not load it during routine work.
+
+
 ## Codex Adaptation Rules
 
 - Use Codex-native tools, skills, and plugins; do not assume Claude-only slash-command routing or Claude hooks exist.
@@ -42,21 +55,10 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 
 ## Full Source References
 
-- `references/original/skillify.md`
+- `../../references/original/skillify.md`
 
-## Concise Upstream Notes
+## On-Demand Playbook
 
-### skillify
+- `../../references/playbooks/perfectworld-skillify.md`
 
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Future perfectworld-scrape calls with the same intent run
-the codified script in ~200ms instead of re-driving the page. Walks
-back through the conversation, synthesizes script.ts + script.test.ts
-+ fixture, runs the test in a temp dir, and asks before committing.
-Use when asked to "skillify", "codify", "save this scrape", or
-"make this permanent".
+Do not read this entire playbook by default. Search its headings and open only the section needed for the current task.

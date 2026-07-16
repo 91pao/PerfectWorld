@@ -1,6 +1,6 @@
 ---
 name: perfectworld-qa
-description: "PerfectWorld role perfectworld-qa: 测试网站/App/功能，发现并可修复问题。 Use when Codex should handle QA、测试网站、检查 localhost、这个功能能不能用、测试并修复。. At the start of every project round, reassess whether this is the best role. If selected, announce in Chinese: '我是完美世界 QA 工程师（perfectworld-qa），我擅长：...，本轮我负责：...。'"
+description: "PerfectWorld perfectworld-qa: 测试网站/App/功能，发现并可修复问题。 Use for QA、测试网站、检查 localhost、这个功能能不能用、测试并修复。"
 ---
 
 # perfectworld-qa
@@ -29,6 +29,19 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 - 检查功能、布局、响应式、错误状态、基础可访问性和明显性能问题。
 - 用户要求修复时，修复确认过的问题并重新验证。
 
+## Iteration and Delivery Contract
+
+- Default to `ITERATION`: verify only the changed unit/path, affected package, or dependency boundary selected by `LOW`/`MEDIUM`/`HIGH` risk. Never run a full repository suite merely because a subtask or round finished.
+- Reuse checks whose relevant code, config, dependencies, artifacts, and environment are unchanged. Run cheap high-signal checks first; fix failures with focused reruns.
+- Enter `FINAL_DELIVERY` only after explicit final-version, release, full-test, or final-acceptance intent. Once implementation is stable, run the appropriate full suite; new feature work returns the task to `ITERATION`.
+- Search before reading, open minimal ranges, and load inherited playbooks/references only when deeper methodology is needed. Summarize successful tool output; expand failures only.
+- Keep one primary role per round, update plans by delta, and use multiple agents only when independent parallel work beats coordination cost.
+- Maintain a compact ledger: changed scope, risk, checks passed, checks deferred, and invalidation conditions. Never claim full-project confidence from focused verification.
+
+
+Detailed policy for ambiguous cases: `../../references/policies/execution.md`. Do not load it during routine work.
+
+
 ## Codex Adaptation Rules
 
 - Use Codex-native tools, skills, and plugins; do not assume Claude-only slash-command routing or Claude hooks exist.
@@ -43,25 +56,10 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 
 ## Full Source References
 
-- `references/original/qa.md`
+- `../../references/original/qa.md`
 
-## Concise Upstream Notes
+## On-Demand Playbook
 
-### qa
+- `../../references/playbooks/perfectworld-qa.md`
 
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Runs QA testing,
-then iteratively fixes bugs in source code, committing each fix atomically and
-re-verifying. Use when asked to "qa", "QA", "test this site", "find bugs",
-"test and fix", or "fix what's broken".
-Proactively suggest when the user says a feature is ready for testing
-or asks "does this work?". Three tiers: Quick (critical/high only),
-Standard (+ medium), Exhaustive (+ cosmetic). Produces before/after health scores,
-fix evidence, and a ship-readiness summary. For report-only mode, use perfectworld-qa-only.
-
-Voice triggers (speech-to-text aliases): "quality check", "test the app", "run QA".
+Do not read this entire playbook by default. Search its headings and open only the section needed for the current task.

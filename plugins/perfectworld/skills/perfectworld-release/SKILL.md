@@ -1,6 +1,6 @@
 ---
 name: perfectworld-release
-description: "PerfectWorld role perfectworld-release: 覆盖部署配置、发布前检查、PR 准备、合并部署和上线后验证。 Use when Codex should handle ship、发布、PR 准备、部署配置、合并上线、上线后验证、发布队列。. At the start of every project round, reassess whether this is the best role. If selected, announce in Chinese: '我是完美世界 发布总管（perfectworld-release），我擅长：...，本轮我负责：...。'"
+description: "PerfectWorld perfectworld-release: 覆盖部署配置、发布前检查、PR 准备、合并部署和上线后验证。 Use for ship、发布、PR 准备、部署配置、合并上线、上线后验证、发布队列。"
 ---
 
 # perfectworld-release
@@ -31,6 +31,19 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 - 上线后：执行金丝雀/冒烟验证，检查关键路径和健康信号。
 - 报告：输出发布状态、风险、证据和后续动作。
 
+## Iteration and Delivery Contract
+
+- Default to `ITERATION`: verify only the changed unit/path, affected package, or dependency boundary selected by `LOW`/`MEDIUM`/`HIGH` risk. Never run a full repository suite merely because a subtask or round finished.
+- Reuse checks whose relevant code, config, dependencies, artifacts, and environment are unchanged. Run cheap high-signal checks first; fix failures with focused reruns.
+- Enter `FINAL_DELIVERY` only after explicit final-version, release, full-test, or final-acceptance intent. Once implementation is stable, run the appropriate full suite; new feature work returns the task to `ITERATION`.
+- Search before reading, open minimal ranges, and load inherited playbooks/references only when deeper methodology is needed. Summarize successful tool output; expand failures only.
+- Keep one primary role per round, update plans by delta, and use multiple agents only when independent parallel work beats coordination cost.
+- Maintain a compact ledger: changed scope, risk, checks passed, checks deferred, and invalidation conditions. Never claim full-project confidence from focused verification.
+
+
+Detailed policy for ambiguous cases: `../../references/policies/execution.md`. Do not load it during routine work.
+
+
 ## Codex Adaptation Rules
 
 - Use Codex-native tools, skills, and plugins; do not assume Claude-only slash-command routing or Claude hooks exist.
@@ -49,81 +62,14 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 
 ## Full Source References
 
-- `references/original/ship.md`
-- `references/original/setup-deploy.md`
-- `references/original/land-and-deploy.md`
-- `references/original/canary.md`
-- `references/original/landing-report.md`
+- `../../references/original/ship.md`
+- `../../references/original/setup-deploy.md`
+- `../../references/original/land-and-deploy.md`
+- `../../references/original/canary.md`
+- `../../references/original/landing-report.md`
 
-## Concise Upstream Notes
+## On-Demand Playbook
 
-### ship
+- `../../references/playbooks/perfectworld-release.md`
 
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Use when asked to "ship", "deploy",
-"push to main", "create a PR", "merge and push", or "get it deployed".
-Proactively use this skill (do NOT push/PR directly) when the user says code
-is ready, asks about deploying, wants to push code up, or asks to create a PR.
-
-### setup-deploy
-
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Detects your deploy
-platform (Fly.io, Render, Vercel, Netlify, Heroku, GitHub Actions, custom),
-production URL, health check endpoints, and deploy status commands. Writes
-the configuration to AGENTS.md or repository guidance so all future deploys are automatic.
-Use when: "setup deploy", "configure deployment", "set up land-and-deploy",
-"how do I deploy with perfectworld", "add deploy config".
-
-### land-and-deploy
-
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Merges the PR, waits for CI and deploy,
-verifies production health via canary checks. Takes over after perfectworld-ship
-creates the PR. Use when: "merge", "land", "deploy", "merge and verify",
-"land it", "ship it to production".
-
-### canary
-
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Watches the live app for console errors,
-performance regressions, and page failures using the browse daemon. Takes
-periodic screenshots, compares against pre-deploy baselines, and alerts
-on anomalies. Use when: "monitor deploy", "canary", "post-deploy check",
-"watch production", "verify deploy".
-
-### landing-report
-
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Shows which VERSION slots
-are currently claimed by open PRs, which sibling Conductor workspaces have
-WIP work likely to ship soon, and what slot perfectworld-ship would pick next. No
-mutations  just a snapshot. Use when asked to "landing report", "what's in
-the queue", "show me open PRs", or "which version do I claim next".
-
-# perfectworld-landing-report  Version Queue Dashboard
+Do not read this entire playbook by default. Search its headings and open only the section needed for the current task.

@@ -1,6 +1,6 @@
 ---
 name: perfectworld-health
-description: "PerfectWorld role perfectworld-health: 检查项目整体代码健康、复杂度、技术债和维护风险。 Use when Codex should handle 健康检查、代码质量仪表盘、技术债、复杂度、可维护性审计。. At the start of every project round, reassess whether this is the best role. If selected, announce in Chinese: '我是完美世界 代码健康检查员（perfectworld-health），我擅长：...，本轮我负责：...。'"
+description: "PerfectWorld perfectworld-health: 检查项目整体代码健康、复杂度、技术债和维护风险。 Use for 健康检查、代码质量仪表盘、技术债、复杂度、可维护性审计。"
 ---
 
 # perfectworld-health
@@ -29,6 +29,19 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 - 区分立即风险和长期维护问题。
 - 输出优先级排序的改进建议。
 
+## Iteration and Delivery Contract
+
+- Default to `ITERATION`: verify only the changed unit/path, affected package, or dependency boundary selected by `LOW`/`MEDIUM`/`HIGH` risk. Never run a full repository suite merely because a subtask or round finished.
+- Reuse checks whose relevant code, config, dependencies, artifacts, and environment are unchanged. Run cheap high-signal checks first; fix failures with focused reruns.
+- Enter `FINAL_DELIVERY` only after explicit final-version, release, full-test, or final-acceptance intent. Once implementation is stable, run the appropriate full suite; new feature work returns the task to `ITERATION`.
+- Search before reading, open minimal ranges, and load inherited playbooks/references only when deeper methodology is needed. Summarize successful tool output; expand failures only.
+- Keep one primary role per round, update plans by delta, and use multiple agents only when independent parallel work beats coordination cost.
+- Maintain a compact ledger: changed scope, risk, checks passed, checks deferred, and invalidation conditions. Never claim full-project confidence from focused verification.
+
+
+Detailed policy for ambiguous cases: `../../references/policies/execution.md`. Do not load it during routine work.
+
+
 ## Codex Adaptation Rules
 
 - Use Codex-native tools, skills, and plugins; do not assume Claude-only slash-command routing or Claude hooks exist.
@@ -43,20 +56,10 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 
 ## Full Source References
 
-- `references/original/health.md`
+- `../../references/original/health.md`
 
-## Concise Upstream Notes
+## On-Demand Playbook
 
-### health
+- `../../references/playbooks/perfectworld-health.md`
 
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Wraps existing project tools (type checker, linter,
-test runner, dead code detector, shell linter), computes a weighted composite
-0-10 score, and tracks trends over time. Use when: "health check",
-"code quality", "how healthy is the codebase", "run all checks",
-"quality score".
+Do not read this entire playbook by default. Search its headings and open only the section needed for the current task.

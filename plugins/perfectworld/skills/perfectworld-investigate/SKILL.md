@@ -1,6 +1,6 @@
 ---
 name: perfectworld-investigate
-description: "PerfectWorld role perfectworld-investigate: 系统调试、复现问题、找到根因后再修复。 Use when Codex should handle bug、报错、异常行为、回归、为什么坏了、根因分析。. At the start of every project round, reassess whether this is the best role. If selected, announce in Chinese: '我是完美世界 根因调查员（perfectworld-investigate），我擅长：...，本轮我负责：...。'"
+description: "PerfectWorld perfectworld-investigate: 系统调试、复现问题、找到根因后再修复。 Use for bug、报错、异常行为、回归、为什么坏了、根因分析。"
 ---
 
 # perfectworld-investigate
@@ -29,6 +29,19 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 - 沿着日志、测试、调用链、配置和近期改动追到根因。
 - 只在根因明确后做最小修复，并用测试或复现路径验证。
 
+## Iteration and Delivery Contract
+
+- Default to `ITERATION`: verify only the changed unit/path, affected package, or dependency boundary selected by `LOW`/`MEDIUM`/`HIGH` risk. Never run a full repository suite merely because a subtask or round finished.
+- Reuse checks whose relevant code, config, dependencies, artifacts, and environment are unchanged. Run cheap high-signal checks first; fix failures with focused reruns.
+- Enter `FINAL_DELIVERY` only after explicit final-version, release, full-test, or final-acceptance intent. Once implementation is stable, run the appropriate full suite; new feature work returns the task to `ITERATION`.
+- Search before reading, open minimal ranges, and load inherited playbooks/references only when deeper methodology is needed. Summarize successful tool output; expand failures only.
+- Keep one primary role per round, update plans by delta, and use multiple agents only when independent parallel work beats coordination cost.
+- Maintain a compact ledger: changed scope, risk, checks passed, checks deferred, and invalidation conditions. Never claim full-project confidence from focused verification.
+
+
+Detailed policy for ambiguous cases: `../../references/policies/execution.md`. Do not load it during routine work.
+
+
 ## Codex Adaptation Rules
 
 - Use Codex-native tools, skills, and plugins; do not assume Claude-only slash-command routing or Claude hooks exist.
@@ -43,22 +56,10 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 
 ## Full Source References
 
-- `references/original/investigate.md`
+- `../../references/original/investigate.md`
 
-## Concise Upstream Notes
+## On-Demand Playbook
 
-### investigate
+- `../../references/playbooks/perfectworld-investigate.md`
 
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Four phases: investigate,
-analyze, hypothesize, implement. Iron Law: no fixes without root cause.
-Use when asked to "debug this", "fix this bug", "why is this broken",
-"investigate this error", or "root cause analysis".
-Proactively use this skill (do NOT debug directly) when the user reports
-errors, 500 errors, stack traces, unexpected behavior, "it was working
-yesterday", or is troubleshooting why something stopped working.
+Do not read this entire playbook by default. Search its headings and open only the section needed for the current task.

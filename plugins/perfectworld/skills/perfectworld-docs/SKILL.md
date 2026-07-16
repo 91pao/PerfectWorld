@@ -1,6 +1,6 @@
 ---
 name: perfectworld-docs
-description: "PerfectWorld role perfectworld-docs: 生成缺失文档，并在发布时同步维护文档。 Use when Codex should handle 写文档、补 README/架构文档/how-to/reference/tutorial、发布后更新文档。. At the start of every project round, reassess whether this is the best role. If selected, announce in Chinese: '我是完美世界 文档工程师（perfectworld-docs），我擅长：...，本轮我负责：...。'"
+description: "PerfectWorld perfectworld-docs: 生成缺失文档，并在发布时同步维护文档。 Use for 写文档、补 README/架构文档/how-to/reference/tutorial、发布后更新文档。"
 ---
 
 # perfectworld-docs
@@ -29,6 +29,19 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 - 按教程、how-to、reference、explanation 等类型组织内容。
 - 发布时检查 README、架构说明、变更说明和相关文档是否随代码同步。
 
+## Iteration and Delivery Contract
+
+- Default to `ITERATION`: verify only the changed unit/path, affected package, or dependency boundary selected by `LOW`/`MEDIUM`/`HIGH` risk. Never run a full repository suite merely because a subtask or round finished.
+- Reuse checks whose relevant code, config, dependencies, artifacts, and environment are unchanged. Run cheap high-signal checks first; fix failures with focused reruns.
+- Enter `FINAL_DELIVERY` only after explicit final-version, release, full-test, or final-acceptance intent. Once implementation is stable, run the appropriate full suite; new feature work returns the task to `ITERATION`.
+- Search before reading, open minimal ranges, and load inherited playbooks/references only when deeper methodology is needed. Summarize successful tool output; expand failures only.
+- Keep one primary role per round, update plans by delta, and use multiple agents only when independent parallel work beats coordination cost.
+- Maintain a compact ledger: changed scope, risk, checks passed, checks deferred, and invalidation conditions. Never claim full-project confidence from focused verification.
+
+
+Detailed policy for ambiguous cases: `../../references/policies/execution.md`. Do not load it during routine work.
+
+
 ## Codex Adaptation Rules
 
 - Use Codex-native tools, skills, and plugins; do not assume Claude-only slash-command routing or Claude hooks exist.
@@ -44,37 +57,11 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 
 ## Full Source References
 
-- `references/original/document-generate.md`
-- `references/original/document-release.md`
+- `../../references/original/document-generate.md`
+- `../../references/original/document-release.md`
 
-## Concise Upstream Notes
+## On-Demand Playbook
 
-### document-generate
+- `../../references/playbooks/perfectworld-docs.md`
 
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Uses the Diataxis framework (tutorial / how-to / reference / explanation) to produce
-complete, structured documentation. Can be invoked standalone or called by
-perfectworld-document-release when it finds coverage gaps. Use when asked to "write docs",
-"generate documentation", "document this feature", "create a tutorial", or
-"explain this module".
-
-### document-release
-
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Reads all project docs, cross-references the
-diff, builds a Diataxis coverage map (reference/how-to/tutorial/explanation),
-updates README/ARCHITECTURE/CONTRIBUTING/AGENTS.md or repository guidance to match what shipped,
-detects architecture diagram drift, polishes CHANGELOG voice with a sell-test
-rubric, cleans up TODOS, and optionally bumps VERSION. Surfaces documentation
-debt in the PR body. Use when asked to "update the docs", "sync documentation",
-or "post-ship docs". Proactively suggest after a PR is merged or code is shipped.
+Do not read this entire playbook by default. Search its headings and open only the section needed for the current task.

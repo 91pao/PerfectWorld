@@ -1,6 +1,6 @@
 ---
 name: perfectworld-benchmark
-description: "PerfectWorld role perfectworld-benchmark: 覆盖性能回归检测和跨模型效果/成本/速度比较。 Use when Codex should handle 性能基准、性能回归、比较模型、比较成本/速度/质量。. At the start of every project round, reassess whether this is the best role. If selected, announce in Chinese: '我是完美世界 基准测试员（perfectworld-benchmark），我擅长：...，本轮我负责：...。'"
+description: "PerfectWorld perfectworld-benchmark: 覆盖性能回归检测和跨模型效果/成本/速度比较。 Use for 性能基准、性能回归、比较模型、比较成本/速度/质量。"
 ---
 
 # perfectworld-benchmark
@@ -29,6 +29,19 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 - 比较前后版本的性能、可靠性和用户可感知差异。
 - 比较不同模型/方案的质量、延迟、成本和失败模式。
 
+## Iteration and Delivery Contract
+
+- Default to `ITERATION`: verify only the changed unit/path, affected package, or dependency boundary selected by `LOW`/`MEDIUM`/`HIGH` risk. Never run a full repository suite merely because a subtask or round finished.
+- Reuse checks whose relevant code, config, dependencies, artifacts, and environment are unchanged. Run cheap high-signal checks first; fix failures with focused reruns.
+- Enter `FINAL_DELIVERY` only after explicit final-version, release, full-test, or final-acceptance intent. Once implementation is stable, run the appropriate full suite; new feature work returns the task to `ITERATION`.
+- Search before reading, open minimal ranges, and load inherited playbooks/references only when deeper methodology is needed. Summarize successful tool output; expand failures only.
+- Keep one primary role per round, update plans by delta, and use multiple agents only when independent parallel work beats coordination cost.
+- Maintain a compact ledger: changed scope, risk, checks passed, checks deferred, and invalidation conditions. Never claim full-project confidence from focused verification.
+
+
+Detailed policy for ambiguous cases: `../../references/policies/execution.md`. Do not load it during routine work.
+
+
 ## Codex Adaptation Rules
 
 - Use Codex-native tools, skills, and plugins; do not assume Claude-only slash-command routing or Claude hooks exist.
@@ -44,40 +57,11 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 
 ## Full Source References
 
-- `references/original/benchmark.md`
-- `references/original/benchmark-models.md`
+- `../../references/original/benchmark.md`
+- `../../references/original/benchmark-models.md`
 
-## Concise Upstream Notes
+## On-Demand Playbook
 
-### benchmark
+- `../../references/playbooks/perfectworld-benchmark.md`
 
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Establishes
-baselines for page load times, Core Web Vitals, and resource sizes.
-Compares before/after on every PR. Tracks performance trends over time.
-Use when: "performance", "benchmark", "page speed", "lighthouse", "web vitals",
-"bundle size", "load time".
-
-Voice triggers (speech-to-text aliases): "speed test", "check performance".
-
-### benchmark-models
-
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Runs the same prompt through Codex,
-GPT (via Codex CLI), and Gemini side-by-side  compares latency, tokens, cost,
-and optionally quality via LLM judge. Answers "which model is actually best
-for this skill?" with data instead of vibes. Separate from perfectworld-benchmark, which
-measures web page performance. Use when: "benchmark models", "compare models",
-"which model is best for X", "cross-model comparison", "model shootout".
-
-Voice triggers (speech-to-text aliases): "compare models", "model shootout", "which model is best".
+Do not read this entire playbook by default. Search its headings and open only the section needed for the current task.

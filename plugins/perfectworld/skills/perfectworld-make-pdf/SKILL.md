@@ -1,6 +1,6 @@
 ---
 name: perfectworld-make-pdf
-description: "PerfectWorld role perfectworld-make-pdf: 把 Markdown/报告制作成高质量 PDF。 Use when Codex should handle 生成 PDF、把 Markdown 转 PDF、制作发布级报告。. At the start of every project round, reassess whether this is the best role. If selected, announce in Chinese: '我是完美世界 PDF 制作员（perfectworld-make-pdf），我擅长：...，本轮我负责：...。'"
+description: "PerfectWorld perfectworld-make-pdf: 把 Markdown/报告制作成高质量 PDF。 Use for 生成 PDF、把 Markdown 转 PDF、制作发布级报告。"
 ---
 
 # perfectworld-make-pdf
@@ -28,6 +28,19 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 - 选择合适的文档/PDF 工具链。
 - 检查排版、分页、字体、链接和输出质量。
 
+## Iteration and Delivery Contract
+
+- Default to `ITERATION`: verify only the changed unit/path, affected package, or dependency boundary selected by `LOW`/`MEDIUM`/`HIGH` risk. Never run a full repository suite merely because a subtask or round finished.
+- Reuse checks whose relevant code, config, dependencies, artifacts, and environment are unchanged. Run cheap high-signal checks first; fix failures with focused reruns.
+- Enter `FINAL_DELIVERY` only after explicit final-version, release, full-test, or final-acceptance intent. Once implementation is stable, run the appropriate full suite; new feature work returns the task to `ITERATION`.
+- Search before reading, open minimal ranges, and load inherited playbooks/references only when deeper methodology is needed. Summarize successful tool output; expand failures only.
+- Keep one primary role per round, update plans by delta, and use multiple agents only when independent parallel work beats coordination cost.
+- Maintain a compact ledger: changed scope, risk, checks passed, checks deferred, and invalidation conditions. Never claim full-project confidence from focused verification.
+
+
+Detailed policy for ambiguous cases: `../../references/policies/execution.md`. Do not load it during routine work.
+
+
 ## Codex Adaptation Rules
 
 - Use Codex-native tools, skills, and plugins; do not assume Claude-only slash-command routing or Claude hooks exist.
@@ -42,22 +55,10 @@ Keep the opening specific to the current round. The `<...>` placeholder must be 
 
 ## Full Source References
 
-- `references/original/make-pdf.md`
+- `../../references/original/make-pdf.md`
 
-## Concise Upstream Notes
+## On-Demand Playbook
 
-### make-pdf
+- `../../references/playbooks/perfectworld-make-pdf.md`
 
-<!-- AUTO-GENERATED from SKILL.md.tmpl  do not edit directly -->
-<!-- Regenerate: bun run gen:skill-docs -->
-
-
-## When to use this skill
-
-Proper 1in margins,
-intelligent page breaks, page numbers, cover pages, running headers, curly
-quotes and em dashes, clickable TOC, diagonal DRAFT watermark. Not a draft
-artifact  a finished artifact. Use when asked to "make a PDF", "export to
-PDF", "turn this markdown into a PDF", or "generate a document".
-
-Voice triggers (speech-to-text aliases): "make this a pdf", "make it a pdf", "export to pdf", "turn this into a pdf", "turn this markdown into a pdf", "generate a pdf", "make a pdf from", "pdf this markdown".
+Do not read this entire playbook by default. Search its headings and open only the section needed for the current task.
