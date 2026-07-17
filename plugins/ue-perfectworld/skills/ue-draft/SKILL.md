@@ -26,7 +26,7 @@ Before drafting, read:
 2. Evaluate the nearest candidates for active production use, compatible ownership, lifecycle, and responsibility.
 3. Resolve exact symbols, signatures, dependencies, ownership, lifecycle, and integration points before writing the answer.
 4. Present every required change in the exact order the user should perform it.
-5. For each step, provide the target, action, exact location, short explanation, and complete literal code or editor values with detailed production-suitable teaching comments.
+5. For each step, provide the target, action, exact location, short explanation, and complete literal code or editor values with comprehensive, concise, production-suitable teaching comments.
 6. Do not use pseudocode, ellipses, placeholders, TODOs, omitted branches, or incomplete code blocks.
 7. Do not modify or create project files; only the user performs the shown edits manually.
 8. Do not run UE builds.
@@ -40,7 +40,7 @@ Make it executable as a teaching sequence beside the user's editor or IDE:
 - Numbered file/editor steps in dependency order
 - Exact insertion or replacement location for every step
 - Complete literal code blocks with no omitted content
-- Detailed comments inside code blocks explaining purpose, UE lifecycle, ownership, authority, side effects, critical branches, and non-obvious engine behavior
+- Concise `//` comments inside code blocks covering purpose, UE lifecycle, ownership, authority, side effects, critical branches, and non-obvious engine behavior; use multiple lines only when one line is insufficient
 - Exact Blueprint, asset, configuration, and binding actions when required
 - Compile and runtime verification checklist
 - Any unresolved evidence that prevents a truthful transcription-ready claim

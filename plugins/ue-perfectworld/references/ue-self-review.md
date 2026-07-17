@@ -20,7 +20,7 @@ Run this as a blocking closure gate after implementation or implementation guida
 - Compare the result with the smallest project-consistent implementation that fully satisfies the current requirement
 - Treat a solution that is several times larger than necessary, such as roughly 300 lines for work that can be expressed clearly in about 50, as a failed review and rewrite it before delivery
 - Use line count as a warning signal, not a code-golf target; retain required correctness, authority, lifecycle, validation, diagnostics, and readability
-- Judge implementation complexity separately from useful teaching-comment volume; do not remove accurate instructional comments merely to reduce line count
+- Judge implementation complexity separately from useful teaching-comment coverage; shorten redundant comments without removing required intent or constraints
 - Remove speculative extension points, unused state, duplicate logic, unnecessary files, classes, managers, services, wrappers, helpers, result types, delegates, RPCs, compatibility branches, timers, retries, caches, and configuration
 - Do not preserve overdesign merely because it has already been written
 - Keep an abstraction only when it matches a verified project convention, removes meaningful present duplication, or materially improves correctness or testability
@@ -38,7 +38,9 @@ Run this as a blocking closure gate after implementation or implementation guida
 ## Final Checks
 
 - For guided implementation, confirm every required change is ordered and complete, code blocks contain no pseudocode, ellipses, placeholders, TODOs, or omitted branches, and project symbols were verified before claiming the code is transcription-ready
-- For guided implementation, confirm every added or meaningfully changed class, struct, function, and important property has detailed production-suitable comments covering purpose and relevant lifecycle, ownership, authority, side effects, and failure behavior
+- For guided implementation, confirm every added or meaningfully changed class, struct, function, and important property has concise production-suitable comments covering purpose and relevant lifecycle, ownership, authority, side effects, and failure behavior
+- Confirm teaching comments default to one-line `//` form and expand to consecutive `//` lines only when one line would be incomplete or misleading
+- Confirm comment coverage is comprehensive without block paragraphs, trivial narration, repeated names, or redundant summaries
 - Confirm comments still match the final code after every bug fix or simplicity rewrite and do not merely narrate syntax
 - Confirm source text was not modified through wrongly decoded shell output
 - Confirm comments and diagnostics match current-project conventions and do not expose sensitive data

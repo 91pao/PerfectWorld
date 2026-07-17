@@ -1,6 +1,6 @@
 {
   "name": "ue-perfectworld",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Project-neutral Codex workflows for safe Unreal Engine planning, investigation, implementation, review, and Blueprint/editor integration.",
   "author": {
     "name": "Liutianyuan / PerfectWorld",
@@ -23,7 +23,7 @@
   "interface": {
     "displayName": "UE PerfectWorld",
     "shortDescription": "\u901a\u7528 UE \u9879\u76ee\u7684\u89c4\u5212\u3001\u5b9e\u73b0\u3001\u5ba1\u67e5\u3001\u6392\u67e5\u548c\u84dd\u56fe\u534f\u4f5c\u89c4\u5219\u3002",
-    "longDescription": "UE PerfectWorld provides project-neutral Unreal Engine workflows that treat workspaces as read-only by default, discover conventions from the current project, teach complete transcription-ready implementations with detailed production-suitable comments when file edits are not authorized, require explicit permission for workspace changes, and enforce a blocking final self-review that fixes known bugs and rewrites avoidable overdesign before delivery.",
+    "longDescription": "UE PerfectWorld provides project-neutral Unreal Engine workflows that treat workspaces as read-only by default, discover conventions from the current project, teach complete transcription-ready implementations with comprehensive but concise production-suitable comments when file edits are not authorized, require explicit permission for workspace changes, and enforce a blocking final self-review that fixes known bugs and rewrites avoidable overdesign before delivery.",
     "developerName": "Liutianyuan / PerfectWorld",
     "category": "Engineering",
     "capabilities": [

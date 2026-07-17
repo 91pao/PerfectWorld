@@ -9,7 +9,7 @@ Reject code that drifts away from verified current-project conventions or adds c
 - Do not split one simple operation into several RPCs; follow `ue-client-server-boundary-rules.md` for networked work
 - Do not add collections or generic handling when the current requirement has a single known shape
 - Do not prepare for expansion without a concrete requirement
-- For guided implementation, include detailed teaching comments for intent and non-obvious UE behavior, but do not narrate trivial syntax line by line
+- For guided implementation, include comprehensive but concise `//` comments for intent and non-obvious UE behavior, using multiple lines only when one line is insufficient
 - Do not rewrite working code into a more abstract style without a demonstrated need
 - Prefer clear feature code near the existing flow over clever generic utilities
 - Do not add unused variables, functions, enum values, delegates, fields, or configuration

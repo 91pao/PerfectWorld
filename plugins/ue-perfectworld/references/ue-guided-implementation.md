@@ -36,17 +36,19 @@ Order steps by real dependency, typically module/configuration requirements, dec
 - For a new source file, show its complete contents
 - Include required headers, forward declarations, reflection macros, module dependencies, access specifiers, overrides, and registration or binding code
 - Use exact current-project names and style
-- Include detailed production-suitable teaching comments according to `ue-comment-log-rules.md`; the user may choose whether to enter those comments
+- Include comprehensive, concise, production-suitable teaching comments according to `ue-comment-log-rules.md`; the user may choose whether to enter those comments
 - Do not output pseudocode, ellipses, omitted branches, TODOs, placeholder identifiers, "fill this in", or non-compiling pattern sketches inside code blocks
 - Do not claim code is transcription-ready while any required type, symbol, file, asset, value, or integration decision remains unresolved
 - Keep broader tutorial prose outside code blocks, but include required code comments inside the blocks so they can be entered literally
 
 ## Teaching Comment Coverage
 
-- Add a purpose comment for every added or meaningfully changed class, struct, function, and important property
-- Explain relevant UE lifecycle timing, object ownership, authority, replication, delegate lifetime, side effects, and failure behavior near the code they govern
-- Comment critical branches and non-obvious engine calls before the related block
-- Keep comments detailed but production-suitable; do not narrate trivial syntax line by line
+- Add a concise purpose comment for every added or meaningfully changed class, struct, function, and important property
+- Default to one-line `//` comments placed immediately above the code they govern
+- Explain relevant UE lifecycle timing, object ownership, authority, replication, delegate lifetime, side effects, and failure behavior wherever each matters
+- Comment critical branches and non-obvious engine calls with a short explanation of why they are required
+- Expand to consecutive `//` lines only when one line cannot explain the required behavior accurately
+- Keep coverage comprehensive without narrating trivial syntax or repeating clear names and signatures
 - After any correctness or simplicity rewrite, update the comments to match the final code
 
 ## Blueprint And Editor Steps
