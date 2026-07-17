@@ -1,6 +1,4 @@
-# PerfectWorld Codex Plugins
-
-本仓库是 PerfectWorld Codex marketplace，包含通用全流程专家插件 `perfectworld` 和面向 Unreal Engine 项目的 `ue-perfectworld`。
+# PerfectWorld Codex Plugin
 
 PerfectWorld 是一套面向 Codex 的专家角色插件，用来覆盖从 0 立项、需求澄清、架构规划、编码实现、调试、代码审查、QA、设计打磨、安全审计、文档、发布到复盘的完整开发流程。
 
@@ -20,7 +18,7 @@ PerfectWorld 是一套面向 Codex 的专家角色插件，用来覆盖从 0 立
 ## 当前仓库
 
 - GitHub: <https://github.com/91pao/PerfectWorld>
-- 插件 ID: `perfectworld`、`ue-perfectworld`
+- 插件 ID: `perfectworld`
 - Marketplace 名称: `perfectworld`
 - 开发者: `Liutianyuan / PerfectWorld`
 - 官网: <https://games.wanmei.com/>
@@ -33,40 +31,13 @@ PerfectWorld 是一套面向 Codex 的专家角色插件，用来覆盖从 0 立
 codex plugin marketplace add 91pao/PerfectWorld
 ```
 
-然后按需要安装插件：
+然后安装插件：
 
 ```powershell
 codex plugin add perfectworld@perfectworld
-codex plugin add ue-perfectworld@perfectworld
 ```
 
 安装完成后，建议开启一个新的 Codex 线程，让 Codex 重新加载插件技能。
-
-## UE PerfectWorld
-
-`ue-perfectworld` 是项目中立的 Unreal Engine 工作流插件，适用于 UE C++、Blueprint、Gameplay、UI、网络、资产数据、编辑器、构建配置、排查和审查任务。
-
-核心行为：
-
-- 默认把 UE 工作区视为只读，只有用户明确要求直接修改文件时才写入项目。
-- 未授权写文件时，在对话中按实际编写顺序提供完整、可逐字录入的代码和编辑器步骤。
-- 不内置任何具体项目 API、模块或架构，先从当前项目调用链、生命周期和资产配置中发现可信惯例。
-- 教学代码包含详细且适合保留在生产代码中的注释，不使用伪代码、占位符或省略分支。
-- 最终交付前执行阻断式自审：修复已知 BUG，并重写明显过度设计或不必要复杂的实现。
-
-快速使用：
-
-```text
-用 UE PerfectWorld 规划这个 Unreal Engine 功能
-```
-
-```text
-用 UE PerfectWorld 排查这个 UE bug 的根因
-```
-
-```text
-用 UE PerfectWorld 按照我应当编写的顺序给出完整代码，不要修改文件
-```
 
 ## 快速开始
 
@@ -291,10 +262,6 @@ PerfectWorld 当前包含 23 个合并后的专家角色。
 plugins/perfectworld/.codex-plugin/plugin.json
 plugins/perfectworld/skills/
 plugins/perfectworld/assets/
-plugins/ue-perfectworld/.codex-plugin/plugin.json
-plugins/ue-perfectworld/skills/
-plugins/ue-perfectworld/references/
-plugins/ue-perfectworld/assets/
 scripts/publish-github.ps1
 ```
 
@@ -303,27 +270,21 @@ scripts/publish-github.ps1
 ```powershell
 codex plugin marketplace add .
 codex plugin add perfectworld@perfectworld
-codex plugin add ue-perfectworld@perfectworld
 ```
 
 插件验证命令：
 
 ```powershell
-python "$HOME\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .\plugins\perfectworld
-python "$HOME\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .\plugins\ue-perfectworld
+python C:\Users\DJDJDJmax\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py .\plugins\perfectworld
 ```
 
 单个 skill 验证命令：
 
 ```powershell
-python "$HOME\.codex\skills\.system\skill-creator\scripts\quick_validate.py" .\plugins\perfectworld\skills\perfectworld-router
+python C:\Users\DJDJDJmax\.codex\skills\.system\skill-creator\scripts\quick_validate.py .\plugins\perfectworld\skills\perfectworld-router
 ```
 
 ## FAQ
-
-### `perfectworld` 和 `ue-perfectworld` 有什么区别？
-
-`perfectworld` 覆盖通用产品开发全流程；`ue-perfectworld` 专注 Unreal Engine，并提供默认只读、项目惯例发现、完整教学代码、详细注释和最终复杂度自审。两个插件可以独立安装。
 
 ### PerfectWorld 会自动选角色吗？
 

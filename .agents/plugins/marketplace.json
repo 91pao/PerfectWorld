@@ -15,18 +15,6 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Engineering"
-    },
-    {
-      "name": "ue-perfectworld",
-      "source": {
-        "source": "local",
-        "path": "./plugins/ue-perfectworld"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
-      },
-      "category": "Engineering"
     }
   ]
 }
