@@ -1,4 +1,25 @@
-# PerfectWorld Codex Plugin
+# PerfectWorld Codex Plugins
+
+本仓库是一个 Codex marketplace，同时发布两个可以独立安装的插件：
+
+- `perfectworld`：面向通用软件项目的完整产品开发专家团队。
+- `ue-perfectworld`：面向所有 Unreal Engine 项目的安全开发与教学工作流。
+
+它们共用一个 GitHub 仓库和 marketplace，但不存在安装依赖。添加 marketplace 只是让 Codex
+知道插件来源；安装其中一个插件不会自动安装另一个。
+
+## 插件怎么选
+
+| 对比项 | PerfectWorld | UE PerfectWorld |
+| --- | --- | --- |
+| 插件 ID | `perfectworld` | `ue-perfectworld` |
+| 主要对象 | Web、App、服务端、产品和通用软件项目 | Unreal Engine C++、Blueprint、Gameplay、UI、网络、资产、编辑器和构建配置 |
+| 核心范围 | 从产品立项到设计、开发、QA、安全、发布和复盘的完整流程 | UE 功能规划、只读排查、教学实现、授权后直接实现、代码审查和 Blueprint 协作 |
+| 内置工作流 | 23 个通用专家角色 | 7 个 UE 专用技能和 11 份工程规则 |
+| 默认写文件策略 | 根据任务和用户要求执行 | 默认不修改工作区，只有明确要求写入文件时才修改 |
+| 代码交付重点 | 完成通用工程任务并验证结果 | 可在对话中按真实编写顺序给出可逐字录入的完整代码和详细注释 |
+| 项目适配方式 | 根据当前软件项目选择专家角色 | 读取当前 UE 项目的真实类型、调用链、生命周期、网络权威和资产配置，不硬编码具体项目惯例 |
+| 是否可以单独安装 | 可以 | 可以 |
 
 PerfectWorld 是一套面向 Codex 的专家角色插件，用来覆盖从 0 立项、需求澄清、架构规划、编码实现、调试、代码审查、QA、设计打磨、安全审计、文档、发布到复盘的完整开发流程。
 
@@ -18,26 +39,120 @@ PerfectWorld 是一套面向 Codex 的专家角色插件，用来覆盖从 0 立
 ## 当前仓库
 
 - GitHub: <https://github.com/91pao/PerfectWorld>
-- 插件 ID: `perfectworld`
+- 插件 ID: `perfectworld`、`ue-perfectworld`
 - Marketplace 名称: `perfectworld`
 - 开发者: `Liutianyuan / PerfectWorld`
 - 官网: <https://games.wanmei.com/>
 
 ## 安装
 
-在 Codex CLI 中添加这个 marketplace：
+先在 Codex CLI 中添加本仓库的 marketplace。这个命令只登记插件来源，不会安装任何插件：
 
 ```powershell
 codex plugin marketplace add 91pao/PerfectWorld
 ```
 
-然后安装插件：
+### 只安装 UE PerfectWorld
+
+只运行下面这一条安装命令：
+
+```powershell
+codex plugin add ue-perfectworld@perfectworld
+```
+
+这只会安装 `ue-perfectworld`，不会安装通用的 `perfectworld`。这是只需要 Unreal Engine
+工作流时的推荐安装方式。
+
+### 只安装 PerfectWorld
 
 ```powershell
 codex plugin add perfectworld@perfectworld
 ```
 
-安装完成后，建议开启一个新的 Codex 线程，让 Codex 重新加载插件技能。
+这只会安装通用的 PerfectWorld，不会安装 UE PerfectWorld。
+
+### 同时安装两个插件
+
+需要同时处理通用产品流程和 UE 专项开发时，可以分别安装：
+
+```powershell
+codex plugin add perfectworld@perfectworld
+codex plugin add ue-perfectworld@perfectworld
+```
+
+安装完成后，建议开启一个新的 Codex 任务，让 Codex 重新加载插件技能。仓库更新后可以刷新 marketplace：
+
+```powershell
+codex plugin marketplace upgrade perfectworld
+```
+
+## UE PerfectWorld
+
+`ue-perfectworld` 是供 Codex 使用的项目中立 Unreal Engine 工作流插件，不是安装到 Unreal
+Engine 项目 `Plugins` 目录中的 `.uplugin`，也不包含会进入游戏包体的运行时代码。它通过技能和
+规则约束 Codex 如何理解、讲解、修改和审查 UE 项目。
+
+它适用于 UE C++、Blueprint、Gameplay、UI、网络、资产与数据、编辑器工具、模块与构建配置、
+问题排查和代码审查。插件不绑定某个游戏项目，也不会把任何具体项目 API、模块名或旧代码当作
+通用模板。
+
+### 里面有什么
+
+| Skill | 作用 |
+| --- | --- |
+| `ue-router` | 判断当前 UE 任务应该进入规划、教学实现、直接实现、排查、审查还是 Blueprint 工作流。 |
+| `ue-plan` | 在不修改文件的前提下拆解功能、确认架构边界、依赖、生命周期、网络权威和验证方案。 |
+| `ue-investigate` | 先读取证据、复现和追踪调用链，定位根因；不会用重试、延迟或静默返回掩盖问题。 |
+| `ue-draft` | 默认教学模式，在对话中按用户实际编写顺序给出完整代码和编辑器步骤，不创建草稿文件。 |
+| `ue-implement` | 只有用户明确要求修改文件、应用补丁或写入工作区时，才直接实现并验证改动。 |
+| `ue-review` | 审查 C++、Blueprint 集成、生命周期、网络权威、资产配置、生成代码漂移和回归风险。 |
+| `ue-blueprint` | 处理 C++ 与 Blueprint 的职责边界、暴露 API、事件、资产、控件和编辑器配置步骤。 |
+
+除了 7 个技能，插件还包含一组按需加载的 UE 工程规则，覆盖项目惯例可信度、默认只读、
+完整教学实现、最终自审、网络与客户端/服务端边界、事务与资源安全、UI 参数契约、生成代码
+漂移、源码编码、注释和日志等问题。
+
+### 核心行为
+
+- **默认不修改项目**：读取和分析工作区是允许的，但只有“直接修改文件”“应用这个补丁”这类明确要求才会写入。
+- **先查证再给代码**：先确认真实类名、函数签名、模块依赖、调用位置、对象所有权、生命周期、网络权威和 UE 版本，不编造看似完整的项目符号。
+- **可以完全在对话里教学**：不创建 `_t` 草稿或其他临时文件，不使用伪代码；按照依赖顺序说明要修改的准确文件、位置、完整声明、完整函数体、调用点、Blueprint 操作和验证步骤。
+- **代码可以逐字录入**：代码块不使用省略号、`TODO`、占位类型或“其余自行补充”，需要的 include、宏、模块依赖、绑定和失败分支必须完整。
+- **注释尽可能详细**：为类、结构体、函数、关键属性和非显然逻辑提供适合生产代码保留的注释，解释 UE 生命周期、所有权、网络权威、副作用和失败行为。
+- **遵循当前项目而不是某个样板项目**：只采用在当前仓库中有活跃调用证据、职责兼容且生命周期一致的先例。
+- **最终自审是阻断阶段**：交付前重新检查正确性、安全、反射、生命周期、网络、持久化和失败路径；发现已知 BUG 必须先修复。若一个约 50 行可以清楚完成的功能被写成约 300 行，则视为复杂度审查失败，删除无用抽象并重写后再交付。
+
+### 两种实现方式
+
+默认采用对话教学模式：
+
+```text
+用 UE PerfectWorld 实现这个功能。不要修改项目文件，按照我应当编写的顺序给出完整代码和详细注释。
+```
+
+只有明确授权后才直接写入项目：
+
+```text
+用 UE PerfectWorld 直接修改项目文件实现这个功能，并在结束前完成最终自审和验证。
+```
+
+### 快速使用
+
+```text
+用 UE PerfectWorld 规划这个 Unreal Engine 功能
+```
+
+```text
+用 UE PerfectWorld 排查这个 UE bug 的根因
+```
+
+```text
+用 UE PerfectWorld 按照我应当编写的顺序给出完整代码，不要修改文件
+```
+
+```text
+用 UE PerfectWorld 审查当前 UE 改动，优先找会造成崩溃、网络越权、生命周期错误或数据损坏的问题
+```
 
 ## 快速开始
 
@@ -262,29 +377,57 @@ PerfectWorld 当前包含 23 个合并后的专家角色。
 plugins/perfectworld/.codex-plugin/plugin.json
 plugins/perfectworld/skills/
 plugins/perfectworld/assets/
+plugins/ue-perfectworld/.codex-plugin/plugin.json
+plugins/ue-perfectworld/skills/
+plugins/ue-perfectworld/references/
+plugins/ue-perfectworld/assets/
 scripts/publish-github.ps1
 ```
 
-如果你 clone 了仓库，可以在仓库根目录本地测试：
+如果你 clone 了仓库，可以在仓库根目录添加本地 marketplace，然后按需要选择一个插件安装：
 
 ```powershell
 codex plugin marketplace add .
 codex plugin add perfectworld@perfectworld
+codex plugin add ue-perfectworld@perfectworld
 ```
+
+上面两个 `plugin add` 命令是两个可选项，不要求同时执行。
 
 插件验证命令：
 
 ```powershell
-python C:\Users\DJDJDJmax\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py .\plugins\perfectworld
+python "$HOME\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .\plugins\perfectworld
+python "$HOME\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .\plugins\ue-perfectworld
 ```
 
 单个 skill 验证命令：
 
 ```powershell
-python C:\Users\DJDJDJmax\.codex\skills\.system\skill-creator\scripts\quick_validate.py .\plugins\perfectworld\skills\perfectworld-router
+python "$HOME\.codex\skills\.system\skill-creator\scripts\quick_validate.py" .\plugins\perfectworld\skills\perfectworld-router
 ```
 
 ## FAQ
+
+### `perfectworld` 和 `ue-perfectworld` 有什么区别？
+
+`perfectworld` 覆盖通用产品开发全流程；`ue-perfectworld` 专注 Unreal Engine，并提供默认只读、项目惯例发现、完整教学代码、详细注释和最终复杂度自审。两个插件可以独立安装。
+
+### 怎样只安装 UE PerfectWorld？
+
+先执行 `codex plugin marketplace add 91pao/PerfectWorld` 添加插件来源，再执行
+`codex plugin add ue-perfectworld@perfectworld`。不要执行
+`codex plugin add perfectworld@perfectworld`，就不会安装通用 PerfectWorld。
+
+### UE PerfectWorld 是 Unreal Engine 的 `.uplugin` 吗？
+
+不是。它是 Codex 插件，只决定 Codex 处理 UE 项目时使用的工作流和工程规则，不会被复制到
+UE 项目的 `Plugins` 目录，也不会进入游戏运行时或最终包体。
+
+### UE PerfectWorld 会默认修改我的 UE 项目吗？
+
+不会。它默认只读取和分析项目，并在对话中给出教学实现。只有用户明确要求修改文件、应用补丁
+或直接写入工作区时，才会进入直接实现模式。
 
 ### PerfectWorld 会自动选角色吗？
 
