@@ -1,0 +1,45 @@
+{
+  "name": "ue-perfectworld",
+  "version": "0.1.0",
+  "description": "Project-neutral Codex workflows for safe Unreal Engine planning, investigation, implementation, review, and Blueprint/editor integration.",
+  "author": {
+    "name": "Liutianyuan / PerfectWorld",
+    "url": "https://github.com/91pao"
+  },
+  "homepage": "https://github.com/91pao/PerfectWorld/tree/main/plugins/ue-perfectworld",
+  "repository": "https://github.com/91pao/PerfectWorld",
+  "license": "MIT",
+  "keywords": [
+    "unreal-engine",
+    "ue5",
+    "codex",
+    "cpp",
+    "blueprint",
+    "debugging",
+    "code-review",
+    "guided-implementation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "UE PerfectWorld",
+    "shortDescription": "\u901a\u7528 UE \u9879\u76ee\u7684\u89c4\u5212\u3001\u5b9e\u73b0\u3001\u5ba1\u67e5\u3001\u6392\u67e5\u548c\u84dd\u56fe\u534f\u4f5c\u89c4\u5219\u3002",
+    "longDescription": "UE PerfectWorld provides project-neutral Unreal Engine workflows that treat workspaces as read-only by default, discover conventions from the current project, teach complete transcription-ready implementations with detailed production-suitable comments when file edits are not authorized, require explicit permission for workspace changes, and enforce a blocking final self-review that fixes known bugs and rewrites avoidable overdesign before delivery.",
+    "developerName": "Liutianyuan / PerfectWorld",
+    "category": "Engineering",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/91pao/PerfectWorld/tree/main/plugins/ue-perfectworld",
+    "brandColor": "#111827",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "logoDark": "./assets/icon.png",
+    "defaultPrompt": [
+      "\u7528 UE PerfectWorld \u89c4\u5212\u8fd9\u4e2a Unreal Engine \u529f\u80fd",
+      "\u7528 UE PerfectWorld \u6392\u67e5\u8fd9\u4e2a UE bug \u7684\u6839\u56e0",
+      "\u7528 UE PerfectWorld \u5ba1\u67e5\u5f53\u524d UE \u4ee3\u7801"
+    ]
+  }
+}
