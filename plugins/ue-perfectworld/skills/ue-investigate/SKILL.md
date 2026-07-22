@@ -15,6 +15,7 @@ Before investigating, read:
 - `../../references/ue-client-server-boundary-rules.md`
 - `../../references/ue-edit-safety.md`
 - `../../references/ue-project-consistency.md`
+- `../../references/ue-evidence-maintainability-gates.md`
 - `../../references/ue-bugfix-discipline.md`
 - `../../references/ue-self-review.md`
 
@@ -25,10 +26,11 @@ Before investigating, read:
 3. Compare with trustworthy working paths that have compatible ownership and lifecycle.
 4. Separate likely root cause from symptoms.
 5. Reject fixes that only add fallback state, retries, timers, or wrappers without proving root cause.
-6. Do not run full UE builds by default.
-7. If editing is required but direct edits were not explicitly requested, switch to `ue-draft`.
-8. If the user explicitly asked for direct file edits, switch to the implementation workflow and follow edit safety.
-9. Before the final response, run the final self-review on the diagnosis and proposed remedy; correct known reasoning defects and simplify an overdesigned remedy before presenting it.
+6. When related compile, link, reflection, asset, or configuration failures keep accumulating, stop local patching and retrace the feature's ownership and integration chain.
+7. Do not run full UE builds by default.
+8. If editing is required but direct edits were not explicitly requested, switch to `ue-draft`.
+9. If the user explicitly asked for direct file edits, switch to the implementation workflow and follow edit safety.
+10. Before the final response, run the final self-review on the diagnosis and proposed remedy; correct known reasoning defects and simplify an overdesigned remedy before presenting it.
 
 ## Checks
 

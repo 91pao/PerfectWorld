@@ -9,6 +9,13 @@ Discover each project's conventions at runtime. This plugin must not carry imple
 - Prefer maintained code that is close to the target in responsibility, not merely close in filename or search results
 - Check whether a candidate is generated, deprecated, experimental, disabled, duplicated, or temporary before treating it as precedent
 - When candidates disagree, explain the evidence and follow the closest trustworthy production pattern
+- When a reference feature is named, trace its complete active integration path instead of copying only its visible class or header shape
+
+## Ownership Evidence
+
+- Before proposing a non-trivial implementation, identify the entry or factory, runtime owner, authoritative data source, lifecycle, authority side, persistence boundary, C++/Blueprint split, and cleanup path
+- Treat framework tables, subsystems, managers, widgets, and asset registrations as part of the implementation evidence, not optional editor follow-up
+- Do not introduce a second source for an identifier or state already owned by a verified project system
 
 ## Adaptation Rules
 
@@ -26,3 +33,4 @@ Discover each project's conventions at runtime. This plugin must not carry imple
 - Do not copy a nearby defect or unnecessary abstraction merely for visual consistency
 - Do not infer a project-wide rule from one implementation
 - State which observed conventions materially influenced the result
+- Apply `ue-evidence-maintainability-gates.md` before calling a design project-consistent

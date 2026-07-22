@@ -15,6 +15,7 @@ Before editing, read:
 - `../../references/ue-client-server-boundary-rules.md`
 - `../../references/ue-edit-safety.md`
 - `../../references/ue-project-consistency.md`
+- `../../references/ue-evidence-maintainability-gates.md`
 - `../../references/ue-generated-code-drift-rules.md`
 - `../../references/ue-comment-log-rules.md`
 - `../../references/ue-bugfix-discipline.md`
@@ -23,12 +24,12 @@ Before editing, read:
 ## Workflow
 
 0. Confirm the user gave a hard direct-edit requirement to modify files or write into the project/worktree. If not, switch to `ue-draft`.
-1. Discover current-project structure, callers, assets, configuration, and candidate precedents before designing.
+1. Discover current-project structure, callers, assets, configuration, ownership, persistence, cleanup, and candidate precedents before designing.
 2. Verify that the chosen precedent is active, maintained, and compatible with the target ownership and lifecycle.
 3. State the implementation direction briefly if the change is non-trivial.
 4. Patch only the required files and blocks.
 5. Apply the loaded reference rules as hard constraints.
-6. Run `ue-self-review.md` as a blocking gate; fix every known in-scope bug, rewrite avoidable complexity, and repeat the review before responding.
+6. Run `ue-self-review.md` as a blocking gate; fix every known in-scope bug, rewrite avoidable complexity, apply the change, deletion, and no-chat tests, and repeat the review before responding.
 7. Do not run full UE build unless explicitly asked.
 
 ## Final Response

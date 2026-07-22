@@ -8,6 +8,7 @@ Run this as a blocking closure gate after implementation or implementation guida
 - Trace the primary success path and important failure paths end to end
 - Confirm every project-specific assumption was discovered in the current workspace
 - Confirm chosen precedents have active production evidence and compatible ownership, lifecycle, authority, and responsibility
+- Confirm the evidence and ownership map covers code, registration, data/configuration, assets, persistence, C++/Blueprint handoff, and cleanup where applicable
 - Confirm no generated, deprecated, experimental, dead, sample, or temporary implementation was copied without independent justification
 - Recheck Unreal reflection declarations, includes, module dependencies, object lifetime, ownership, null handling, delegates, threading, networking, asset/configuration references, and persistence where applicable
 - For bug fixes, confirm the root cause is corrected locally instead of hidden by fallback state, retries, delays, or silent returns
@@ -31,6 +32,8 @@ Run this as a blocking closure gate after implementation or implementation guida
 - Do not preserve overdesign merely because it has already been written
 - Keep an abstraction only when it matches a verified project convention, removes meaningful present duplication, or materially improves correctness or testability
 - Confirm the implementation did not broaden a focused task into an architecture rewrite
+- Confirm a teammate can trace, change, and remove the implementation without access to the AI conversation
+- Confirm no authoritative identifier or state was duplicated across framework and feature layers
 
 ## Delivery Gate
 
@@ -40,6 +43,7 @@ Run this as a blocking closure gate after implementation or implementation guida
 - After any correction or simplification, run the correctness and simplicity gates again
 - Do not finalize while a known, in-scope, fixable defect remains in produced code or while a clearly simpler complete design is available
 - Do not hide unresolved uncertainty; identify missing evidence and avoid claiming unverified code is compile-ready
+- If repeated compile, link, reflection, asset, or configuration fixes accumulated, retrace the architecture before finalizing instead of approving the patch stack
 
 ## Final Checks
 

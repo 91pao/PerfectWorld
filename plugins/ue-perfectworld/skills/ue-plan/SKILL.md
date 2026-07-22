@@ -14,6 +14,7 @@ Before planning, read:
 - `../../references/ue-core-rules.md`
 - `../../references/ue-client-server-boundary-rules.md`
 - `../../references/ue-project-consistency.md`
+- `../../references/ue-evidence-maintainability-gates.md`
 - `../../references/ue-generated-code-drift-rules.md`
 - `../../references/ue-self-review.md`
 
@@ -33,6 +34,8 @@ Before planning, read:
 Keep the plan practical:
 
 - Current-project evidence found
+- Ownership map and authoritative data/configuration sources
+- Differences between the target and the chosen precedent
 - Proposed files/functions
 - Runtime ownership and lifecycle
 - Network authority and replication when applicable
