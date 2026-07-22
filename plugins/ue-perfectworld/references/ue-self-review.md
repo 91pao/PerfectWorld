@@ -15,6 +15,12 @@ Run this as a blocking closure gate after implementation or implementation guida
 - For resource or transaction work, confirm validation, mutation, persistence, duplicate handling, and success timing
 - For security, safety, or bug-sensitive work, confirm unsafe behavior is blocked rather than merely logged
 
+## Review Scope Claims
+
+- Distinguish between fixing the reported normal-client reproduction, mitigating exploit impact with limits, and implementing complete server-authoritative validation
+- Do not call a fix fully authoritative while action authorization, target scope, target position, or hit selection remains client-controlled
+- State which guarantees are proven by the current code and which are only mitigations or depend on an explicit project assumption
+
 ## Simplicity Gate
 
 - Compare the result with the smallest project-consistent implementation that fully satisfies the current requirement

@@ -17,6 +17,18 @@ See `ue-client-server-boundary-rules.md` for the general client/server and RPC b
 - If a defensive return hides the real failure, add a targeted log with operation name and key IDs
 - After proposing or applying a fix, explain why it fixes the root cause and why it does not add unnecessary complexity
 
+## Mutable State and Event Identity
+
+- Do not use a mutable current selection as the identity of an asynchronous event, projectile, request, or delayed callback
+- A state change after an event starts must not change that event's fixed type, damage, radius, cooldown, or ownership context
+- Use a per-action snapshot or immutable event identity when concurrent or delayed actions are possible; a shared pending value is acceptable only when the project proves that a second action cannot succeed before the first callback
+
+## Avoid Redundant State and Speculative APIs
+
+- Do not maintain a boolean and a numeric or enum state when both always encode the same condition; keep a separate flag only for a distinct transition that cannot be derived from the primary state
+- Before adding a wrapper or public action entry point, verify its real C++ and Blueprint callers and keep selection and execution responsibilities separate
+- If an API is BlueprintCallable, check Blueprint references before removing or changing its contract
+
 ## Bad Bugfix Smells
 
 - Adding `bHasHandled`, `bForceRefresh`, `bIgnoreNext`, or similar flags without proving lifecycle necessity
