@@ -1,36 +1,35 @@
-# UE Project Consistency
+# UE Project Evidence And Consistency
 
-Discover each project's conventions at runtime. This plugin must not carry implementation details from one project into another.
+Use this reference before proposing project-specific architecture, complete code, direct edits, or review conclusions.
 
-## Reference Discovery
+## Evidence Discovery
 
-- Start with the same feature domain, module or plugin, base class, lifecycle phase, and authority side
-- Confirm candidates through active call sites, registrations, asset references, tests, configuration, or other production usage
-- Prefer maintained code that is close to the target in responsibility, not merely close in filename or search results
-- Check whether a candidate is generated, deprecated, experimental, disabled, duplicated, or temporary before treating it as precedent
-- When candidates disagree, explain the evidence and follow the closest trustworthy production pattern
-- When a reference feature is named, trace its complete active integration path instead of copying only its visible class or header shape
+- Start with the same feature domain, module, base class, lifecycle phase, authority side, and responsibility
+- Trace active callers, registration, base classes, data and configuration, relevant assets, runtime ownership, persistence, and cleanup instead of copying one nearby file
+- When the user names a reference feature, verify its complete active integration path across C++, Blueprint, DataTables, DataAssets, subsystems, managers, and editor registration where applicable
+- Prefer maintained production code with compatible ownership and lifecycle; reject generated, deprecated, experimental, disabled, duplicated, temporary, or dead candidates unless independent evidence proves they are authoritative
+- When candidates disagree, explain the evidence and follow the closest trustworthy production path
+- If essential evidence is unavailable, report the exact gap instead of inventing project symbols or claiming the implementation is complete
 
-## Ownership Evidence
+## Ownership Map
 
-- Before proposing a non-trivial implementation, identify the entry or factory, runtime owner, authoritative data source, lifecycle, authority side, persistence boundary, C++/Blueprint split, and cleanup path
-- Treat framework tables, subsystems, managers, widgets, and asset registrations as part of the implementation evidence, not optional editor follow-up
-- Do not introduce a second source for an identifier or state already owned by a verified project system
+For non-trivial or cross-system work, identify:
 
-## Adaptation Rules
+- Entry point or factory
+- Runtime owner and lifecycle
+- Authoritative data and configuration source
+- Client/server boundary when applicable
+- Persistence owner
+- C++ and Blueprint responsibilities
+- Registration and cleanup path
 
-- Preserve the project's observed naming, module boundaries, ownership, reflection usage, lifecycle, error reporting, and data access conventions
-- Do not assume a feature belongs in any particular framework class, subsystem, component, Blueprint, directory, or data asset type
-- Do not assume C++ or Blueprint should own a behavior; infer the existing split and keep network authority and security constraints intact
-- Reuse an existing abstraction only when it is active and appropriate for the target domain
-- Do not introduce a manager, service, controller, subsystem, generic wrapper, or framework layer unless the project already uses it for the same responsibility or the task proves a real need
-- Keep changes local when the project has no stable shared pattern
-- Use standard Unreal Engine conventions as the fallback when project evidence is missing or unreliable
+## Design Constraints
 
-## Consistency Limits
-
-- Do not normalize unrelated legacy code
-- Do not copy a nearby defect or unnecessary abstraction merely for visual consistency
-- Do not infer a project-wide rule from one implementation
-- State which observed conventions materially influenced the result
-- Apply `ue-evidence-maintainability-gates.md` before calling a design project-consistent
+- Preserve verified naming, module boundaries, reflection usage, ownership, lifecycle, diagnostics, and data-access conventions
+- Keep one authoritative source for every important tag, ID, state, and configuration value
+- Do not add a second DataAsset, member, Blueprint default, table field, manager, or cache for data already owned by an established project system
+- Reuse an abstraction only when it is active, responsibility-compatible, and simpler than a local implementation
+- Do not copy empty lifecycle overrides, known defects, legacy shortcuts, or unrelated patterns merely for visual consistency
+- Do not add wrappers, managers, services, generic result types, delegates, or extension points without a current requirement and verified consumer
+- Keep the execution path easy to trace, change, and remove without access to the AI conversation
+- Use standard Unreal Engine conventions as the fallback when project evidence is missing or unreliable, and state that fallback explicitly

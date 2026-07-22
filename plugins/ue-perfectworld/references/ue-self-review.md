@@ -1,59 +1,33 @@
 # UE Final Self Review
 
-Run this as a blocking closure gate after implementation or implementation guidance and before the final response.
+Run this as a blocking gate before delivering code, direct edits, or a code-review conclusion.
 
-## Correctness Gate
+## Correctness
 
-- Recheck every changed or proposed file against the loaded rules and the user's requested behavior
 - Trace the primary success path and important failure paths end to end
-- Confirm every project-specific assumption was discovered in the current workspace
-- Confirm chosen precedents have active production evidence and compatible ownership, lifecycle, authority, and responsibility
-- Confirm the evidence and ownership map covers code, registration, data/configuration, assets, persistence, C++/Blueprint handoff, and cleanup where applicable
-- Confirm no generated, deprecated, experimental, dead, sample, or temporary implementation was copied without independent justification
-- Recheck Unreal reflection declarations, includes, module dependencies, object lifetime, ownership, null handling, delegates, threading, networking, asset/configuration references, and persistence where applicable
-- For bug fixes, confirm the root cause is corrected locally instead of hidden by fallback state, retries, delays, or silent returns
-- For networked work, confirm authority, ownership, validation, replication, reliability, and failure feedback
-- For resource or transaction work, confirm validation, mutation, persistence, duplicate handling, and success timing
-- For security, safety, or bug-sensitive work, confirm unsafe behavior is blocked rather than merely logged
+- Recheck every project-specific symbol and assumption against the current workspace
+- Confirm selected precedents have active production evidence and compatible ownership, lifecycle, authority, and responsibility
+- Recheck reflection declarations, includes, module dependencies, object lifetime, null handling, delegate cleanup, threading, assets, configuration, persistence, and network rules where applicable
+- Confirm bug fixes correct the root cause instead of hiding it with fallback state, retries, delays, or silent returns
+- Distinguish proven guarantees from mitigations and unresolved assumptions
 
-## Review Scope Claims
+## Maintainability
 
-- Distinguish between fixing the reported normal-client reproduction, mitigating exploit impact with limits, and implementing complete server-authoritative validation
-- Do not call a fix fully authoritative while action authorization, target scope, target position, or hit selection remains client-controlled
-- State which guarantees are proven by the current code and which are only mitigations or depend on an explicit project assumption
+- Compare the result with the smallest complete project-consistent implementation
+- Require every added file, class, function, field, delegate, override, configuration item, and abstraction to have a current requirement and real consumer
+- Remove duplicate data authority, unused state, empty lifecycle overrides, speculative extension points, one-use wrappers, generic managers, compatibility branches, and parallel execution paths
+- Keep one authoritative source for each tag, ID, state, and configuration value
+- Apply the change test: a normal requirement change has an obvious bounded edit location
+- Apply the deletion test: the feature can be removed without hidden registration, duplicate state, or undocumented coupling
+- Apply the no-chat test: a teammate can trace, modify, and remove the implementation without the generation conversation
+- Rewrite avoidable overdesign before delivery; do not merely document it as a concern
 
-## Simplicity Gate
+## Delivery
 
-- Compare the result with the smallest project-consistent implementation that fully satisfies the current requirement
-- Treat a solution that is several times larger than necessary, such as roughly 300 lines for work that can be expressed clearly in about 50, as a failed review and rewrite it before delivery
-- Use line count as a warning signal, not a code-golf target; retain required correctness, authority, lifecycle, validation, diagnostics, and readability
-- Judge implementation complexity separately from useful teaching-comment coverage; shorten redundant comments without removing required intent or constraints
-- Remove speculative extension points, unused state, duplicate logic, unnecessary files, classes, managers, services, wrappers, helpers, result types, delegates, RPCs, compatibility branches, timers, retries, caches, and configuration
-- Do not preserve overdesign merely because it has already been written
-- Keep an abstraction only when it matches a verified project convention, removes meaningful present duplication, or materially improves correctness or testability
-- Confirm the implementation did not broaden a focused task into an architecture rewrite
-- Confirm a teammate can trace, change, and remove the implementation without access to the AI conversation
-- Confirm no authoritative identifier or state was duplicated across framework and feature layers
-
-## Delivery Gate
-
-- For direct implementation, fix every known in-scope correctness defect and rewrite avoidable complexity before the final response
-- For guided implementation, correct the conversation code and teaching sequence before presenting it; do not hand the user a known bug or an overdesigned version to type
-- For review-only or investigation-only work without edit authorization, report discovered defects instead of modifying files, but keep the proposed remedy minimal and internally coherent
-- After any correction or simplification, run the correctness and simplicity gates again
-- Do not finalize while a known, in-scope, fixable defect remains in produced code or while a clearly simpler complete design is available
-- Do not hide unresolved uncertainty; identify missing evidence and avoid claiming unverified code is compile-ready
-- If repeated compile, link, reflection, asset, or configuration fixes accumulated, retrace the architecture before finalizing instead of approving the patch stack
-
-## Final Checks
-
-- For guided implementation, confirm every required change is ordered and complete, code blocks contain no pseudocode, ellipses, placeholders, TODOs, or omitted branches, and project symbols were verified before claiming the code is transcription-ready
-- For guided implementation, confirm every added or meaningfully changed class, struct, function, and important property has concise production-suitable comments covering purpose and relevant lifecycle, ownership, authority, side effects, and failure behavior
-- Confirm teaching comments default to one-line `//` form and expand to consecutive `//` lines only when one line would be incomplete or misleading
-- Confirm comment coverage is comprehensive without block paragraphs, trivial narration, repeated names, or redundant summaries
-- Confirm comments still match the final code after every bug fix or simplicity rewrite and do not merely narrate syntax
-- Confirm source text was not modified through wrongly decoded shell output
-- Confirm comments and diagnostics match current-project conventions and do not expose sensitive data
-- Confirm no unrelated files or stable release flows were changed
-- For any worktree, plugin metadata, or config write, state exactly what changed and what was intentionally not done
-- State whether UE build, editor validation, automation tests, or packaging were run or skipped
+- Correct every known in-scope defect before presenting complete code or finalizing direct edits
+- Ensure complete-code responses contain no pseudocode, ellipses, placeholders, TODOs, omitted branches, or unverified project symbols
+- Keep comments concise, production-suitable, and synchronized with the final implementation
+- Confirm source text was not modified through incorrectly decoded shell output
+- Confirm no unrelated files or stable release flows changed
+- State which compile, editor, automation, and packaging checks were run or skipped
+- If repeated local fixes accumulated, apply the recovery gate in `ue-bugfix-discipline.md` before finalizing

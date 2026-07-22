@@ -1,38 +1,33 @@
 # UE Bugfix Discipline
 
-Use these rules when fixing bugs, compile errors, runtime errors, UI issues, RPC failures, and data problems.
+Use these rules for bugs, compile or link errors, runtime failures, UI issues, RPC failures, and data problems.
 
-See `ue-client-server-boundary-rules.md` for the general client/server and RPC boundary rules.
+## Root Cause First
 
-- Do not start by adding fallback branches, new flags, or wrapper functions
-- First identify the root cause: wrong data, wrong lifecycle, wrong authority side, missing binding, stale state, invalid config, race, or encoding/tooling issue
-- Prefer fixing the broken condition at its source over adding another layer around it
-- Keep the fix local to the failing path unless the same bug is proven in multiple places
-- Do not broaden a narrow bug fix into a refactor
-- Do not add a manager, cache, retry queue, state machine, or generic result type just to fix one bug
-- Do not keep both old and new paths unless the project already has a compatibility requirement
-- Remove dead temporary code created during investigation
-- If the bug is caused by duplicated logic, consolidate only the minimum duplicated part needed to stop the bug
-- If the bug is caused by missing validation, add the validation at the same layer where nearby project code validates it
-- If a defensive return hides the real failure, add a targeted log with operation name and key IDs
-- After proposing or applying a fix, explain why it fixes the root cause and why it does not add unnecessary complexity
+- Read the exact error, log, reproduction, and failing path before proposing changes
+- Identify whether the source is data, lifecycle, authority, binding, state, configuration, ownership, race, encoding, tooling, or build integration
+- Fix the broken condition at its source instead of adding fallback branches, flags, timers, retries, wrappers, or parallel state
+- Keep the fix local unless the same root cause is proven in multiple paths
+- Do not broaden a narrow fix into a refactor or preserve both old and new paths without a verified compatibility requirement
+- Add targeted diagnostics when a defensive return would otherwise hide an actionable failure
+- Explain why the remedy fixes the root cause and why it does not add unnecessary structure
 
-## Mutable State and Event Identity
+## Mutable State And Event Identity
 
 - Do not use a mutable current selection as the identity of an asynchronous event, projectile, request, or delayed callback
-- A state change after an event starts must not change that event's fixed type, damage, radius, cooldown, or ownership context
-- Use a per-action snapshot or immutable event identity when concurrent or delayed actions are possible; a shared pending value is acceptable only when the project proves that a second action cannot succeed before the first callback
+- Preserve fixed type, value, radius, cooldown, ownership, and authority context for the lifetime of an event
+- Use a per-action snapshot when concurrent or delayed actions are possible; use shared pending state only when the project proves a second action cannot overlap
 
-## Avoid Redundant State and Speculative APIs
+## Recovery Gate
 
-- Do not maintain a boolean and a numeric or enum state when both always encode the same condition; keep a separate flag only for a distinct transition that cannot be derived from the primary state
-- Before adding a wrapper or public action entry point, verify its real C++ and Blueprint callers and keep selection and execution responsibilities separate
-- If an API is BlueprintCallable, check Blueprint references before removing or changing its contract
+- Treat repeated compile, link, reflection, asset, or configuration failures as a possible architecture or integration error
+- After multiple related failures or patches to the same feature, stop adding local fixes and retrace ownership, data flow, lifecycle, registration, and project precedent end to end
+- Remove temporary investigation code and obsolete workaround state before finalizing
+- Do not claim completion until the runtime path and required editor/data setup are verified or explicitly identified as unverified
 
-## Bad Bugfix Smells
+## Rejected Patterns
 
-- Adding `bHasHandled`, `bForceRefresh`, `bIgnoreNext`, or similar flags without proving lifecycle necessity
-- Adding a timer delay to hide ordering problems
-- Adding a retry instead of fixing the failed condition
-- Adding a generic helper used only once
-- Catching all invalid states and silently returning when the user or developer needs a clear reason
+- Redundant booleans that duplicate an existing enum or numeric state
+- Public wrappers or Blueprint APIs without verified callers
+- One-use generic helpers, managers, caches, retry queues, result types, or state machines
+- Silent catch-all returns where the developer or user needs a clear reason

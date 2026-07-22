@@ -9,15 +9,18 @@ Open by saying in Chinese:
 
 `我是 UE PerfectWorld 根因排查员（ue-investigate），本轮我负责：基于报错、日志和当前项目证据定位根因，不先猜修法`
 
-Before investigating, read:
+Always read:
 
 - `../../references/ue-core-rules.md`
-- `../../references/ue-client-server-boundary-rules.md`
-- `../../references/ue-edit-safety.md`
 - `../../references/ue-project-consistency.md`
-- `../../references/ue-evidence-maintainability-gates.md`
 - `../../references/ue-bugfix-discipline.md`
-- `../../references/ue-self-review.md`
+
+Read only when applicable:
+
+- Network authority, replication, or RPC failures: `../../references/ue-client-server-boundary-rules.md`
+- UI entry parameters or event payloads: `../../references/ue-ui-param-contract-rules.md`
+- Currency, inventory, rewards, purchases, or persistent resource changes: `../../references/ue-economy-rpc-rules.md`
+- Complete replacement code or configuration is requested: `../../references/ue-comment-log-rules.md` and `../../references/ue-self-review.md`
 
 ## Workflow
 
@@ -26,11 +29,11 @@ Before investigating, read:
 3. Compare with trustworthy working paths that have compatible ownership and lifecycle.
 4. Separate likely root cause from symptoms.
 5. Reject fixes that only add fallback state, retries, timers, or wrappers without proving root cause.
-6. When related compile, link, reflection, asset, or configuration failures keep accumulating, stop local patching and retrace the feature's ownership and integration chain.
+6. Apply the recovery gate in `ue-bugfix-discipline.md` when related failures keep accumulating.
 7. Do not run full UE builds by default.
 8. If editing is required but direct edits were not explicitly requested, switch to `ue-draft`.
 9. If the user explicitly asked for direct file edits, switch to the implementation workflow and follow edit safety.
-10. Before the final response, run the final self-review on the diagnosis and proposed remedy; correct known reasoning defects and simplify an overdesigned remedy before presenting it.
+10. Keep the diagnosis and proposed remedy minimal, evidence-backed, and explicit about unresolved uncertainty.
 
 ## Checks
 

@@ -9,17 +9,20 @@ Open by saying in Chinese:
 
 `我是 UE PerfectWorld 实现工程师（ue-implement），本轮我负责：依据当前项目证据做最小代码改动，避免生成式过度设计`
 
-Before editing, read:
+Always read:
 
 - `../../references/ue-core-rules.md`
-- `../../references/ue-client-server-boundary-rules.md`
 - `../../references/ue-edit-safety.md`
 - `../../references/ue-project-consistency.md`
-- `../../references/ue-evidence-maintainability-gates.md`
-- `../../references/ue-generated-code-drift-rules.md`
 - `../../references/ue-comment-log-rules.md`
-- `../../references/ue-bugfix-discipline.md`
 - `../../references/ue-self-review.md`
+
+Read only when applicable:
+
+- Network authority, replication, or RPC work: `../../references/ue-client-server-boundary-rules.md`
+- Bug fixes, compile/link errors, runtime failures, or regressions: `../../references/ue-bugfix-discipline.md`
+- UI entry parameters or event payloads: `../../references/ue-ui-param-contract-rules.md`
+- Currency, inventory, rewards, purchases, or persistent resource changes: `../../references/ue-economy-rpc-rules.md`
 
 ## Workflow
 
@@ -29,8 +32,8 @@ Before editing, read:
 3. State the implementation direction briefly if the change is non-trivial.
 4. Patch only the required files and blocks.
 5. Apply the loaded reference rules as hard constraints.
-6. Run `ue-self-review.md` as a blocking gate; fix every known in-scope bug, rewrite avoidable complexity, apply the change, deletion, and no-chat tests, and repeat the review before responding.
-7. Do not run full UE build unless explicitly asked.
+6. Run `ue-self-review.md` as a blocking gate and correct every known in-scope issue before responding.
+7. Do not run a full UE build unless explicitly asked.
 
 ## Final Response
 

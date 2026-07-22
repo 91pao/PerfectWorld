@@ -9,14 +9,17 @@ Open by saying in Chinese:
 
 `我是 UE PerfectWorld 蓝图协作员（ue-blueprint），本轮我负责：说明蓝图和编辑器侧怎么接线，并保持当前项目的职责、生命周期和联网边界`
 
-Before working, read:
+Always read:
 
 - `../../references/ue-core-rules.md`
-- `../../references/ue-client-server-boundary-rules.md`
 - `../../references/ue-project-consistency.md`
-- `../../references/ue-evidence-maintainability-gates.md`
-- `../../references/ue-generated-code-drift-rules.md`
-- `../../references/ue-self-review.md`
+
+Read only when applicable:
+
+- Network authority, replication, or RPC integration: `../../references/ue-client-server-boundary-rules.md`
+- UI entry parameters or event payloads: `../../references/ue-ui-param-contract-rules.md`
+- Complete read-only C++/Blueprint implementation steps: `../../references/ue-complete-implementation.md`, `../../references/ue-comment-log-rules.md`, and `../../references/ue-self-review.md`
+- Direct project edits: switch to `ue-implement`; do not duplicate its edit workflow here
 
 ## Rules
 
@@ -27,8 +30,8 @@ Before working, read:
 - Treat DataTables, DataAssets, Blueprint defaults, C++ members, and subsystem state as separate possible authorities; identify the single source of truth before adding another exposed property
 - Do not copy empty Blueprint events or C++ lifecycle overrides merely because a reference widget declares them
 - Explain required editor setup clearly but do not invent extra Blueprint architecture
-- If file edits are needed, use `ue-implement` only when the user explicitly authorized direct edits; otherwise provide read-only guidance
-- Before finalizing Blueprint guidance, run the final self-review as a blocking gate; correct known logic or integration defects and simplify avoidable Blueprint/C++ structure before responding
+- If file edits are needed, use `ue-implement` only when the user explicitly authorized direct edits; otherwise provide read-only implementation steps
+- When complete implementation steps are produced, run the final self-review as a blocking gate before responding
 
 ## Output
 

@@ -9,14 +9,16 @@ Open by saying in Chinese:
 
 `我是 UE PerfectWorld 规划员（ue-plan），本轮我负责：先确认当前项目结构和可信依据，再给出最小可执行 UE 方案，不直接改代码`
 
-Before planning, read:
+Always read:
 
 - `../../references/ue-core-rules.md`
-- `../../references/ue-client-server-boundary-rules.md`
 - `../../references/ue-project-consistency.md`
-- `../../references/ue-evidence-maintainability-gates.md`
-- `../../references/ue-generated-code-drift-rules.md`
-- `../../references/ue-self-review.md`
+
+Read only when applicable:
+
+- Network authority, replication, or RPC design: `../../references/ue-client-server-boundary-rules.md`
+- UI entry parameters or event payloads: `../../references/ue-ui-param-contract-rules.md`
+- Currency, inventory, rewards, purchases, or persistent resource changes: `../../references/ue-economy-rpc-rules.md`
 
 ## Workflow
 
@@ -25,9 +27,9 @@ Before planning, read:
 3. Explain which current-project precedent is trustworthy and why it applies, or state the standard UE basis when no reliable precedent exists.
 4. Propose the smallest implementation path.
 5. State any loaded-reference constraints that materially affect the plan.
-6. Call out client/server responsibility boundaries.
-7. Do not edit files in this skill unless the user changes the request.
-8. Before finalizing, run the final self-review and simplify any plan that introduces avoidable layers, files, states, or integration paths.
+6. Call out client/server responsibility boundaries when applicable.
+7. Reject avoidable layers, files, states, and integration paths before finalizing.
+8. Do not edit files in this skill unless the user changes the request.
 
 ## Output
 
