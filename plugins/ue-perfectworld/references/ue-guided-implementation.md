@@ -15,6 +15,8 @@ Use this as the default workflow when the user wants to implement Unreal Engine 
 - Resolve exact type names, signatures, includes, macros, ownership, lifecycle, authority, and existing APIs before presenting code as transcription-ready
 - Do not invent project symbols or silently assume a generic template matches the project
 - If essential evidence is unavailable, continue read-only investigation; if it still cannot be found, state exactly what is missing instead of fabricating complete-looking code
+- For non-trivial cross-system work, present the verified evidence, ownership map, precedent differences, and smallest design first; wait for user confirmation before the transcription-ready code unless the user explicitly skips that checkpoint after reviewing the findings
+- Apply `ue-evidence-maintainability-gates.md` before claiming the implementation is complete
 
 ## Teaching Format
 

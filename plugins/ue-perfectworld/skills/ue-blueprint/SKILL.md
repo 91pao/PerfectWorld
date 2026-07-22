@@ -14,6 +14,7 @@ Before working, read:
 - `../../references/ue-core-rules.md`
 - `../../references/ue-client-server-boundary-rules.md`
 - `../../references/ue-project-consistency.md`
+- `../../references/ue-evidence-maintainability-gates.md`
 - `../../references/ue-generated-code-drift-rules.md`
 - `../../references/ue-self-review.md`
 
@@ -23,6 +24,8 @@ Before working, read:
 - Keep security-sensitive or network-authoritative state on the verified authority side; do not assume that a specific C++ class owns it
 - Preserve Blueprint lifecycle, latent action, delegate, interface, component, and asset-loading patterns already verified in the project
 - Reuse existing assets, event patterns, data sources, and exposed APIs only after confirming active callers or editor references
+- Treat DataTables, DataAssets, Blueprint defaults, C++ members, and subsystem state as separate possible authorities; identify the single source of truth before adding another exposed property
+- Do not copy empty Blueprint events or C++ lifecycle overrides merely because a reference widget declares them
 - Explain required editor setup clearly but do not invent extra Blueprint architecture
 - If file edits are needed, use `ue-implement` only when the user explicitly authorized direct edits; otherwise provide read-only guidance
 - Before finalizing Blueprint guidance, run the final self-review as a blocking gate; correct known logic or integration defects and simplify avoidable Blueprint/C++ structure before responding

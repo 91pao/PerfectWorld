@@ -14,6 +14,7 @@ Before reviewing, read:
 - `../../references/ue-core-rules.md`
 - `../../references/ue-client-server-boundary-rules.md`
 - `../../references/ue-project-consistency.md`
+- `../../references/ue-evidence-maintainability-gates.md`
 - `../../references/ue-generated-code-drift-rules.md`
 - `../../references/ue-comment-log-rules.md`
 - `../../references/ue-edit-safety.md`
@@ -22,7 +23,7 @@ Before reviewing, read:
 
 ## Review Priorities
 
-Find real issues first. Use the loaded references as the checklist, with special attention to correctness, evidence quality, project consistency, generated-code drift, lifecycle, authority and replication when applicable, state mutation, edit safety, and bugfix complexity.
+Find real issues first. Use the loaded references as the checklist, with special attention to correctness, evidence quality, project consistency, generated-code drift, lifecycle, authority and replication when applicable, state mutation, edit safety, bugfix complexity, duplicated authority, and whether a teammate can maintain the result without the AI conversation.
 
 Before finalizing the review, run the final self-review against the findings so safety-sensitive gaps, false confidence, missed defects, and overdesigned remedies are corrected. Keep suggested fixes minimal; do not edit files during a review-only request.
 

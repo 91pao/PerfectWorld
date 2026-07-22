@@ -13,6 +13,10 @@ Reject code that drifts away from verified current-project conventions or adds c
 - Do not rewrite working code into a more abstract style without a demonstrated need
 - Prefer clear feature code near the existing flow over clever generic utilities
 - Do not add unused variables, functions, enum values, delegates, fields, or configuration
+- Do not add empty lifecycle overrides or copy template methods that only call `Super`
+- Do not duplicate authoritative tags, IDs, state, or configuration across DataTables, DataAssets, Blueprints, and C++ members
 - Keep one-use helpers inline unless extraction materially improves readability, testing, or correctness
 - Before delivery, compare the implementation with the smallest complete project-consistent solution; if the current design is several times larger because of avoidable structure, rewrite it instead of merely noting the complexity
 - Treat extra files, types, states, branches, delegates, RPCs, and configuration as part of the complexity budget, not only source line count
+- Require every added abstraction to have a current caller and a reason a teammate can recover from the codebase without the AI conversation
+- Apply the change, deletion, and no-chat tests from `ue-evidence-maintainability-gates.md` before delivery
