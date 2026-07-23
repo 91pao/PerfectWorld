@@ -28,12 +28,15 @@ Read only when applicable:
 
 0. Confirm the user gave a hard direct-edit requirement to modify files or write into the project/worktree. If not, switch to `ue-draft`.
 1. Discover current-project structure, callers, assets, configuration, ownership, persistence, cleanup, and candidate precedents before designing.
-2. Verify that the chosen precedent is active, maintained, and compatible with the target ownership and lifecycle.
-3. State the implementation direction briefly if the change is non-trivial.
-4. Patch only the required files and blocks.
-5. Apply the loaded reference rules as hard constraints.
-6. Run `ue-self-review.md` as a blocking gate and correct every known in-scope issue before responding.
-7. Do not run a full UE build unless explicitly asked.
+2. For non-trivial cross-system work, pass the mandatory evidence gate in `ue-project-consistency.md` before patching: data source, runtime lifecycle, trigger, read path, persistence, and cleanup must each have current-project proof.
+3. Build the responsibility evidence matrix and verify every introduced UI, navigation, state, object-access, guard, and diagnostic mechanism independently when applicable.
+4. Verify that the chosen precedents are active, maintained, and compatible with the target ownership, lifecycle, authority, and cleanup behavior.
+5. If a required link is missing, stop before editing and report the gap; do not add a condition, manager, field, DataAsset, delegate, or lifecycle hook as a substitute for evidence.
+6. State the implementation direction briefly if the change is non-trivial.
+7. Patch only the required files and blocks.
+8. Apply the loaded reference rules as hard constraints.
+9. Run `ue-self-review.md` as a blocking gate and correct every known in-scope issue before responding.
+10. Do not run a full UE build unless explicitly asked.
 
 ## Final Response
 

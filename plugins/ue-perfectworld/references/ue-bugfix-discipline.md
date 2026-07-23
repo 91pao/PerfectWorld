@@ -22,6 +22,7 @@ Use these rules for bugs, compile or link errors, runtime failures, UI issues, R
 
 - Treat repeated compile, link, reflection, asset, or configuration failures as a possible architecture or integration error
 - After multiple related failures or patches to the same feature, stop adding local fixes and retrace ownership, data flow, lifecycle, registration, and project precedent end to end
+- Before adding a new condition, manager, field, DataAsset, delegate, or lifecycle override during recovery, pass the mandatory evidence gate in `ue-project-consistency.md`; do not use a new abstraction to conceal an unverified trigger, persistence, or cleanup path
 - Remove temporary investigation code and obsolete workaround state before finalizing
 - Do not claim completion until the runtime path and required editor/data setup are verified or explicitly identified as unverified
 

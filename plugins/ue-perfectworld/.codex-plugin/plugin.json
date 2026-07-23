@@ -1,6 +1,6 @@
 {
   "name": "ue-perfectworld",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "Project-neutral Codex workflows for safe Unreal Engine planning, investigation, implementation, review, and Blueprint/editor integration.",
   "author": {
     "name": "Liutianyuan / PerfectWorld",

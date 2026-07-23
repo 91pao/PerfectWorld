@@ -11,7 +11,9 @@ Use this workflow when the user wants to enter Unreal Engine changes manually an
 ## Design Checkpoint
 
 - Apply `ue-project-consistency.md` before writing project-specific code
-- For non-trivial cross-system work, first present verified evidence, the ownership map, differences from the selected precedent, and the smallest proposed design
+- For non-trivial cross-system work, pass the mandatory evidence gate before writing code: show the verified data source, runtime lifecycle, trigger, read path, persistence boundary, cleanup path, and differences from the selected precedent
+- Include responsibility-level evidence for every introduced mechanism, not only one high-level reference feature. UI composition, child interaction, navigation, state or red-point binding, object acquisition, guard behavior, and diagnostics require their own compatible precedents when applicable
+- If a required link is not proven, report the gap and do not provide transcription-ready code, DataTable rows, Blueprint steps, or new extension points
 - Wait for the user's confirmation before providing complete code unless the user explicitly skips the checkpoint after reviewing those findings
 - When new evidence contradicts the proposal, revise the design at its source instead of adding wrappers, compatibility branches, or duplicate state
 

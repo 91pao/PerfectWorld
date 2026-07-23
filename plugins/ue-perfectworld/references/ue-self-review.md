@@ -6,8 +6,12 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 
 - Trace the primary success path and important failure paths end to end
 - Recheck every project-specific symbol and assumption against the current workspace
+- Recheck every introduced mechanism against the responsibility evidence matrix; one similar feature is insufficient when UI composition, navigation, state, diagnostics, or lifecycle use different project owners
+- For non-trivial cross-system work, verify the evidence gate is complete: authoritative data, runtime lifecycle, trigger, read path, persistence boundary, and cleanup path all have project evidence
+- Reject any solution that infers one responsibility from another, such as deriving message creation from display aggregation or deriving cleanup from a trigger condition
 - Confirm selected precedents have active production evidence and compatible ownership, lifecycle, authority, and responsibility
 - Recheck reflection declarations, includes, module dependencies, object lifetime, null handling, delegate cleanup, threading, assets, configuration, persistence, and network rules where applicable
+- Audit each new guard and diagnostic against the closest maintained same-responsibility path. Remove invented logging policies, repeated boundary logs, and inconsistent HUD, player, optional-widget, or callback handling
 - Confirm bug fixes correct the root cause instead of hiding it with fallback state, retries, delays, or silent returns
 - Distinguish proven guarantees from mitigations and unresolved assumptions
 
@@ -25,6 +29,7 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 ## Delivery
 
 - Correct every known in-scope defect before presenting complete code or finalizing direct edits
+- If the evidence gate has a gap, remove any speculative implementation from the response and state the missing proof instead
 - Ensure complete-code responses contain no pseudocode, ellipses, placeholders, TODOs, omitted branches, or unverified project symbols
 - Keep comments concise, production-suitable, and synchronized with the final implementation
 - Confirm source text was not modified through incorrectly decoded shell output

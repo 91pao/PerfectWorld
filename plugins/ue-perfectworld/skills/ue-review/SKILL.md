@@ -26,7 +26,7 @@ Read only when applicable:
 
 ## Review Priorities
 
-Find real issues first. Use the loaded references as the checklist, with special attention to correctness, evidence quality, project consistency, lifecycle, authority and replication when applicable, state mutation, duplicated authority, avoidable structure, and whether a teammate can maintain the result without the AI conversation.
+Find real issues first. Use the loaded references as the checklist, with special attention to evidence-gate gaps across data source, runtime lifecycle, trigger, read path, persistence, and cleanup. Require separate responsibility evidence for UI composition, navigation, state, object access, guards, and diagnostics when applicable; also check correctness, project consistency, lifecycle, authority and replication, state mutation, duplicated authority, avoidable structure, and whether a teammate can maintain the result without the AI conversation.
 
 Before finalizing the review, run the final self-review against the findings so safety-sensitive gaps, false confidence, missed defects, and overdesigned remedies are corrected. Keep suggested fixes minimal; do not edit files during a review-only request.
 
