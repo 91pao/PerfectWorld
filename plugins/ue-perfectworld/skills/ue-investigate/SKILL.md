@@ -30,13 +30,14 @@ Read only when applicable:
 4. Build a responsibility evidence matrix for the failing path; verify object acquisition, guards, diagnostics, UI composition, navigation, state, and cleanup independently when applicable.
 5. Separate likely root cause from symptoms.
 6. Decompose every uncertainty into answerable subquestions and exhaust current-project search and end-to-end tracing for each before asking the user. Ask only at the end, and only for an external artifact or real product decision that the project cannot answer.
-7. Before proposing a cross-system remedy, pass the mandatory evidence gate in `ue-project-consistency.md`; explicitly distinguish display, state creation, reading, persistence, and cleanup when they are separate responsibilities.
-8. Reject fixes that only add fallback state, retries, timers, wrappers, conditions, or managers without proving root cause and every affected lifecycle link.
-9. Apply the recovery gate in `ue-bugfix-discipline.md` when related failures keep accumulating.
-10. Do not run full UE builds by default.
-11. If editing is required but direct edits were not explicitly requested, switch to `ue-draft`.
-12. If the user explicitly asked for direct file edits, switch to the implementation workflow and follow edit safety.
-13. Keep the diagnosis and proposed remedy minimal, evidence-backed, and explicit about unresolved uncertainty.
+7. Before proposing a remedy, freeze the latest requirement and hard scope, discard superseded requirements, and pass the requirement-and-capability fit gate in `ue-project-consistency.md`.
+8. Before proposing a cross-system remedy, pass the mandatory evidence gate in `ue-project-consistency.md`; explicitly distinguish display, state creation, reading, persistence, and cleanup when they are separate responsibilities.
+9. Reject fixes that only add fallback state, retries, timers, wrappers, conditions, or managers without proving root cause and every affected lifecycle link.
+10. Apply the recovery gate in `ue-bugfix-discipline.md` when related failures keep accumulating.
+11. Do not run full UE builds by default.
+12. If editing is required but direct edits were not explicitly requested, switch to `ue-draft`.
+13. If the user explicitly asked for direct file edits, switch to the implementation workflow and follow edit safety.
+14. Keep the diagnosis and proposed remedy minimal, evidence-backed, and explicit about unresolved uncertainty.
 
 ## Checks
 

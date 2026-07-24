@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.7
+
+- Added a blocking requirement-and-capability fit gate before implementation, compensation, or scope expansion.
+- Required workflows to freeze the user's latest requirements and hard boundaries and to discard mechanisms that belong only to superseded requirements.
+- Required each behavior to map to the highest-level verified project mechanism that already owns the responsibility.
+- When requirements conflict with the allowed scope, required the exact conflict, unavoidable strict implementation cost, and closest project-native alternative to be presented for the user's decision instead of inventing local compensation.
+- Required the fit gate to reopen when complexity grows through another file, shared integration point, state owner, persistence path, RPC, cache, delegate, timer, manager, or configuration source.
+- Extended final review to reject obsolete behavior, hidden scope expansion, and unnecessary mechanisms accumulated across requirement changes.
+
 ## 0.1.6
 
 - Added a responsibility evidence matrix so one similar feature can no longer justify unrelated UI composition, navigation, state, lifecycle, guard, or diagnostic choices.

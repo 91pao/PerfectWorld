@@ -23,15 +23,16 @@ Read only when applicable:
 ## Workflow
 
 1. Use `rg` to discover candidate same-domain code, assets, configuration, and call sites.
-2. Identify the actual ownership chain, runtime lifecycle, trigger, read path, authority model, data source, persistence boundary, cleanup path, and C++/Blueprint split relevant to the task.
-3. Build the responsibility evidence matrix required by `ue-project-consistency.md`; do not use one similar feature to justify unrelated UI, navigation, state, guard, or diagnostic behavior.
-4. Explain which current-project precedents are trustworthy for each responsibility and why their complete active paths apply, or state the standard UE basis when no reliable precedent exists.
-5. Resolve each uncertainty through current-project search and end-to-end tracing before asking the user. If a required evidence link remains unavailable, state that gap and limit the output to the investigation required; do not invent a design to bridge it.
-6. Propose the smallest implementation path only after the evidence gate passes.
-7. State any loaded-reference constraints that materially affect the plan.
-8. Call out client/server responsibility boundaries when applicable.
-9. Reject avoidable layers, files, states, and integration paths before finalizing.
-10. Do not edit files in this skill unless the user changes the request.
+2. Freeze the latest requirement and hard scope, discard superseded requirements, and pass the requirement-and-capability fit gate in `ue-project-consistency.md`.
+3. Identify the actual ownership chain, runtime lifecycle, trigger, read path, authority model, data source, persistence boundary, cleanup path, and C++/Blueprint split relevant to the task.
+4. Build the responsibility evidence matrix required by `ue-project-consistency.md`; do not use one similar feature to justify unrelated UI, navigation, state, guard, or diagnostic behavior.
+5. Explain which current-project precedents are trustworthy for each responsibility and why their complete active paths apply, or state the standard UE basis when no reliable precedent exists.
+6. Resolve each uncertainty through current-project search and end-to-end tracing before asking the user. If a required evidence link remains unavailable, state that gap and limit the output to the investigation required; do not invent a design to bridge it.
+7. Propose the smallest implementation path only after the evidence gate passes.
+8. State any loaded-reference constraints that materially affect the plan.
+9. Call out client/server responsibility boundaries when applicable.
+10. Reject avoidable layers, files, states, and integration paths before finalizing.
+11. Do not edit files in this skill unless the user changes the request.
 
 ## Output
 

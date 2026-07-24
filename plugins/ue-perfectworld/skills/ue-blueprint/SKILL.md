@@ -28,6 +28,7 @@ Read only when applicable:
 - Preserve Blueprint lifecycle, latent action, delegate, interface, component, and asset-loading patterns already verified in the project
 - Reuse existing assets, event patterns, data sources, and exposed APIs only after confirming active callers or editor references
 - Treat DataTables, DataAssets, Blueprint defaults, C++ members, and subsystem state as separate possible authorities; identify the single source of truth before adding another exposed property
+- Freeze the latest requirement and hard scope, discard superseded requirements, and pass the requirement-and-capability fit gate in `ue-project-consistency.md` before adding Blueprint or C++ compensation
 - For non-trivial cross-system behavior, pass the mandatory evidence gate in `ue-project-consistency.md` before proposing C++ or Blueprint changes: data source, runtime lifecycle, trigger, read path, persistence, and cleanup must be independently verified
 - Verify Blueprint composition, child discovery, event binding, navigation, red-point or state presentation, object access, guards, and diagnostics as separate responsibilities; do not infer them from one similar widget
 - Do not infer state creation from a visible widget, aggregation behavior from a child widget, or persistence from a local Blueprint callback

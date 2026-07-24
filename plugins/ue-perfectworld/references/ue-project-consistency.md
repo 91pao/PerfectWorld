@@ -12,6 +12,17 @@ Use this reference before proposing project-specific architecture, complete code
 - When candidates disagree, explain the evidence and follow the closest trustworthy production path
 - If essential evidence is unavailable, report the exact gap instead of inventing project symbols or claiming the implementation is complete
 
+## Requirement And Capability Fit Gate
+
+Pass this gate before proposing implementation or adding a compensating mechanism.
+
+- Freeze a current requirement baseline from the user's latest decisions, including hard file, module, asset, authority, and behavior boundaries; explicitly discard superseded requirements
+- Map each required behavior to the highest-level verified project mechanism that already owns the responsibility
+- If the requirements and allowed scope cannot both be satisfied, stop before adding mirrored state, caches, polling, timers, retries, delegates, duplicate configuration, wrapper APIs, or shared-framework changes
+- Report the exact conflict, the unavoidable scope of a strict implementation, and the closest project-native alternative; do not change the requirement or expand scope without the user's decision
+- Reopen this gate whenever the design adds a file, shared integration point, state owner, persistence path, RPC, cache, delegate, timer, manager, or second source of configuration that was not justified by the baseline
+- After a requirement changes, remove or reject every mechanism that exists only for the superseded behavior before continuing
+
 ## Mandatory Evidence Gate
 
 Before proposing a project-specific design, complete code, editor configuration, direct edit, or new framework extension for non-trivial cross-system work, prove each applicable link from current-project evidence:

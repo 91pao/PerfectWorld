@@ -27,14 +27,15 @@ Read only when applicable:
 ## Workflow
 
 1. Search current-project code, assets, configuration, and call sites relevant to the task.
-2. For non-trivial cross-system work, pass the mandatory evidence gate in `ue-project-consistency.md`: data source, runtime lifecycle, trigger, read path, persistence, and cleanup must each have current-project proof.
-3. Build the responsibility evidence matrix and verify every introduced UI, navigation, state, object-access, guard, and diagnostic mechanism independently when applicable.
-4. Evaluate the nearest candidates for active production use, compatible ownership, lifecycle, authority, and cleanup behavior.
-5. Apply the design checkpoint in `ue-complete-implementation.md`. If any evidence link is missing, report only the gap and investigation needed; do not provide complete code, rows, or new extension points.
-6. After the checkpoint passes, present every required change in the exact order the user should perform it.
-7. Provide exact targets, locations, complete code or editor values, and production-suitable comments for every step.
-8. Do not modify or create project files and do not run UE builds.
-9. Run `ue-self-review.md` as a blocking gate before responding.
+2. Freeze the latest requirement and hard scope, discard superseded requirements, and pass the requirement-and-capability fit gate in `ue-project-consistency.md` before adding compensating mechanisms or expanding scope.
+3. For non-trivial cross-system work, pass the mandatory evidence gate in `ue-project-consistency.md`: data source, runtime lifecycle, trigger, read path, persistence, and cleanup must each have current-project proof.
+4. Build the responsibility evidence matrix and verify every introduced UI, navigation, state, object-access, guard, and diagnostic mechanism independently when applicable.
+5. Evaluate the nearest candidates for active production use, compatible ownership, lifecycle, authority, and cleanup behavior.
+6. Apply the design checkpoint in `ue-complete-implementation.md`. If any evidence link is missing, report only the gap and investigation needed; do not provide complete code, rows, or new extension points.
+7. After the checkpoint passes, present every required change in the exact order the user should perform it.
+8. Provide exact targets, locations, complete code or editor values, and production-suitable comments for every step.
+9. Do not modify or create project files and do not run UE builds.
+10. Run `ue-self-review.md` as a blocking gate before responding.
 
 ## Final Response
 

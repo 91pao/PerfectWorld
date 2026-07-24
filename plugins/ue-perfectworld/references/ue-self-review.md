@@ -5,6 +5,8 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 ## Correctness
 
 - Trace the primary success path and important failure paths end to end
+- Confirm the result implements the user's latest requirement and hard scope, and contains no mechanism retained only for a superseded requirement
+- Confirm each required behavior maps to a verified project capability; when requirement and allowed scope conflict, require the exact conflict, strict implementation cost, and closest project-native alternative before implementation
 - Recheck every project-specific symbol and assumption against the current workspace
 - Recheck every introduced mechanism against the responsibility evidence matrix; one similar feature is insufficient when UI composition, navigation, state, diagnostics, or lifecycle use different project owners
 - For non-trivial cross-system work, verify the evidence gate is complete: authoritative data, runtime lifecycle, trigger, read path, persistence boundary, and cleanup path all have project evidence
@@ -18,6 +20,7 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 ## Maintainability
 
 - Compare the result with the smallest complete project-consistent implementation
+- Reopen the requirement-and-capability fit gate if complexity grew through another file, shared integration point, state owner, persistence path, RPC, cache, delegate, timer, manager, or configuration source
 - Require every added file, class, function, field, delegate, override, configuration item, and abstraction to have a current requirement and real consumer
 - Remove duplicate data authority, unused state, empty lifecycle overrides, speculative extension points, one-use wrappers, generic managers, compatibility branches, and parallel execution paths
 - Keep one authoritative source for each tag, ID, state, and configuration value
