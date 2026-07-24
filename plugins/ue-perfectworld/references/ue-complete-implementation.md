@@ -16,6 +16,10 @@ Use this workflow when the user wants to enter Unreal Engine changes manually an
 - If a required link is not proven, report the gap and do not provide transcription-ready code, DataTable rows, Blueprint steps, or new extension points
 - Wait for the user's confirmation before providing complete code unless the user explicitly skips the checkpoint after reviewing those findings
 - When new evidence contradicts the proposal, revise the design at its source instead of adding wrappers, compatibility branches, or duplicate state
+- Before code, present a compact evidence ledger whose rows map each required behavior to its authoritative owner, active project symbol or asset, lifecycle or authority side, and verified, disproven, or unavailable status
+- Before code, present a compact change-surface manifest that separates create, replace, configure, and reuse-only targets. Flag every shared integration point and prove why a modification is unavoidable
+- When multiple surfaces must show the same state, show the resolved authoritative identity and verify that display-only consumers do not create, persist, forward, acknowledge, or remove it
+- When several project systems participate in one action, show the execution-stage chain so routing, target resolution, widget creation, presentation, acknowledgement, and persistence are not mistaken for duplicate implementations
 
 ## Implementation Sequence
 
@@ -45,5 +49,7 @@ Typical ordering is module/configuration requirements, declarations, definitions
 
 - Give Blueprint and editor actions in click order with exact asset, panel, property, event, pin, row, tag, and value names verified from the project
 - State required compile, restart, refresh, reparent, rebind, or resave steps only when they are actually necessary
+- Verify copied DataTable or asset rows across all platform-specific templates, overrides, slots, extra data, registration fields, and fallback behavior; do not leave references to the source feature in another platform branch
+- Cross-check every code field and lookup key against the final DataAsset, DataTable, GameplayTag, Blueprint property, factory registration, and external configuration that supplies it
 - End with compile and runtime checks in execution order, including expected behavior and important failure cases
 - State that Codex did not compile the code unless the user explicitly requested and authorized a build

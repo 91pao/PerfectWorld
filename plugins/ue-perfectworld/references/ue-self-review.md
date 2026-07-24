@@ -16,6 +16,10 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 - Audit each new guard and diagnostic against the closest maintained same-responsibility path. Remove invented logging policies, repeated boundary logs, and inconsistent HUD, player, optional-widget, or callback handling
 - Confirm bug fixes correct the root cause instead of hiding it with fallback state, retries, delays, or silent returns
 - Distinguish proven guarantees from mitigations and unresolved assumptions
+- For shared user-visible state, confirm the producer and persistence owner, acknowledgement owner, and display-only consumers are distinct and correct
+- If two surfaces are required to stay identical, confirm they resolve the same authoritative identity instead of maintaining synchronized copies or proxy state
+- Trace each participating mechanism by execution stage and reject both missing stages and parallel paths that perform the same responsibility
+- Cross-check code, factory registration, DataAssets, DataTables, GameplayTags, Blueprint bindings, UI extension or platform overrides, external payloads, persistence, and cleanup as one final contract
 
 ## Maintainability
 
@@ -28,6 +32,8 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 - Apply the deletion test: the feature can be removed without hidden registration, duplicate state, or undocumented coupling
 - Apply the no-chat test: a teammate can trace, modify, and remove the implementation without the generation conversation
 - Rewrite avoidable overdesign before delivery; do not merely document it as a concern
+- Compare the delivered file and asset list with the change-surface manifest; reject undeclared shared changes, stale fields from earlier designs, duplicated configuration, and dependencies incorrectly described as modifications
+- Treat a visual variant as presentation unless a verified business rule requires a separate persisted or acknowledged state
 
 ## Delivery
 
@@ -39,3 +45,4 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 - Confirm no unrelated files or stable release flows changed
 - State which compile, editor, automation, and packaging checks were run or skipped
 - If repeated local fixes accumulated, apply the recovery gate in `ue-bugfix-discipline.md` before finalizing
+- Include the final create, replace, configure, and reuse-only surface summary so the user can distinguish required work from existing project infrastructure

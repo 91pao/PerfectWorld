@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.8
+
+- Added an explicit state-ownership split between producer and persistence owner, acknowledgement owner, and display-only consumers.
+- Required multiple surfaces that represent the same state to reuse the same authoritative identity instead of introducing proxy state, forwarding events, mirrored saves, or synchronization code.
+- Classified visual variants such as `NEW`, badges, counts, and alternate brushes as presentation unless a verified business rule proves they are distinct state.
+- Added execution-stage mapping for entry, configuration, routing, target resolution, creation, presentation, acknowledgement, persistence, and cleanup so different pipeline stages are not mistaken for duplicate systems.
+- Added a blocking change-surface manifest that separates create, replace, configure, and reuse-only targets and reopens the fit gate for undeclared shared-framework changes.
+- Extended final review across C++, factories, DataAssets, DataTables, GameplayTags, Blueprint bindings, UI extension and platform overrides, external payloads, persistence, and cleanup.
+- Required copied editor rows and assets to preserve verified hidden fields while replacing all platform-specific references that still point to the source feature.
+
 ## 0.1.7
 
 - Added a blocking requirement-and-capability fit gate before implementation, compensation, or scope expansion.

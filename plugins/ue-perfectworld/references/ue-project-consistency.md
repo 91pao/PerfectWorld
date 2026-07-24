@@ -50,6 +50,22 @@ Before proposing a project-specific design, complete code, editor configuration,
 - When the project cannot answer, finish all unblocked investigation first. Ask one concise final question only for a required external artifact or a real product decision; otherwise state the exact missing proof and do not invent a substitute.
 - Keep this procedure inside the existing evidence gate. Do not create parallel checklists, caches, or speculative scaffolding to compensate for missing evidence.
 
+## State Identity And Presentation
+
+- For state shown in more than one UI or system surface, identify three responsibilities separately: the producer and persistence owner, the acknowledgement or consumption owner, and display-only consumers
+- When two surfaces must show the same state, first resolve and reuse the same authoritative identity, such as the same tag, message ID, activity instance, replicated field, or model object; do not introduce proxy state, forwarding events, mirrored saves, or synchronization code unless the requirement proves that the states are intentionally different
+- Treat a different visual form, such as `NEW`, a badge, a count, or another brush, as presentation unless the project proves it represents a distinct business state
+- A display-only consumer must not acknowledge, remove, reset, persist, or recreate source state unless the verified project contract assigns that responsibility to it
+
+## Execution Stages And Change Surface
+
+- Map multi-system behavior by execution stage before judging mechanisms as duplicate: entry, configuration lookup, route selection, target resolution, object or widget creation, presentation, acknowledgement, persistence, and cleanup when applicable
+- Keep verified mechanisms that own different stages; remove only parallel mechanisms that perform the same responsibility or bypass an established stage
+- Before implementation, maintain a compact change-surface manifest listing every file, asset, table row, tag, registration point, and Blueprint binding as create, replace, configure, or reuse-only, with the responsibility that requires it
+- Separate pre-existing dependencies from requested modifications. A shared factory, subsystem, helper, table, or base class that already satisfies the requirement is reuse-only and must not be presented as a new change
+- Any shared-framework modification or new state owner not already justified by the frozen baseline must reopen the requirement-and-capability fit gate before code is produced
+- When binary assets or editor-only values cannot be inspected reliably, prefer copying the closest verified production row or asset and changing only proven fields; do not invent hidden slot, platform, extra-data, or registration values
+
 ## Ownership Map
 
 For non-trivial or cross-system work, identify:
@@ -61,6 +77,8 @@ For non-trivial or cross-system work, identify:
 - Persistence owner
 - C++ and Blueprint responsibilities
 - Registration and cleanup path
+- State producer, acknowledgement owner, and display-only consumers when user-visible state is involved
+- Execution stage for each participating table, asset, subsystem, manager, factory, router, and widget
 
 ## Design Constraints
 
