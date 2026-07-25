@@ -38,6 +38,9 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 ## Delivery
 
 - Correct every known in-scope defect before presenting complete code or finalizing direct edits
+- Complete the status ledger required by the completion claim gate; no applicable responsibility or execution stage may remain implicit
+- Match the conclusion to the highest verification level actually reached. Do not describe source review as compile, runtime, authority, persistence, cross-session, or cross-platform validation
+- Block complete, ready, best, and no-findings claims while any required item is `disproven` or `unavailable`; either correct it or state the precise verification gap and narrow the conclusion
 - If the evidence gate has a gap, remove any speculative implementation from the response and state the missing proof instead
 - Ensure complete-code responses contain no pseudocode, ellipses, placeholders, TODOs, omitted branches, or unverified project symbols
 - Keep comments concise, production-suitable, and synchronized with the final implementation

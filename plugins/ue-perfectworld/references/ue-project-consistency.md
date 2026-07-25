@@ -39,6 +39,15 @@ Before proposing a project-specific design, complete code, editor configuration,
 - Select a project precedent only after verifying its complete active path has compatible ownership, lifecycle, authority, and cleanup behavior.
 - If any required link is unverified, report the exact evidence gap and stop at a diagnosis or bounded investigation plan. Do not output complete implementation steps or add conditions, managers, DataAssets, fields, delegates, tags, or lifecycle hooks to bridge the gap.
 
+## Completion Claim Gate
+
+- Before claiming that a design, implementation, fix, or review is complete, final, ready, best, or free of issues, project the existing evidence matrix and change-surface manifest into a compact status ledger. Mark every applicable responsibility and execution stage as `verified`, `disproven`, `unavailable`, or `not applicable`; do not leave an item implicit or treat an assumption as verification.
+- `Verified` must name the current-project evidence and the highest level actually checked: source contract, reflection and compile or link, editor and asset configuration, runtime behavior, authority or persistence behavior, and cross-session or cross-platform behavior when applicable. A source-level trace must not be reported as runtime, network, persistence, or multi-platform verification.
+- A required `disproven` item must be corrected before delivery. A required `unavailable` item blocks complete code, direct completion, and no-findings review conclusions; report the exact missing artifact or runtime check and limit the conclusion accordingly. Use `not applicable` only with a concrete reason.
+- Recheck the important failure variants of each applicable path, including missing or malformed configuration, stale or duplicate identity, unavailable owner, inactive or removed lifecycle, repeated input, late or out-of-order callback, reload, reconnect, and cleanup. Select only variants relevant to the feature, but do not validate only the success path.
+- Existing helpers and precedents remain evidence only for the behavior traced through their active callers, configuration, authority boundary, and cleanup. Their existence, compilation, or use elsewhere does not upgrade an unverified target path.
+- Keep the ledger internal and compact during normal work. Expose the verified scope, skipped checks, and blocking gaps in the final response instead of dumping a second full checklist.
+
 ## Evidence Resolution
 
 - Treat every uncertainty as a list of answerable subquestions. Search the current project for each subquestion and trace its active path end to end before deciding that it is unknown.

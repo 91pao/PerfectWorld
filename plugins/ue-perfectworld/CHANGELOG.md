@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.9
+
+- Added a completion claim gate that converts the existing responsibility evidence matrix and change-surface manifest into explicit `verified`, `disproven`, `unavailable`, or `not applicable` statuses before delivery.
+- Prevented complete, final, ready, best, and no-findings conclusions when a required responsibility or execution stage remains disproven or unavailable.
+- Required conclusions to state the highest level actually verified and prohibited source inspection from being presented as compile, runtime, authority, persistence, cross-session, or cross-platform validation.
+- Added a focused failure-path pass for applicable missing, malformed, stale, duplicate, inactive, repeated, late, out-of-order, reload, reconnect, and cleanup cases.
+- Kept the new enforcement inside the existing evidence and self-review references so every UE workflow inherits it without another rule file or feature-specific policy.
+
 ## 0.1.8
 
 - Added an explicit state-ownership split between producer and persistence owner, acknowledgement owner, and display-only consumers.
