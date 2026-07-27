@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0
+
+- Added an existing-capability admission gate that inspects the complete type hierarchy, inherited editor properties, Blueprint Designer configuration, project data, routing, and active production callers before new mechanisms are allowed.
+- Required every responsibility to be classified as `reuse`, `configure`, `extend`, or `create`, with evidence disproving compatible reuse and configuration paths before extension or creation.
+- Added a UI configuration-first order that prefers existing widget and base-component settings, table or routing configuration, and established helpers before local code or shared-framework changes.
+- Added blocking complexity signals for new DataAssets, red-point identities, save structures, RPCs, proxy state, delegates, managers, synchronization paths, and lifecycle overrides used only for display or navigation.
+- Required compensating mechanisms to be removed when later evidence reveals an existing project capability, preventing obsolete parallel implementations from surviving discovery.
+- Kept the enforcement in the central consistency and final self-review references so all UE workflows inherit it without another skill or rule file.
+
 ## 0.1.9
 
 - Added a completion claim gate that converts the existing responsibility evidence matrix and change-surface manifest into explicit `verified`, `disproven`, `unavailable`, or `not applicable` statuses before delivery.

@@ -7,6 +7,8 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 - Trace the primary success path and important failure paths end to end
 - Confirm the result implements the user's latest requirement and hard scope, and contains no mechanism retained only for a superseded requirement
 - Confirm each required behavior maps to a verified project capability; when requirement and allowed scope conflict, require the exact conflict, strict implementation cost, and closest project-native alternative before implementation
+- Confirm the target type, full base-class hierarchy, inherited editor properties, Blueprint Designer configuration, and responsibility-compatible tables or routers were inspected before accepting new UI interaction or navigation code
+- Confirm every selected action is classified as `reuse`, `configure`, `extend`, or `create`, and reject `extend` or `create` while a compatible existing capability remains unchecked rather than disproven
 - Recheck every project-specific symbol and assumption against the current workspace
 - Recheck every introduced mechanism against the responsibility evidence matrix; one similar feature is insufficient when UI composition, navigation, state, diagnostics, or lifecycle use different project owners
 - For non-trivial cross-system work, verify the evidence gate is complete: authoritative data, runtime lifecycle, trigger, read path, persistence boundary, and cleanup path all have project evidence
@@ -18,6 +20,7 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 - Distinguish proven guarantees from mitigations and unresolved assumptions
 - For shared user-visible state, confirm the producer and persistence owner, acknowledgement owner, and display-only consumers are distinct and correct
 - If two surfaces are required to stay identical, confirm they resolve the same authoritative identity instead of maintaining synchronized copies or proxy state
+- Reject new red-point identities, save data, RPCs, proxy state, delegates, managers, or lifecycle overrides when the requirement is only navigation or another presentation of an existing state
 - Trace each participating mechanism by execution stage and reject both missing stages and parallel paths that perform the same responsibility
 - Cross-check code, factory registration, DataAssets, DataTables, GameplayTags, Blueprint bindings, UI extension or platform overrides, external payloads, persistence, and cleanup as one final contract
 
@@ -27,6 +30,7 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 - Reopen the requirement-and-capability fit gate if complexity grew through another file, shared integration point, state owner, persistence path, RPC, cache, delegate, timer, manager, or configuration source
 - Require every added file, class, function, field, delegate, override, configuration item, and abstraction to have a current requirement and real consumer
 - Remove duplicate data authority, unused state, empty lifecycle overrides, speculative extension points, one-use wrappers, generic managers, compatibility branches, and parallel execution paths
+- If a later discovery exposes an existing capability, remove all code and configuration introduced only to compensate for its previously assumed absence
 - Keep one authoritative source for each tag, ID, state, and configuration value
 - Apply the change test: a normal requirement change has an obvious bounded edit location
 - Apply the deletion test: the feature can be removed without hidden registration, duplicate state, or undocumented coupling
