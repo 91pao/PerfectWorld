@@ -18,7 +18,7 @@ PerfectWorld 可以作为 Codex 插件使用，也可以通过 `core/` 规则、
 | `ue-project-rag` | 0.1.0 | 项目文件太多，单次搜索难以找到相关实现和配置 | 本地索引、候选检索、受限内容片段和索引状态 |
 | `perfectworld` | 0.4.0 | 通用软件项目从需求到发布涉及多个专业方向 | 规格、计划、实现、QA、审查、设计、发布、文档和维护流程 |
 
-三个组件不是三个互相竞争的 Agent：UE PerfectWorld 负责工程判断，RAG 负责候选发现，PerfectWorld 负责非 UE 的通用开发路由。大型 UE 项目通常同时使用前两个组件。
+：UE PerfectWorld 负责工程判断，RAG 负责候选发现，PerfectWorld 负责非 UE 的通用开发路由。UE 项目使用前两个组件。
 
 ## 组件关系
 
