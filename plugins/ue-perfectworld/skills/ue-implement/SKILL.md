@@ -27,7 +27,7 @@ Read only when applicable:
 ## Workflow
 
 0. Confirm the user gave a hard direct-edit requirement to modify files or write into the project/worktree. If not, switch to `ue-draft`.
-1. Discover current-project structure, callers, assets, configuration, ownership, persistence, cleanup, and candidate precedents before designing.
+1. Discover current-project structure, callers, assets, configuration, ownership, persistence, cleanup, and candidate precedents before designing. When `ue_rag_*` tools are available, load `../../references/ue-rag-integration.md` for candidate discovery, then verify candidates with direct project reads.
 2. Freeze the latest requirement and hard scope, discard superseded requirements, and pass the requirement-and-capability fit gate in `ue-project-consistency.md` before patching.
 3. For non-trivial cross-system work, pass the mandatory evidence gate in `ue-project-consistency.md` before patching: data source, runtime lifecycle, trigger, read path, persistence, and cleanup must each have current-project proof.
 4. Build the responsibility evidence matrix and verify every introduced UI, navigation, state, object-access, guard, and diagnostic mechanism independently when applicable.

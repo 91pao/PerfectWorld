@@ -2,7 +2,7 @@
 
 ## Complete Code Comments
 
-- Include comprehensive but concise comments in code delivered for manual entry
+- Include comprehensive but concise comments in implementation specifications and direct edits when code is in scope
 - Default to one-line `//` comments that explain one purpose, reason, contract, or non-obvious constraint
 - Use consecutive `//` lines only when lifecycle, ownership, authority, side effects, or failure behavior cannot be stated accurately in one line
 - Give every added or meaningfully changed class, struct, function, and important property a concise purpose comment

@@ -1,0 +1,39 @@
+{
+  "name": "ue-project-rag",
+  "version": "0.1.0",
+  "description": "Local evidence retrieval for Unreal Engine projects.",
+  "author": {
+    "name": "Liutianyuan / PerfectWorld",
+    "url": "https://github.com/91pao"
+  },
+  "homepage": "https://github.com/91pao/PerfectWorld/tree/main/plugins/ue-project-rag",
+  "repository": "https://github.com/91pao/PerfectWorld",
+  "license": "MIT",
+  "keywords": [
+    "unreal-engine",
+    "ue5",
+    "retrieval",
+    "mcp",
+    "code-search"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "UE Project RAG",
+    "shortDescription": "本地检索 UE 项目中的代码、配置、文档和资产元数据。",
+    "longDescription": "UE Project RAG indexes Unreal Engine project evidence locally and returns bounded, cited candidates for direct verification.",
+    "developerName": "Liutianyuan / PerfectWorld",
+    "category": "Engineering",
+    "capabilities": [
+      "Interactive",
+      "Read"
+    ],
+    "websiteURL": "https://github.com/91pao/PerfectWorld/tree/main/plugins/ue-project-rag",
+    "brandColor": "#14532D",
+    "defaultPrompt": [
+      "索引当前 Unreal Engine 项目",
+      "检索这个 UE 功能的现有实现",
+      "检查 UE 项目检索索引状态"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 ---
 name: ue-router
-description: Route Unreal Engine tasks across planning, read-only complete implementation, direct implementation, investigation, review, and Blueprint/editor workflows. Use for UE C++, Blueprint, gameplay, UI, networking, assets/data, editor, build, configuration, and architecture work.
+description: Route Unreal Engine tasks across planning, read-only change specification, direct implementation, investigation, review, and Blueprint workflows. Use for UE C++, Blueprint, gameplay, UI, networking, assets/data, editor, build, configuration, and architecture work.
 ---
 
 # UE Router

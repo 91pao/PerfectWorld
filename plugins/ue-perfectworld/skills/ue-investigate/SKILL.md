@@ -25,7 +25,7 @@ Read only when applicable:
 ## Workflow
 
 1. Read the exact user error/log first.
-2. Search for the relevant symbol, asset reference, configuration, call site, log category, generated output, or build dependency with `rg` and available UE tooling.
+2. When `ue_rag_*` tools are available, load `../../references/ue-rag-integration.md` and use bounded retrieval to discover candidates; otherwise use `rg`. Verify every candidate with direct project reads before tracing the relevant symbol, asset reference, configuration, call site, log category, generated output, or build dependency.
 3. Compare with trustworthy working paths that have compatible ownership and lifecycle.
 4. Build a responsibility evidence matrix for the failing path; verify object acquisition, guards, diagnostics, UI composition, navigation, state, and cleanup independently when applicable.
 5. Separate likely root cause from symptoms.

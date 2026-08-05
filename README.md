@@ -1,9 +1,10 @@
 # PerfectWorld Codex Plugins
 
-本仓库是一个 Codex marketplace，同时发布两个可以独立安装的插件：
+本仓库是一个 Codex marketplace，同时发布三个可以独立安装的插件：
 
 - `perfectworld`：面向通用软件项目的完整产品开发专家团队。
-- `ue-perfectworld`：面向所有 Unreal Engine 项目的安全开发与教学工作流。
+- `ue-perfectworld`：面向所有 Unreal Engine 项目的证据驱动开发工作流。
+- `ue-project-rag`：面向大型 Unreal Engine 项目的本地项目证据检索插件。
 
 它们共用一个 GitHub 仓库和 marketplace，但不存在安装依赖。添加 marketplace 只是让 Codex
 知道插件来源；安装其中一个插件不会自动安装另一个。
@@ -14,10 +15,10 @@
 | --- | --- | --- |
 | 插件 ID | `perfectworld` | `ue-perfectworld` |
 | 主要对象 | Web、App、服务端、产品和通用软件项目 | Unreal Engine C++、Blueprint、Gameplay、UI、网络、资产、编辑器和构建配置 |
-| 核心范围 | 从产品立项到设计、开发、QA、安全、发布和复盘的完整流程 | UE 功能规划、只读排查、教学实现、授权后直接实现、代码审查和 Blueprint 协作 |
+| 核心范围 | 从产品立项到设计、开发、QA、安全、发布和复盘的完整流程 | UE 功能规划、只读变更规格、授权后直接实现、代码审查和 Blueprint 协作 |
 | 内置工作流 | 23 个通用专家角色 | 7 个 UE 专用技能和 10 份工程规则 |
 | 默认写文件策略 | 根据任务和用户要求执行 | 默认不修改工作区，只有明确要求写入文件时才修改 |
-| 代码交付重点 | 完成通用工程任务并验证结果 | 可在对话中按真实编写顺序给出可逐字录入的完整代码和全面、简洁的 `//` 注释 |
+| 代码交付重点 | 完成通用工程任务并验证结果 | 基于当前项目证据确定最小变更面、所有权、生命周期和验证边界 |
 | 项目适配方式 | 根据当前软件项目选择专家角色 | 读取当前 UE 项目的真实类型、调用链、生命周期、网络权威和资产配置，不硬编码具体项目惯例 |
 | 是否可以单独安装 | 可以 | 可以 |
 
@@ -39,7 +40,7 @@ PerfectWorld 是一套面向 Codex 的专家角色插件，用来覆盖从 0 立
 ## 当前仓库
 
 - GitHub: <https://github.com/91pao/PerfectWorld>
-- 插件 ID: `perfectworld`、`ue-perfectworld`
+- 插件 ID: `perfectworld`、`ue-perfectworld`、`ue-project-rag`
 - Marketplace 名称: `perfectworld`
 - 开发者: `Liutianyuan / PerfectWorld`
 - 官网: <https://games.wanmei.com/>
@@ -71,13 +72,13 @@ codex plugin add perfectworld@perfectworld
 
 这只会安装通用的 PerfectWorld，不会安装 UE PerfectWorld。
 
-### 同时安装两个插件
+### 同时安装 UE 工作流与检索
 
-需要同时处理通用产品流程和 UE 专项开发时，可以分别安装：
+需要在大型 UE 项目中同时使用工作流与本地检索时，可以分别安装：
 
 ```powershell
-codex plugin add perfectworld@perfectworld
 codex plugin add ue-perfectworld@perfectworld
+codex plugin add ue-project-rag@perfectworld
 ```
 
 安装完成后，建议开启一个新的 Codex 任务，让 Codex 重新加载插件技能。仓库更新后可以刷新 marketplace：
@@ -90,7 +91,7 @@ codex plugin marketplace upgrade perfectworld
 
 `ue-perfectworld` 是供 Codex 使用的项目中立 Unreal Engine 工作流插件，不是安装到 Unreal
 Engine 项目 `Plugins` 目录中的 `.uplugin`，也不包含会进入游戏包体的运行时代码。它通过技能和
-规则约束 Codex 如何理解、讲解、修改和审查 UE 项目。
+规则约束 Codex 如何理解、修改和审查 UE 项目。
 
 它适用于 UE C++、Blueprint、Gameplay、UI、网络、资产与数据、编辑器工具、模块与构建配置、
 问题排查和代码审查。插件不会把任何具体项目 API、模块名或旧代码当作通用模板。
@@ -99,10 +100,10 @@ Engine 项目 `Plugins` 目录中的 `.uplugin`，也不包含会进入游戏包
 
 | Skill | 作用 |
 | --- | --- |
-| `ue-router` | 判断当前 UE 任务应该进入规划、教学实现、直接实现、排查、审查还是 Blueprint 工作流。 |
+| `ue-router` | 判断当前 UE 任务应该进入规划、只读变更规格、直接实现、排查、审查还是 Blueprint 工作流。 |
 | `ue-plan` | 在不修改文件的前提下拆解功能、确认架构边界、依赖、生命周期、网络权威和验证方案。 |
 | `ue-investigate` | 先读取证据、复现和追踪调用链，定位根因；不会用重试、延迟或静默返回掩盖问题。 |
-| `ue-draft` | 默认模式，在对话中按用户实际编写顺序给出完整代码和编辑器步骤。 |
+| `ue-draft` | 默认模式，在不修改文件时输出经过证据核验的变更规格。 |
 | `ue-implement` | 只有用户明确要求修改文件、应用补丁或写入工作区时，才直接实现并验证改动。 |
 | `ue-review` | 审查 C++、Blueprint 集成、生命周期、网络权威、资产配置、生成代码漂移和回归风险。 |
 | `ue-blueprint` | 处理 C++ 与 Blueprint 的职责边界、暴露 API、事件、资产、控件和编辑器配置步骤。 |
@@ -119,10 +120,8 @@ Engine 项目 `Plugins` 目录中的 `.uplugin`，也不包含会进入游戏包
 - **先复用和配置现有能力**：新增代码、状态或基础设施前，检查完整类型继承、继承属性、Blueprint Designer、项目数据、路由和活跃调用者，并将每项行为分类为复用、配置、扩展或创建；只有证据排除兼容的复用与配置路径后，才允许扩展或创建。
 - **需求与能力必须匹配**：实现前冻结用户最新需求和硬边界，删除只服务于旧需求的机制；优先使用已经拥有该职责的最高层项目能力，若需求与允许范围冲突，则明确说明冲突、严格实现成本和最接近的项目原生替代方案，由用户决定。
 - **共享状态只保留一个权威身份**：多个界面或系统展示同一状态时，复用相同的 Tag、消息 ID、活动实例、复制字段或模型对象；`NEW`、角标、数量和不同图标默认只是表现，不为它们创建代理状态、转发事件或镜像存档。
-- **跨系统教学先确认最小设计**：先展示已验证证据、所有权图、与参考实现的差异和最小方案，得到确认后再给完整可逐字录入代码；用户明确要求跳过时除外。
-- **可以完全在对话里实现**：按照真实依赖顺序说明要修改的准确文件、位置、完整声明、完整函数体、调用点、Blueprint 操作和验证步骤，不使用伪代码或省略关键实现。
-- **代码可以逐字录入**：代码块不使用省略号、`TODO`、占位类型或“其余自行补充”，需要的 include、宏、模块依赖、绑定和失败分支必须完整。
-- **注释全面但简洁**：类、结构体、函数、关键属性和非显然逻辑都应覆盖；默认使用一行 `//` 说明一个必要意图，只有生命周期、所有权、网络权威或失败行为确实无法一行说清时才扩展为连续多行 `//`。
+- **未授权编辑时只输出变更规格**：明确已验证证据、所有权图、最小变更面、依赖与验证边界；不提供代码片段或逐步操作。
+- **RAG 只负责发现候选证据**：安装 `ue-project-rag` 后，可先检索符号、配置、资产元数据和文档，再直接读取项目文件核验；相似度与摘要不是工程结论。
 - **遵循当前项目而不是某个样板项目**：只采用在当前仓库中有活跃调用证据、职责兼容且生命周期一致的先例。
 - **代码必须能脱离聊天记录维护**：坚持单一权威数据源和清晰执行路径；每个新类型、字段、委托、覆写和抽象都要有当前需求与真实调用者，并通过需求变更、功能删除和无聊天上下文三项测试。
 - **连续失败时回溯架构**：反复出现编译、链接、反射、资产或配置失败时，停止叠加局部补丁，重新追踪所有权、数据流、生命周期、注册和项目先例。
@@ -132,15 +131,9 @@ Engine 项目 `Plugins` 目录中的 `.uplugin`，也不包含会进入游戏包
 - **结论不能超过验证等级**：交付前将适用职责和执行阶段标记为已验证、已否证、不可验证或不适用；源码检查不能冒充编译、运行、网络权威、持久化、跨会话或跨平台验证，存在必要缺口时不得声称完整、就绪、最佳或没有问题。
 - **最终自审是阻断阶段**：交付前重新检查正确性、安全、反射、生命周期、网络、持久化和失败路径；发现已知 BUG 必须先修复。若一个约 50 行可以清楚完成的功能被写成约 300 行，则视为复杂度审查失败，删除无用抽象并重写后再交付。
 
-### 两种实现方式
+### 工作方式
 
-默认采用对话教学模式：
-
-```text
-用 UE PerfectWorld 实现这个功能。不要修改项目文件，按照我应当编写的顺序给出完整代码和全面、简洁的 // 注释。
-```
-
-只有明确授权后才直接写入项目：
+未授权写入时，UE PerfectWorld 只产出基于项目证据的变更规格。只有明确授权后才直接写入项目：
 
 ```text
 用 UE PerfectWorld 直接修改项目文件实现这个功能，并在结束前完成最终自审和验证。
@@ -157,11 +150,23 @@ Engine 项目 `Plugins` 目录中的 `.uplugin`，也不包含会进入游戏包
 ```
 
 ```text
-用 UE PerfectWorld 按照我应当编写的顺序给出完整代码，不要修改文件
+用 UE PerfectWorld 审查当前 UE 改动，优先找会造成崩溃、网络越权、生命周期错误或数据损坏的问题
 ```
 
+### UE Project RAG
+
+`ue-project-rag` 是可选的本地 MCP 检索插件，适合百万行级 UE 项目。第一版使用本地结构化索引与全文检索，不使用 embedding 或外部 API；它只索引代码、配置、文档和导出的资产元数据，不上传项目内容，也不替代直接读取工程证据。目标项目应将 `.ue-rag/` 加入 `.gitignore`。运行 MCP 服务需要 Python 3.10 或更高版本。
+
+先安装：
+
+```powershell
+codex plugin add ue-project-rag@perfectworld
+```
+
+首次对某个项目使用时，调用 `ue_rag_index` 建立本地索引。随后可与 UE PerfectWorld 一起使用：
+
 ```text
-用 UE PerfectWorld 审查当前 UE 改动，优先找会造成崩溃、网络越权、生命周期错误或数据损坏的问题
+用 UE PerfectWorld 排查这个 UE bug；使用 UE Project RAG 查找候选路径，再直接核验调用链和生命周期。
 ```
 
 ## 快速开始
@@ -391,6 +396,9 @@ plugins/ue-perfectworld/.codex-plugin/plugin.json
 plugins/ue-perfectworld/skills/
 plugins/ue-perfectworld/references/
 plugins/ue-perfectworld/assets/
+plugins/ue-project-rag/.codex-plugin/plugin.json
+plugins/ue-project-rag/server/
+plugins/ue-project-rag/skills/
 scripts/publish-github.ps1
 ```
 
@@ -400,6 +408,7 @@ scripts/publish-github.ps1
 codex plugin marketplace add .
 codex plugin add perfectworld@perfectworld
 codex plugin add ue-perfectworld@perfectworld
+codex plugin add ue-project-rag@perfectworld
 ```
 
 上面两个 `plugin add` 命令是两个可选项，不要求同时执行。
@@ -409,6 +418,7 @@ codex plugin add ue-perfectworld@perfectworld
 ```powershell
 python "$HOME\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .\plugins\perfectworld
 python "$HOME\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .\plugins\ue-perfectworld
+python "$HOME\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .\plugins\ue-project-rag
 ```
 
 单个 skill 验证命令：
@@ -421,13 +431,17 @@ python "$HOME\.codex\skills\.system\skill-creator\scripts\quick_validate.py" .\p
 
 ### `perfectworld` 和 `ue-perfectworld` 有什么区别？
 
-`perfectworld` 覆盖通用产品开发全流程；`ue-perfectworld` 专注 Unreal Engine，并提供默认只读、项目惯例发现、完整教学代码、全面简洁的 `//` 注释和最终复杂度自审。两个插件可以独立安装。
+`perfectworld` 覆盖通用产品开发全流程；`ue-perfectworld` 专注 Unreal Engine，并提供默认只读、项目惯例发现和最终复杂度自审。`ue-project-rag` 为大型 UE 项目提供可选的本地证据检索。三个插件可独立安装。
 
 ### 怎样只安装 UE PerfectWorld？
 
 先执行 `codex plugin marketplace add 91pao/PerfectWorld` 添加插件来源，再执行
 `codex plugin add ue-perfectworld@perfectworld`。不要执行
 `codex plugin add perfectworld@perfectworld`，就不会安装通用 PerfectWorld。
+
+### 如何让 UE PerfectWorld 使用项目检索？
+
+安装 `ue-project-rag` 后，在 UE 项目根目录调用 `ue_rag_index` 建立本地索引。UE PerfectWorld 会将检索结果作为候选证据，并继续直接读取源码、配置和资产进行核验。
 
 ### UE PerfectWorld 是 Unreal Engine 的 `.uplugin` 吗？
 
@@ -436,7 +450,7 @@ UE 项目的 `Plugins` 目录，也不会进入游戏运行时或最终包体。
 
 ### UE PerfectWorld 会默认修改我的 UE 项目吗？
 
-不会。它默认只读取和分析项目，并在对话中给出教学实现。只有用户明确要求修改文件、应用补丁
+不会。它默认只读取和分析项目，并输出变更规格。只有用户明确要求修改文件、应用补丁
 或直接写入工作区时，才会进入直接实现模式。
 
 ### PerfectWorld 会自动选角色吗？

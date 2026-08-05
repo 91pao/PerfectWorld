@@ -15,5 +15,7 @@ Use these rules for every Unreal Engine project task.
 - When files are changed without a UE build, state that clearly and request the user's local compile result when relevant
 - Do not refactor unrelated code, rename stable APIs, move files, or broaden the requested scope for cosmetic cleanup
 - Use `rg` first to discover project structure and relevant patterns before reading broad files
+- When the optional `ue_rag_*` MCP tools are available, use them only to discover bounded candidates in large projects, then verify candidates with direct project reads before treating them as evidence
+- Do not use a RAG score, excerpt, or asset metadata as proof of active ownership, lifecycle, authority, persistence, cleanup, or Blueprint runtime behavior
 - Read source files with explicit UTF-8 when Chinese text is present or shell output looks suspicious
 - Load network, transaction, UI-contract, edit-safety, comment, and bug-fix references only when the current task actually needs them

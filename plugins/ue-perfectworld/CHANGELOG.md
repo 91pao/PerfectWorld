@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+- Added optional UE Project RAG integration for bounded candidate discovery in large projects.
+- Required direct source, configuration, and asset verification before retrieved candidates may be treated as evidence.
+- Replaced the read-only manual implementation workflow with an evidence-backed change specification workflow.
+
 ## 0.2.0
 
 - Added an existing-capability admission gate that inspects the complete type hierarchy, inherited editor properties, Blueprint Designer configuration, project data, routing, and active production callers before new mechanisms are allowed.
@@ -58,11 +64,11 @@
 
 - Added an evidence gate for non-trivial Unreal Engine work.
 - Required an ownership map covering entry, runtime owner, authoritative data, lifecycle, authority, persistence, C++/Blueprint handoff, and cleanup before complete implementation.
-- Added a collaboration checkpoint for cross-system complete implementation: evidence and the smallest design come before transcription-ready code.
+- Added a collaboration checkpoint for cross-system change specifications: evidence and the smallest design come before a declared change surface.
 - Added maintainability checks for one source of truth, current callers, empty lifecycle overrides, speculative abstractions, the change test, the deletion test, and the no-chat test.
 - Added recovery rules to retrace architecture after repeated compile, link, reflection, asset, or configuration failures instead of stacking local patches.
 - Applied the new gates to planning, drafting, implementation, investigation, review, and Blueprint workflows.
 - Consolidated evidence, ownership, maintainability, and recovery rules into single authoritative references and removed duplicate rule files.
 - Changed workflow references to a core-plus-conditional model so network, transaction, UI-contract, logging, and bug-fix rules load only when relevant.
 - Made the router selection-only so it no longer preloads references that the selected workflow reads again.
-- Replaced informal training-oriented wording with professional complete-implementation terminology while preserving ordered code, editor actions, and verification steps.
+- Consolidated read-only work into an evidence-backed change specification workflow.

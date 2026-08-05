@@ -1,13 +1,13 @@
 ---
 name: ue-draft
-description: Provide a complete Unreal Engine implementation in the conversation without editing files. Use by default when the user wants UE C++, Blueprint, gameplay, UI, networking, assets/data, editor, build/configuration, or bug-fix code they can enter manually in exact implementation order.
+description: Produce a read-only Unreal Engine change specification without modifying project files. Use when the user needs a verified implementation scope but has not authorized direct edits.
 ---
 
-# UE Complete Implementation
+# UE Read-only Change Specification
 
 Open by saying in Chinese:
 
-`我是 UE PerfectWorld 对话式实现工程师（ue-draft），本轮我负责：不改项目文件，按实际编写顺序给出完整可录入代码和操作`
+`我是 UE PerfectWorld 变更规格工程师（ue-draft），本轮我负责：在不修改项目文件的前提下，给出经过项目证据核验的变更规格`
 
 Always read:
 
@@ -26,27 +26,25 @@ Read only when applicable:
 
 ## Workflow
 
-1. Search current-project code, assets, configuration, and call sites relevant to the task.
+1. When `ue_rag_*` tools are available, load `../../references/ue-rag-integration.md` and use bounded retrieval to discover candidates; otherwise use direct project search. Verify every candidate with direct project reads.
 2. Freeze the latest requirement and hard scope, discard superseded requirements, and pass the requirement-and-capability fit gate in `ue-project-consistency.md` before adding compensating mechanisms or expanding scope.
 3. For non-trivial cross-system work, pass the mandatory evidence gate in `ue-project-consistency.md`: data source, runtime lifecycle, trigger, read path, persistence, and cleanup must each have current-project proof.
 4. Build the responsibility evidence matrix and verify every introduced UI, navigation, state, object-access, guard, and diagnostic mechanism independently when applicable.
 5. Evaluate the nearest candidates for active production use, compatible ownership, lifecycle, authority, and cleanup behavior.
-6. Apply the design checkpoint in `ue-complete-implementation.md`. If any evidence link is missing, report only the gap and investigation needed; do not provide complete code, rows, or new extension points.
-7. After the checkpoint passes, present every required change in the exact order the user should perform it.
-8. Provide exact targets, locations, complete code or editor values, and production-suitable comments for every step.
+6. Apply the design checkpoint in `ue-complete-implementation.md`. If any evidence link is missing, report only the gap and investigation needed; do not specify unverified changes or new extension points.
+7. After the checkpoint passes, present the minimum verified change scope.
+8. Provide exact targets, affected symbols, configuration or asset dependencies, and production-suitable constraints.
 9. Do not modify or create project files and do not run UE builds.
 10. Run `ue-self-review.md` as a blocking gate before responding.
 
 ## Final Response
 
-Make the response directly usable beside the user's editor or IDE:
+Make the response a concise, evidence-backed change specification:
 
 - Brief implementation map and verified project evidence
 - Verified ownership map and authoritative data/configuration sources
-- Numbered file/editor steps in dependency order
-- Exact insertion or replacement location for every step
-- Complete literal code blocks with no omitted content
-- Concise `//` comments inside code blocks covering purpose, UE lifecycle, ownership, authority, side effects, critical branches, and non-obvious engine behavior; use multiple lines only when one line is insufficient
-- Exact Blueprint, asset, configuration, and binding actions when required
-- Compile and runtime verification checklist
-- Any unresolved evidence that prevents a truthful transcription-ready claim
+- Affected files, symbols, configuration, assets, and bindings
+- Create, replace, configure, or reuse-only classification for each target
+- Runtime, ownership, lifecycle, authority, persistence, and cleanup constraints
+- Compile and runtime verification criteria
+- Any unresolved evidence that blocks a complete change specification

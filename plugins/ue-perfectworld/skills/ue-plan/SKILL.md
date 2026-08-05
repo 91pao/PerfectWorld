@@ -22,7 +22,7 @@ Read only when applicable:
 
 ## Workflow
 
-1. Use `rg` to discover candidate same-domain code, assets, configuration, and call sites.
+1. When `ue_rag_*` tools are available, load `../../references/ue-rag-integration.md` and use bounded retrieval to discover candidates; otherwise use `rg`. Verify every candidate with direct project reads.
 2. Freeze the latest requirement and hard scope, discard superseded requirements, and pass the requirement-and-capability fit gate in `ue-project-consistency.md`.
 3. Identify the actual ownership chain, runtime lifecycle, trigger, read path, authority model, data source, persistence boundary, cleanup path, and C++/Blueprint split relevant to the task.
 4. Build the responsibility evidence matrix required by `ue-project-consistency.md`; do not use one similar feature to justify unrelated UI, navigation, state, guard, or diagnostic behavior.
