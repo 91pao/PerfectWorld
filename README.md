@@ -1,12 +1,14 @@
 # PerfectWorld
 
-面向 Codex 的插件集合。按项目类型安装需要的插件，不需要整套安装。
+PerfectWorld 是一组面向 Codex 的工程插件。通用开发、Unreal Engine 工作流和大型项目检索分别拆成独立组件，按项目需要组合安装。
 
-| 插件 | 适用场景 | 说明 |
-| --- | --- | --- |
-| `perfectworld` | 产品、应用、服务端、QA、审查、发布与文档 | 通用开发工作流 |
-| `ue-perfectworld` | Unreal Engine 的规划、排查、实现、审查与 Blueprint 集成 | 以项目证据为依据；未经明确授权不修改项目文件 |
-| `ue-project-rag` | 规模较大的 Unreal Engine 项目 | 本地检索代码、配置、文档与资产元数据 |
+## 插件一览
+
+| 插件 | 当前版本 | 负责内容 | 适用项目 |
+| --- | --- | --- | --- |
+| `perfectworld` | 0.4.0 | 产品、规格、计划、实现、排查、审查、QA、发布与文档 | 应用、服务端、工具和网站 |
+| `ue-perfectworld` | 0.3.0 | UE 规划、代码排查、实现、审查与 Blueprint 协作 | Unreal Engine 项目 |
+| `ue-project-rag` | 0.1.0 | 本地代码、配置、文档与资产元数据检索 | 文件数量较多的 UE 项目 |
 
 ## 安装
 
@@ -16,76 +18,80 @@
 codex plugin marketplace add 91pao/PerfectWorld
 ```
 
-再按需安装：
+再选择需要的组件：
 
 ```powershell
+# 通用开发
 codex plugin add perfectworld@perfectworld
+
+# Unreal Engine 工作流
 codex plugin add ue-perfectworld@perfectworld
+
+# 大型 UE 项目的检索能力
 codex plugin add ue-project-rag@perfectworld
 ```
 
-安装后新开一个 Codex 任务，让技能和 MCP 工具重新加载。仓库有更新时执行：
+插件更新后执行：
 
 ```powershell
 codex plugin marketplace upgrade perfectworld
 ```
 
-## Unreal Engine
+## Unreal Engine 组合
 
-`ue-perfectworld` 是 Codex 插件，不是 Unreal Engine 的 `.uplugin`。它不会进入项目的 `Plugins` 目录，也不会参与游戏打包。
+| 工作内容 | 建议安装 | 结果 |
+| --- | --- | --- |
+| 功能设计、Bug 排查、代码审查、Blueprint 协作 | `ue-perfectworld` | 从当前项目的调用关系、配置、资产与生命周期中建立实施依据 |
+| 数千文件的项目、跨模块查找、历史实现对照 | `ue-perfectworld` + `ue-project-rag` | 先定位候选，再回到项目源码和配置完成核验 |
 
-处理 UE 任务时，它会先确认当前项目中的调用者、配置、资产、所有权、生命周期、网络权威、持久化和清理路径。只有用户明确要求修改文件时，才会写入工作区。
+`ue-perfectworld` 是 Codex 插件，不会写入 Unreal 工程的 `Plugins` 目录，也不会进入游戏打包流程。它把代码、Blueprint、配置、DataAsset、网络边界、状态所有权、持久化与清理视为同一个工程问题，而不是分散的独立检查项。
 
-插件包含路由、规划、排查、只读变更规格、直接实现、审查和 Blueprint 集成七类工作流。具体规则保留在插件内部，不在 README 重复展开。
+## UE Project RAG
 
-### 大型项目检索
+`ue-project-rag` 为本地 MCP 服务建立 `.ue-rag/` 索引，覆盖：
 
-当仓库规模大到单次搜索难以收敛时，可将 `ue-project-rag` 与 `ue-perfectworld` 一起安装。它会在 UE 项目内创建 `.ue-rag/` 索引，并提供四个 MCP 工具：
+- C++、Blueprint 相关文本、INI、JSON、CSV、Markdown 与其他可读取项目文件
+- 符号、路径、文件摘要与受支持资产的元数据
+- 关键词、路径与内容片段检索
 
-- `ue_rag_index`
-- `ue_rag_search`
-- `ue_rag_open`
-- `ue_rag_status`
+服务提供四个工具：
 
-第一版只做本地结构化检索和全文检索，不调用 embedding 服务，也不上传项目内容。检索结果只是候选线索，UE PerfectWorld 仍会直接读取源码、配置和资产后再下结论。
+| 工具 | 用途 |
+| --- | --- |
+| `ue_rag_index` | 建立或刷新索引 |
+| `ue_rag_search` | 检索候选代码、配置、文档和资产 |
+| `ue_rag_open` | 读取命中的受限内容片段 |
+| `ue_rag_status` | 查看索引覆盖范围与状态 |
 
-请在 UE 项目的 `.gitignore` 中加入：
+索引默认保留在项目本地，不调用 embedding 服务，也不上传工程内容。将下列规则加入 UE 项目的 `.gitignore`：
 
 ```gitignore
 .ue-rag/
 ```
 
-本地 MCP 服务需要 Python 3.10 或更高版本。
+运行本地 MCP 服务需要 Python 3.10 或更高版本。
 
 ## 仓库结构
 
 ```text
-.agents/plugins/marketplace.json
-plugins/perfectworld/
-plugins/ue-perfectworld/
-plugins/ue-project-rag/
-scripts/
+.agents/plugins/marketplace.json    Marketplace 定义
+plugins/perfectworld/               通用开发插件
+plugins/ue-perfectworld/            Unreal Engine 工作流
+plugins/ue-project-rag/             UE 本地检索服务与测试
+scripts/                            发布与维护脚本
 ```
 
-## 开发验证
-
-在仓库根目录校验插件：
+## 开发与验证
 
 ```powershell
 python "$HOME\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .\plugins\ue-perfectworld
 python "$HOME\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .\plugins\ue-project-rag
-```
-
-RAG 服务的测试：
-
-```powershell
 python -m unittest plugins\ue-project-rag\tests\test_ue_rag_mcp.py
 ```
 
-## 更新记录
+## 版本记录
 
-Marketplace 的发布记录见 [CHANGELOG.md](CHANGELOG.md)。插件内部的行为变化分别记录在：
-
+- [仓库更新日志](CHANGELOG.md)
 - [UE PerfectWorld](plugins/ue-perfectworld/CHANGELOG.md)
 - [UE Project RAG](plugins/ue-project-rag/CHANGELOG.md)
 
