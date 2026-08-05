@@ -1,0 +1,10 @@
+{
+  "servers": {
+    "ue-project-rag": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["<repo-root>/mcp/ue-project-rag/server.py"],
+      "cwd": "<repo-root>"
+    }
+  }
+}

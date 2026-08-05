@@ -1,6 +1,6 @@
 # PerfectWorld
 
-PerfectWorld 是一组面向 Codex 的工程插件。通用开发、Unreal Engine 工作流和大型项目检索分别拆成独立组件，按项目需要组合安装。
+PerfectWorld 是一组可用于 Codex 和其他编程 Agent 的工程工作流。通用开发、Unreal Engine 工作流和大型项目检索分别拆成独立组件，按项目需要组合使用。
 
 ## 插件一览
 
@@ -10,7 +10,7 @@ PerfectWorld 是一组面向 Codex 的工程插件。通用开发、Unreal Engin
 | `ue-perfectworld` | 0.3.0 | UE 规划、代码排查、实现、审查与 Blueprint 协作 | Unreal Engine 项目 |
 | `ue-project-rag` | 0.1.0 | 本地代码、配置、文档与资产元数据检索 | 文件数量较多的 UE 项目 |
 
-## 安装
+## Codex 安装
 
 先登记 marketplace：
 
@@ -37,6 +37,19 @@ codex plugin add ue-project-rag@perfectworld
 codex plugin marketplace upgrade perfectworld
 ```
 
+## 其他 Agent
+
+跨平台规则位于 [core](core/README.md)，RAG 使用标准 `stdio` MCP 服务，平台入口和配置模板位于 [adapters](adapters/README.md)。
+
+| Agent | 工作流入口 | RAG 配置 |
+| --- | --- | --- |
+| Claude Code | `adapters/claude-code/CLAUDE.md` | `adapters/claude-code/mcp.json.example` |
+| Cursor | `adapters/cursor/.cursor/rules/perfectworld.mdc` | `adapters/cursor/mcp.json.example` |
+| GitHub Copilot / VS Code | `adapters/github-copilot/.github/copilot-instructions.md` | `adapters/github-copilot/mcp.json.example` |
+| 其他支持项目指令与 MCP 的 Agent | `adapters/generic/AGENTS.md` | `adapters/generic/mcp.json.example` |
+
+将配置模板中的 `<repo-root>` 替换为本仓库的绝对路径。各平台只适配入口与配置，工程约束、UE 工作流和检索边界都从同一套 `core/` 文件读取。
+
 ## PerfectWorld
 
 `perfectworld` 面向通用工程任务，覆盖从需求收敛到发布后的完整开发周期。它会根据当前任务选择合适的工作流，而不是要求为每类问题单独安装插件。
@@ -56,7 +69,7 @@ codex plugin marketplace upgrade perfectworld
 | 功能设计、Bug 排查、代码审查、Blueprint 协作 | `ue-perfectworld` | 从当前项目的调用关系、配置、资产与生命周期中建立实施依据 |
 | 数千文件的项目、跨模块查找、历史实现对照 | `ue-perfectworld` + `ue-project-rag` | 先定位候选，再回到项目源码和配置完成核验 |
 
-`ue-perfectworld` 是 Codex 插件，不会写入 Unreal 工程的 `Plugins` 目录，也不会进入游戏打包流程。它把代码、Blueprint、配置、DataAsset、网络边界、状态所有权、持久化与清理视为同一个工程问题，而不是分散的独立检查项。
+在 Codex 中，`ue-perfectworld` 是插件，不会写入 Unreal 工程的 `Plugins` 目录，也不会进入游戏打包流程。其他 Agent 使用同样的 UE 核心工作流文件。它把代码、Blueprint、配置、DataAsset、网络边界、状态所有权、持久化与清理视为同一个工程问题，而不是分散的独立检查项。
 
 它包含规划、排查、只读变更规格、直接实现、审查与 Blueprint 集成等工作流，适合需要在既有 UE 项目约束下完成改动的任务。
 
@@ -89,6 +102,9 @@ codex plugin marketplace upgrade perfectworld
 
 ```text
 .agents/plugins/marketplace.json    Marketplace 定义
+core/                                跨 Agent 工作流、规则与交付约定
+mcp/ue-project-rag/                  标准 stdio MCP 启动入口
+adapters/                            Codex、Claude Code、Cursor、Copilot 与通用入口
 plugins/perfectworld/               通用开发插件
 plugins/ue-perfectworld/            Unreal Engine 工作流
 plugins/ue-project-rag/             UE 本地检索服务与测试
@@ -101,6 +117,7 @@ scripts/                            发布与维护脚本
 python "$HOME\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .\plugins\ue-perfectworld
 python "$HOME\.codex\skills\.system\plugin-creator\scripts\validate_plugin.py" .\plugins\ue-project-rag
 python -m unittest plugins\ue-project-rag\tests\test_ue_rag_mcp.py
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\test-agent-adapters.ps1
 ```
 
 ## 版本记录

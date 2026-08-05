@@ -26,6 +26,12 @@
 
 - 重组仓库首页、版本记录和插件说明，明确通用开发、UE 工作流与本地检索三类组件的关系。
 
+### 跨 Agent 支持
+
+- 新增平台无关的工程约束、通用开发、UE 工作流、检索规则和变更记录约定。
+- 为 Claude Code、Cursor、GitHub Copilot / VS Code 与通用 Agent 提供项目指令和 MCP 配置模板。
+- 增加独立的 UE Project RAG MCP 启动入口与适配层结构检查。
+
 ## 2026-07-27
 
 ### UE PerfectWorld 0.2.0
