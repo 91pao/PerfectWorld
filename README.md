@@ -37,7 +37,19 @@ codex plugin add ue-project-rag@perfectworld
 codex plugin marketplace upgrade perfectworld
 ```
 
-## Unreal Engine 组合
+## PerfectWorld
+
+`perfectworld` 面向通用工程任务，覆盖从需求收敛到发布后的完整开发周期。它会根据当前任务选择合适的工作流，而不是要求为每类问题单独安装插件。
+
+| 工作方向 | 覆盖内容 |
+| --- | --- |
+| 产品与方案 | 需求梳理、规格、计划、架构与开发体验 |
+| 工程实现 | 排查、代码审查、质量检查、性能与安全分析 |
+| 交付维护 | QA、文档、发布准备、阶段复盘与项目记忆 |
+
+适合应用、服务端、工具和网站项目。对于 Unreal Engine 项目，使用下方的 UE PerfectWorld 组件。
+
+## UE PerfectWorld
 
 | 工作内容 | 建议安装 | 结果 |
 | --- | --- | --- |
@@ -45,6 +57,8 @@ codex plugin marketplace upgrade perfectworld
 | 数千文件的项目、跨模块查找、历史实现对照 | `ue-perfectworld` + `ue-project-rag` | 先定位候选，再回到项目源码和配置完成核验 |
 
 `ue-perfectworld` 是 Codex 插件，不会写入 Unreal 工程的 `Plugins` 目录，也不会进入游戏打包流程。它把代码、Blueprint、配置、DataAsset、网络边界、状态所有权、持久化与清理视为同一个工程问题，而不是分散的独立检查项。
+
+它包含规划、排查、只读变更规格、直接实现、审查与 Blueprint 集成等工作流，适合需要在既有 UE 项目约束下完成改动的任务。
 
 ## UE Project RAG
 
