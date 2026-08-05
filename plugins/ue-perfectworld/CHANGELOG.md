@@ -1,74 +1,19 @@
-# Changelog
+# UE PerfectWorld 更新日志
 
-## 0.3.0
+## 0.3.0 - 2026-08-06
 
-- Added optional UE Project RAG integration for bounded candidate discovery in large projects.
-- Required direct source, configuration, and asset verification before retrieved candidates may be treated as evidence.
-- Replaced the read-only manual implementation workflow with an evidence-backed change specification workflow.
+- 支持可选的 UE Project RAG：用于在大型项目中先收敛候选代码、配置和资产路径。
+- 检索结果不能替代项目证据；所有权、生命周期、网络权威、持久化、清理和 Blueprint 行为仍需直接核验。
+- 未授权编辑时，输出基于证据的变更规格，不再走手工录入式实现流程。
 
-## 0.2.0
+## 0.2.0 - 2026-07-27
 
-- Added an existing-capability admission gate that inspects the complete type hierarchy, inherited editor properties, Blueprint Designer configuration, project data, routing, and active production callers before new mechanisms are allowed.
-- Required every responsibility to be classified as `reuse`, `configure`, `extend`, or `create`, with evidence disproving compatible reuse and configuration paths before extension or creation.
-- Added a UI configuration-first order that prefers existing widget and base-component settings, table or routing configuration, and established helpers before local code or shared-framework changes.
-- Added blocking complexity signals for new DataAssets, red-point identities, save structures, RPCs, proxy state, delegates, managers, synchronization paths, and lifecycle overrides used only for display or navigation.
-- Required compensating mechanisms to be removed when later evidence reveals an existing project capability, preventing obsolete parallel implementations from surviving discovery.
-- Kept the enforcement in the central consistency and final self-review references so all UE workflows inherit it without another skill or rule file.
+- 新增现有能力检查：在新增机制前先判断是否可以复用或配置项目已有能力。
+- 将每项职责明确为复用、配置、扩展或创建。
+- UI 优先采用已有配置；对新增状态、RPC、持久化和管理器路径增加复杂度检查。
 
-## 0.1.9
+## 0.1.x - 2026-07-17 至 2026-07-25
 
-- Added a completion claim gate that converts the existing responsibility evidence matrix and change-surface manifest into explicit `verified`, `disproven`, `unavailable`, or `not applicable` statuses before delivery.
-- Prevented complete, final, ready, best, and no-findings conclusions when a required responsibility or execution stage remains disproven or unavailable.
-- Required conclusions to state the highest level actually verified and prohibited source inspection from being presented as compile, runtime, authority, persistence, cross-session, or cross-platform validation.
-- Added a focused failure-path pass for applicable missing, malformed, stale, duplicate, inactive, repeated, late, out-of-order, reload, reconnect, and cleanup cases.
-- Kept the new enforcement inside the existing evidence and self-review references so every UE workflow inherits it without another rule file or feature-specific policy.
-
-## 0.1.8
-
-- Added an explicit state-ownership split between producer and persistence owner, acknowledgement owner, and display-only consumers.
-- Required multiple surfaces that represent the same state to reuse the same authoritative identity instead of introducing proxy state, forwarding events, mirrored saves, or synchronization code.
-- Classified visual variants such as `NEW`, badges, counts, and alternate brushes as presentation unless a verified business rule proves they are distinct state.
-- Added execution-stage mapping for entry, configuration, routing, target resolution, creation, presentation, acknowledgement, persistence, and cleanup so different pipeline stages are not mistaken for duplicate systems.
-- Added a blocking change-surface manifest that separates create, replace, configure, and reuse-only targets and reopens the fit gate for undeclared shared-framework changes.
-- Extended final review across C++, factories, DataAssets, DataTables, GameplayTags, Blueprint bindings, UI extension and platform overrides, external payloads, persistence, and cleanup.
-- Required copied editor rows and assets to preserve verified hidden fields while replacing all platform-specific references that still point to the source feature.
-
-## 0.1.7
-
-- Added a blocking requirement-and-capability fit gate before implementation, compensation, or scope expansion.
-- Required workflows to freeze the user's latest requirements and hard boundaries and to discard mechanisms that belong only to superseded requirements.
-- Required each behavior to map to the highest-level verified project mechanism that already owns the responsibility.
-- When requirements conflict with the allowed scope, required the exact conflict, unavoidable strict implementation cost, and closest project-native alternative to be presented for the user's decision instead of inventing local compensation.
-- Required the fit gate to reopen when complexity grows through another file, shared integration point, state owner, persistence path, RPC, cache, delegate, timer, manager, or configuration source.
-- Extended final review to reject obsolete behavior, hidden scope expansion, and unnecessary mechanisms accumulated across requirement changes.
-
-## 0.1.6
-
-- Added a responsibility evidence matrix so one similar feature can no longer justify unrelated UI composition, navigation, state, lifecycle, guard, or diagnostic choices.
-- Required project-specific object acquisition, null guards, optional-widget handling, callback validation, and logging behavior to be verified against maintained code with the same responsibility and lifecycle.
-- Prohibited universal "every return must log" and "all failures stay silent" policies; failures must be classified and handled through the project's established path.
-- Required new traversals, direct manager calls, wrapper bypasses, lookup paths, and logging strategies to reopen project investigation before implementation.
-- Added blocking self-review checks for repeated boundary logs, invented HUD or player access patterns, inconsistent optional-widget handling, and design changes motivated only by reducing logs or line count.
-- Applied the new gate to planning, investigation, Blueprint collaboration, read-only complete implementation, direct implementation, and review workflows without adding duplicate rule files.
-
-## 0.1.5
-
-- Added a mandatory evidence gate for non-trivial cross-system UE designs before complete code, editor configuration, direct edits, or framework extensions.
-- Required separate proof for the authoritative data/configuration source, runtime owner and lifecycle, trigger, read or acknowledgement path, persistence, and cleanup or expiry path.
-- Prohibited treating adjacent responsibilities as proof of one another: parent-child aggregation does not prove message creation, a UI display path does not prove server persistence, and a trigger does not prove cleanup.
-- Required agents to decompose every unresolved implementation question into answerable subquestions, exhaust current-project search and end-to-end tracing for each one, then ask the user only for an external artifact or a genuine business decision that the project cannot answer.
-- Required an explicit evidence gap report when any required link is unavailable; agents must not fill the gap by inventing conditions, managers, DataAssets, fields, delegates, or lifecycle hooks.
-- Applied the gate to planning, investigation, Blueprint collaboration, read-only complete implementation, direct implementation, review, final self-review, and recovery after repeated failed fixes.
-
-## 0.1.4
-
-- Added an evidence gate for non-trivial Unreal Engine work.
-- Required an ownership map covering entry, runtime owner, authoritative data, lifecycle, authority, persistence, C++/Blueprint handoff, and cleanup before complete implementation.
-- Added a collaboration checkpoint for cross-system change specifications: evidence and the smallest design come before a declared change surface.
-- Added maintainability checks for one source of truth, current callers, empty lifecycle overrides, speculative abstractions, the change test, the deletion test, and the no-chat test.
-- Added recovery rules to retrace architecture after repeated compile, link, reflection, asset, or configuration failures instead of stacking local patches.
-- Applied the new gates to planning, drafting, implementation, investigation, review, and Blueprint workflows.
-- Consolidated evidence, ownership, maintainability, and recovery rules into single authoritative references and removed duplicate rule files.
-- Changed workflow references to a core-plus-conditional model so network, transaction, UI-contract, logging, and bug-fix rules load only when relevant.
-- Made the router selection-only so it no longer preloads references that the selected workflow reads again.
-- Consolidated read-only work into an evidence-backed change specification workflow.
+- 建立规划、排查、实现、审查和 Blueprint 集成工作流。
+- 增加项目证据、所有权、生命周期、网络权威、变更面和最终自审门禁。
+- 将重复规则收敛为核心规则加按需规则。

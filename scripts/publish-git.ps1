@@ -3,9 +3,6 @@ param(
   [string]$Message = "Update PerfectWorld plugin",
 
   [Parameter(Mandatory = $false)]
-  [string]$Summary,
-
-  [Parameter(Mandatory = $false)]
   [string]$Branch = "main"
 )
 
@@ -38,35 +35,6 @@ if ($LASTEXITCODE -ne 0) {
 
 $Status = & $Git -C $Repo status --porcelain
 if ($Status) {
-  if (-not $Summary) {
-    $Summary = $Message
-  }
-
-  $ManifestPath = Join-Path $Repo "plugins\perfectworld\.codex-plugin\plugin.json"
-  $Version = (Get-Content -Raw -Encoding UTF8 $ManifestPath | ConvertFrom-Json).version
-  $Date = Get-Date -Format "yyyy-MM-dd"
-  $Entry = "- $Date | v$Version | $Summary"
-  $ChangelogPath = Join-Path $Repo "CHANGELOG.md"
-  $Marker = "<!-- publish-entries -->"
-  $Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
-
-  if (-not (Test-Path -LiteralPath $ChangelogPath)) {
-    [System.IO.File]::WriteAllText(
-      $ChangelogPath,
-      "# PerfectWorld 更新日志`r`n`r`n## 自动发布记录`r`n`r`n$Marker`r`n",
-      $Utf8NoBom
-    )
-  }
-
-  $Changelog = [System.IO.File]::ReadAllText($ChangelogPath)
-  if (-not $Changelog.Contains($Marker)) {
-    throw "CHANGELOG.md is missing the publish marker: $Marker"
-  }
-  if (-not $Changelog.Contains($Entry)) {
-    $UpdatedChangelog = $Changelog.Replace($Marker, "$Marker`r`n$Entry")
-    [System.IO.File]::WriteAllText($ChangelogPath, $UpdatedChangelog, $Utf8NoBom)
-  }
-
   & $Git -C $Repo add --all
   if ($LASTEXITCODE -ne 0) {
     throw "git add failed"
@@ -90,4 +58,4 @@ if ($LASTEXITCODE -ne 0) {
   throw "git push failed"
 }
 
-Write-Host "Published with changelog: https://github.com/91pao/PerfectWorld"
+Write-Host "Published: https://github.com/91pao/PerfectWorld"
