@@ -1,0 +1,11 @@
+{
+  "projectRoot": "<absolute UE project path>",
+  "assetMetadata": ".ue-rag/assets.json",
+  "excludedDirectories": [
+    "Binaries",
+    "Build",
+    "DerivedDataCache",
+    "Intermediate",
+    "Saved"
+  ]
+}
