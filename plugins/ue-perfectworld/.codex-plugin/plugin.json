@@ -1,6 +1,6 @@
 {
   "name": "ue-perfectworld",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Project-neutral Codex workflows for Unreal Engine planning, investigation, implementation, review, and Blueprint integration.",
   "author": {
     "name": "Liutianyuan / PerfectWorld",
@@ -17,6 +17,9 @@
     "blueprint",
     "debugging",
     "code-review",
+    "architecture",
+    "async-resources",
+    "object-pooling",
     "project-evidence",
     "rag-integration"
   ],

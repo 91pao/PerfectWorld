@@ -16,6 +16,8 @@ Always read:
 - `../../references/ue-project-consistency.md`
 - `../../references/ue-comment-log-rules.md`
 - `../../references/ue-self-review.md`
+- `../../references/ue-architecture.md` when the requested change touches a shared component, manager, subsystem, pool, resource loader, factory, base class, public API, or multiple active consumers
+- `../../references/ue-code-style.md` when the change touches C++ or the C++/Blueprint handoff, or the user asks about naming, formatting, readability, or code review conventions
 
 Read only when applicable:
 
@@ -28,14 +30,16 @@ Read only when applicable:
 
 1. When `ue_rag_*` tools are available, load `../../references/ue-rag-integration.md` and use bounded retrieval to discover candidates; otherwise use direct project search. Verify every candidate with direct project reads.
 2. Freeze the latest requirement and hard scope, discard superseded requirements, and pass the requirement-and-capability fit gate in `ue-project-consistency.md` before adding compensating mechanisms or expanding scope.
-3. For non-trivial cross-system work, pass the mandatory evidence gate in `ue-project-consistency.md`: data source, runtime lifecycle, trigger, read path, persistence, and cleanup must each have current-project proof.
-4. Build the responsibility evidence matrix and verify every introduced UI, navigation, state, object-access, guard, and diagnostic mechanism independently when applicable.
-5. Evaluate the nearest candidates for active production use, compatible ownership, lifecycle, authority, and cleanup behavior.
-6. Apply the design checkpoint in `ue-complete-implementation.md`. If any evidence link is missing, report only the gap and investigation needed; do not specify unverified changes or new extension points.
-7. After the checkpoint passes, present the minimum verified change scope.
-8. Provide exact targets, affected symbols, configuration or asset dependencies, and production-suitable constraints.
-9. Do not modify or create project files and do not run UE builds.
-10. Run `ue-self-review.md` as a blocking gate before responding.
+3. If the capability is shared infrastructure, apply `ue-architecture.md`: list active consumers, define the public lifecycle contract, and separate generic infrastructure behavior from business-specific reactions.
+4. For non-trivial cross-system work, pass the mandatory evidence gate in `ue-project-consistency.md`: data source, runtime lifecycle, trigger, read path, persistence, and cleanup must each have current-project proof.
+5. For asynchronous resource or initialization work, compare event/delegate/callback completion with Tick polling; do not specify per-frame waiting as the default public design.
+6. Build the responsibility evidence matrix and verify every introduced UI, navigation, state, object-access, guard, and diagnostic mechanism independently when applicable.
+7. Evaluate the nearest candidates for active production use, compatible ownership, lifecycle, authority, cleanup behavior, and project style.
+8. Apply the design checkpoint in `ue-complete-implementation.md`. If any evidence link is missing, report only the gap and investigation needed; do not specify unverified changes or new extension points.
+9. After the checkpoint passes, present the minimum verified change scope.
+10. Provide exact targets, affected symbols, configuration or asset dependencies, and production-suitable constraints.
+11. Do not modify or create project files and do not run UE builds.
+12. Run `ue-self-review.md` as a blocking gate before responding.
 
 ## Final Response
 

@@ -13,6 +13,7 @@ Always read:
 
 - `../../references/ue-core-rules.md`
 - `../../references/ue-project-consistency.md`
+- `../../references/ue-code-style.md` when the task changes a C++ API, reflected property/function, or the C++/Blueprint handoff
 
 Read only when applicable:
 
@@ -26,6 +27,7 @@ Read only when applicable:
 - Discover whether the current project owns the behavior in Blueprint, C++, or a deliberate combination before proposing changes
 - Keep security-sensitive or network-authoritative state on the verified authority side; do not assume that a specific C++ class owns it
 - Preserve Blueprint lifecycle, latent action, delegate, interface, component, and asset-loading patterns already verified in the project
+- When reviewing a C++/Blueprint handoff, apply `ue-code-style.md` without overriding Unreal reflection or generated-code requirements; keep naming and formatting findings separate from ownership and runtime findings
 - Reuse existing assets, event patterns, data sources, and exposed APIs only after confirming active callers or editor references
 - Treat DataTables, DataAssets, Blueprint defaults, C++ members, and subsystem state as separate possible authorities; identify the single source of truth before adding another exposed property
 - Freeze the latest requirement and hard scope, discard superseded requirements, and pass the requirement-and-capability fit gate in `ue-project-consistency.md` before adding Blueprint or C++ compensation
