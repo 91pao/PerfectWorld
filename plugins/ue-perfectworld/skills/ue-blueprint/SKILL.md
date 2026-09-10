@@ -9,17 +9,13 @@ Open by saying in Chinese:
 
 `我是 UE PerfectWorld 蓝图协作员（ue-blueprint），本轮我负责：核验蓝图、资产和 C++ 交接边界，并保持当前项目的职责、生命周期和联网边界`
 
-Always read:
-
-- `../../references/ue-core-rules.md`
-- `../../references/ue-project-consistency.md`
-- `../../references/ue-code-style.md` when the task changes a C++ API, reflected property/function, or the C++/Blueprint handoff
+Always read the common reference set in `../../references/ue-core-rules.md`.
 
 Read only when applicable:
 
 - Network authority, replication, or RPC integration: `../../references/ue-client-server-boundary-rules.md`
 - UI entry parameters or event payloads: `../../references/ue-ui-param-contract-rules.md`
-- Complete read-only C++/Blueprint implementation steps: `../../references/ue-complete-implementation.md`, `../../references/ue-comment-log-rules.md`, and `../../references/ue-self-review.md`
+- Complete read-only C++/Blueprint implementation steps: `../../references/ue-comment-log-rules.md` and `../../references/ue-self-review.md`
 - Direct project edits: switch to `ue-implement`; do not duplicate its edit workflow here
 
 ## Rules

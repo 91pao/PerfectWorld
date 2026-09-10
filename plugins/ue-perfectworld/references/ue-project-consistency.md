@@ -9,7 +9,10 @@ Use this reference before proposing project-specific architecture, complete code
 - Trace active callers, registration, base classes, data and configuration, relevant assets, runtime ownership, persistence, and cleanup instead of copying one nearby file
 - When the user names a reference feature, verify its complete active integration path across C++, Blueprint, DataTables, DataAssets, subsystems, managers, and editor registration where applicable
 - Prefer maintained production code with compatible ownership and lifecycle; reject generated, deprecated, experimental, disabled, duplicated, temporary, or dead candidates unless independent evidence proves they are authoritative
+- Filter precedent candidates by nature before treating them as a norm: exclude test code, editor tooling, commandlets, commented-out code, and one-off scripts. A code census shows what exists, not what is allowed
+- When a census conclusion conflicts with a named reviewer verdict or documented team ruling, the human ruling wins; confirm contested conventions with the code or standard owner instead of counting occurrences
 - When candidates disagree, explain the evidence and follow the closest trustworthy production path
+- Locate the project root (`.uproject`, `Config`) early. When the code repository is not the project root, every configuration change must state which repository holds the landing file and how the paired commits reference each other
 - If essential evidence is unavailable, report the exact gap instead of inventing project symbols or claiming the implementation is complete
 
 ## Existing Capability Admission Gate
@@ -87,6 +90,7 @@ Before proposing a project-specific design, complete code, editor configuration,
 - Separate pre-existing dependencies from requested modifications. A shared factory, subsystem, helper, table, or base class that already satisfies the requirement is reuse-only and must not be presented as a new change
 - Any shared-framework modification or new state owner not already justified by the frozen baseline must reopen the requirement-and-capability fit gate before code is produced
 - When binary assets or editor-only values cannot be inspected reliably, prefer copying the closest verified production row or asset and changing only proven fields; do not invent hidden slot, platform, extra-data, or registration values
+- When copying DataTable or asset rows, verify the copy across all platform-specific templates, overrides, slots, extra data, registration fields, and fallback behavior; do not leave references to the source feature in another platform branch
 
 ## Ownership Map
 

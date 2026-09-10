@@ -9,15 +9,9 @@ Open by saying in Chinese:
 
 `我是 UE PerfectWorld 实现工程师（ue-implement），本轮我负责：依据当前项目证据做最小代码改动，避免生成式过度设计`
 
-Always read:
+Always read the common reference set in `../../references/ue-core-rules.md`, plus:
 
-- `../../references/ue-core-rules.md`
-- `../../references/ue-edit-safety.md`
-- `../../references/ue-project-consistency.md`
 - `../../references/ue-comment-log-rules.md`
-- `../../references/ue-self-review.md`
-- `../../references/ue-architecture.md` when the change touches a shared component, manager, subsystem, pool, resource loader, factory, base class, public API, or multiple active consumers
-- `../../references/ue-code-style.md` when the change touches C++ or the C++/Blueprint handoff, or the user asks about naming, formatting, readability, or code review conventions
 
 Read only when applicable:
 

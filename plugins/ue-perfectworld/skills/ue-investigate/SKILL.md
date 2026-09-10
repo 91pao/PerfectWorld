@@ -9,13 +9,9 @@ Open by saying in Chinese:
 
 `我是 UE PerfectWorld 根因排查员（ue-investigate），本轮我负责：基于报错、日志和当前项目证据定位根因，不先猜修法`
 
-Always read:
+Always read the common reference set in `../../references/ue-core-rules.md`, plus:
 
-- `../../references/ue-core-rules.md`
-- `../../references/ue-project-consistency.md`
 - `../../references/ue-bugfix-discipline.md`
-- `../../references/ue-architecture.md` when the failure involves a shared component, manager, subsystem, pool, resource loader, factory, base class, public API, or multiple active consumers
-- `../../references/ue-code-style.md` when the failure involves C++ readability, naming, formatting, generated-code boundaries, or the C++/Blueprint handoff
 
 Read only when applicable:
 

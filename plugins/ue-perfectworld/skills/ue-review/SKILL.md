@@ -9,13 +9,7 @@ Open by saying in Chinese:
 
 `我是 UE PerfectWorld 代码审查员（ue-review），本轮我负责：依据当前项目证据检查真实风险和生成式过度设计问题`
 
-Always read:
-
-- `../../references/ue-core-rules.md`
-- `../../references/ue-project-consistency.md`
-- `../../references/ue-self-review.md`
-- `../../references/ue-architecture.md` when the change touches a shared component, manager, subsystem, pool, resource loader, factory, base class, public API, or multiple active consumers
-- `../../references/ue-code-style.md` when the change touches C++ or the C++/Blueprint handoff, or the review includes naming, formatting, readability, or code convention concerns
+Always read the common reference set in `../../references/ue-core-rules.md`.
 
 Read only when applicable:
 
@@ -27,6 +21,8 @@ Read only when applicable:
 - Currency, inventory, rewards, purchases, or persistent resource changes: `../../references/ue-economy-rpc-rules.md`
 
 ## Review Priorities
+
+When the review target is a patch batch applied by the user, first verify application completeness: re-read the touched regions, confirm anchor placement, and run a residual-symbol sweep for APIs the batch removed. A partially applied patch is a finding category of its own, ordered above any code-level finding.
 
 When `ue_rag_*` tools are available, load `../../references/ue-rag-integration.md` to discover related active paths, then verify them directly before drawing a review conclusion.
 

@@ -40,6 +40,7 @@ For a pooled component that loads resources asynchronously, verify all of the fo
 - Recycle clears bindings, timers, pending requests, transient state, and ownership references.
 - A failed load reaches the same terminal notification path as a successful load; callers must not wait forever.
 - One usage cycle does not initialize the same resource twice through overlapping public entry points.
+- Every preload or async load states its retention owner: which streamable handle, strong reference, or cache entry keeps the asset alive between load completion and first use, and whether fire-and-forget defaults can lose the asset to garbage collection inside that window.
 
 ## Shared API Review
 
