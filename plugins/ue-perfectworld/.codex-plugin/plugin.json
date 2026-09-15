@@ -1,7 +1,7 @@
 {
   "name": "ue-perfectworld",
-  "version": "0.4.0",
-  "description": "Project-neutral Codex workflows for Unreal Engine read-only planning and change specification, investigation, implementation, review, and Blueprint integration.",
+  "version": "0.4.1",
+  "description": "Project-neutral Codex workflows for Unreal Engine read-only planning and change specification, investigation, implementation, review, Blueprint integration, and development documentation.",
   "author": {
     "name": "Liutianyuan / PerfectWorld",
     "url": "https://github.com/91pao"
@@ -21,7 +21,8 @@
     "async-resources",
     "object-pooling",
     "project-evidence",
-    "rag-integration"
+    "rag-integration",
+    "documentation"
   ],
   "skills": "./skills/",
   "interface": {

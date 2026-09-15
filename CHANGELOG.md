@@ -4,9 +4,21 @@
 
 | 组件 | 版本 | 发布日期 |
 | --- | --- | --- |
-| UE PerfectWorld | 0.3.1 | 2026-09-09 |
+| UE PerfectWorld | 0.4.1 | 2026-09-15 |
 | UE Project RAG | 0.1.1 | 2026-09-04 |
 | PerfectWorld | 0.4.0 | 2026-07-16 |
+
+## 2026-09-15
+
+### UE PerfectWorld 0.4.1
+
+- 新增 `ue-dev-doc` 技能：为一次完成的 UE 改动撰写团队风格的开发文档——对应需求与一句话总结、背景与目标、改动面表格、按模块分章详解、影响面论证、既有路径零改动证明、生命周期与清理；枚举类内容表格化，事实必须来自真实改动。详见 [插件更新日志](plugins/ue-perfectworld/CHANGELOG.md)。
+
+## 2026-09-10
+
+### UE PerfectWorld 0.4.0
+
+- 结构精简：`ue-plan` 并入 `ue-draft`、删除 `ue-router` 与重复维护面，公共必读参考收敛到 `ue-core-rules.md`；补充实战复盘的七个短板（先例可信度门、搜索自检、补丁完整性协议、编译门、资产保活契约、工作区拓扑、git 授权边界）。详见 [插件更新日志](plugins/ue-perfectworld/CHANGELOG.md)。
 
 ## 2026-09-09
 
