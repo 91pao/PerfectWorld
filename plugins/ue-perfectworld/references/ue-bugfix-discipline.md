@@ -26,6 +26,12 @@ Use these rules for bugs, compile or link errors, runtime failures, UI issues, R
 - Remove temporary investigation code and obsolete workaround state before finalizing
 - Do not claim completion until the runtime path and required editor/data setup are verified or explicitly identified as unverified
 
+## Serial Gate Debugging
+
+- Multi-gate serial chains (validation → resource → execution → settlement) have a characteristic debugging pattern: fixing one gate exposes the next. This is progress, not regression. Track which gate number you are on, not how many fix rounds have elapsed.
+- When the total gate count is known or estimable (e.g., 8-12 for a mature framework integration), use gate-count progress tracking to maintain debugging direction and team morale. "We're on gate 7 of 10" is actionable; "it's still broken after 6 rounds" is not.
+- Do not conflate "the previous fix didn't work" with "the previous fix exposed a new failure." Verify by checking whether the previous failure mode still reproduces; if it does not, the fix worked and the new failure is a downstream gate.
+
 ## Rejected Patterns
 
 - Redundant booleans that duplicate an existing enum or numeric state

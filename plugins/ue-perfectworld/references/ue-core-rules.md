@@ -37,3 +37,9 @@ Every UE workflow skill loads the following; skill files list only their additio
 
 - Do not treat the first named caller as the owner when the request mentions a common, public, generic, pooled, or reusable capability; classify local business logic versus shared infrastructure before choosing files or mechanisms
 - For asynchronous resource or initialization work, pass the architecture check before accepting Tick polling; Tick is reserved for continuous progression, tracking, simulation, or parameter updates
+
+## Integration Timing Maps
+
+- Before integrating with a shared framework or subsystem, draw a complete timing map (not a call graph): time on the horizontal axis, participants on the vertical axis, with the actual execution moment of every key function annotated. Use different line styles for synchronous calls and asynchronous callbacks.
+- When the integrating party and the framework's original caller have different execution models (synchronous contract vs. deferred start, immediate return vs. completion callback), the timing map is the only tool that exposes the conflict before code is written. Reading what a function does is not the same as reading when it runs.
+- Run the existing consumer's full flow once (via log timestamps or debugger) to establish the ground-truth timing before designing the integration. Do not assume the existing consumer's timing applies to the new consumer.
