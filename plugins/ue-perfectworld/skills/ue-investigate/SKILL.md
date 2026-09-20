@@ -18,6 +18,8 @@ Read only when applicable:
 - Network authority, replication, or RPC failures: `../../references/ue-client-server-boundary-rules.md`
 - UI entry parameters or event payloads: `../../references/ue-ui-param-contract-rules.md`
 - Currency, inventory, rewards, purchases, or persistent resource changes: `../../references/ue-economy-rpc-rules.md`
+- Diagnosing from PIE or runtime logs, or judging whether a pattern is new versus pre-existing: `../../references/ue-runtime-verification.md`
+- Work lost or mangled around branch switches, stashes, or history rewrites: `../../references/ue-vcs-safety.md`
 - Complete replacement code or configuration is requested: `../../references/ue-comment-log-rules.md` and `../../references/ue-self-review.md`
 
 ## Workflow

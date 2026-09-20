@@ -12,11 +12,15 @@ Open by saying in Chinese:
 Always read the common reference set in `../../references/ue-core-rules.md`, plus:
 
 - `../../references/ue-comment-log-rules.md`
+- `../../references/ue-paste-code-gate.md`
 
 Read only when applicable:
 
 - Network authority, replication, or RPC work: `../../references/ue-client-server-boundary-rules.md`
 - Bug fixes, compile/link errors, runtime failures, or regressions: `../../references/ue-bugfix-discipline.md`
+- About to create a new mechanism (class/manager/timer/renewal/state machine/wrapper) or a constraint blocks the obvious path: `../../references/ue-route-precedent-gate.md`
+- The task is a deletion, revert, or slimming round: `../../references/ue-deletion-round.md`
+- Commit, reset, rebase, or any git operation is requested, or verifying state after a GUI round-trip: `../../references/ue-vcs-safety.md`
 - UI entry parameters or event payloads: `../../references/ue-ui-param-contract-rules.md`
 - Currency, inventory, rewards, purchases, or persistent resource changes: `../../references/ue-economy-rpc-rules.md`
 

@@ -15,6 +15,9 @@ Read only when applicable:
 
 - Network authority, replication, or RPC changes: `../../references/ue-client-server-boundary-rules.md`
 - A bug-fix patch or accumulated workaround chain: `../../references/ue-bugfix-discipline.md`
+- The change touches budgets, transactions, lifecycle, cancellation, timers, leases, or multi-stage asynchronous chains, or the user asks for pre-delivery/adversarial audit: `../../references/ue-interruption-matrix.md`
+- Runtime claims need PIE log acceptance, or verification level must be judged from logs: `../../references/ue-runtime-verification.md`
+- The change set is a deletion, revert, or slimming round: `../../references/ue-deletion-round.md`
 - Comment or diagnostic changes: `../../references/ue-comment-log-rules.md`
 - Encoding or patch-integrity risk: `../../references/ue-edit-safety.md`
 - UI entry parameters or event payloads: `../../references/ue-ui-param-contract-rules.md`

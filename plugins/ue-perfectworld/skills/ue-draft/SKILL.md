@@ -12,6 +12,8 @@ Open by saying in Chinese:
 Always read the common reference set in `../../references/ue-core-rules.md`, plus:
 
 - `../../references/ue-comment-log-rules.md`
+- `../../references/ue-paste-code-gate.md`
+- `../../references/ue-route-precedent-gate.md`
 
 Read only when applicable:
 
@@ -19,6 +21,7 @@ Read only when applicable:
 - Bug fixes, compile/link errors, runtime failures, or regressions: `../../references/ue-bugfix-discipline.md`
 - UI entry parameters or event payloads: `../../references/ue-ui-param-contract-rules.md`
 - Currency, inventory, rewards, purchases, or persistent resource changes: `../../references/ue-economy-rpc-rules.md`
+- The plan removes or reverts an existing mechanism: `../../references/ue-deletion-round.md`
 - Encoding or patch-integrity risk in delivered patches: `../../references/ue-edit-safety.md`
 
 ## Workflow
