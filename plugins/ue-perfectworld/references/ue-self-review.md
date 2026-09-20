@@ -24,6 +24,13 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 - Trace each participating mechanism by execution stage and reject both missing stages and parallel paths that perform the same responsibility
 - Cross-check code, factory registration, DataAssets, DataTables, GameplayTags, Blueprint bindings, UI extension or platform overrides, external payloads, persistence, and cleanup as one final contract
 
+## Interruption And Latecomer Audit
+
+- For changes touching budgets, transactions, lifecycle, cancellation, timers, leases, or multi-stage asynchronous chains, enumerate interruption entries by searching every Stop, Cancel, Reset, Abort, Close, EndPlay, and TearDown call site, plus framework-initiated closes, timeouts, repeat activation, and owner invalidation — never from memory
+- Cross each entry with each lifecycle stage and state what survives the interrupt: transaction state, lease, timer, flags, binding or weak references, budget occupancy. A cell with no answer is a defect, not a blank
+- Hunt latecomers and flag lifecycles explicitly: when an interrupt lands at stage N, name what stops the stage N+1 startup callback; a cancel flag cleared unconditionally at registration reopens the door a waiting-window cancellation closed
+- Positive confirmation (compiles, probes zero, call sites alive) does not cover this class; an interruption path without a runtime trigger stays unverified in the conclusion
+
 ## Maintainability
 
 - Compare the result with the smallest complete project-consistent implementation
@@ -53,3 +60,9 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 - State which compile, editor, automation, and packaging checks were run or skipped
 - If repeated local fixes accumulated, apply the recovery gate in `ue-bugfix-discipline.md` before finalizing
 - Include the final create, replace, configure, and reuse-only surface summary so the user can distinguish required work from existing project infrastructure
+
+## Runtime Log Acceptance
+
+- Write the failure-probe list with expected values before the run; a probe list written after the run is narration, not acceptance
+- Trace one request GUID across subsystems — lease, budget reserve and commit and finalize, presentation, settlement — and check closure, interval sanity, and terminal-state semantics against the design
+- Judge warnings by tag census against older logs before calling a regression: a pattern present in history is not this change's defect

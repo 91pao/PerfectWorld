@@ -12,6 +12,7 @@ Open by saying in Chinese:
 Always read the common reference set in `../../references/ue-core-rules.md`, plus:
 
 - `../../references/ue-comment-log-rules.md`
+- `../../references/ue-paste-code-gate.md`
 
 Read only when applicable:
 
