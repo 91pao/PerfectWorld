@@ -26,6 +26,13 @@ Pass this gate for each responsibility before introducing code, state, configura
 - For UI interaction and presentation, prefer this order: configure the existing widget instance, configure inherited component or base-widget properties, reuse existing table or routing configuration, call the established project helper, add local feature code, then modify shared framework code
 - Keep a compact admission record containing the required behavior, existing owner, available API or configuration, evidence of any capability gap, and the selected action; do not output implementation while a required candidate remains merely unchecked
 
+## Route Precedent
+
+- When an existing constraint blocks the obvious path, the routes are reuse, align with a sibling implementation that already solved the same problem class, or build a parallel mechanism; a parallel mechanism is the last resort and requires recorded proof that the sibling does not fit — "afraid of touching their code" and "no time to ask" are not proof
+- Read the sibling's sequencing, not its interface: who runs first, who owns the window, who owns the lifecycle. "Do not modify others' code" never forbids reading it; its silent escalation into "do not read others' code" is the fork where parallel mechanisms are born
+- Find siblings among other callers of the same problem — same source kind, same subsystem, or whoever touched this concern in recent commits — and read their timing through logs or the debugger before designing
+- When the blocked path belongs to a domain another person maintains, surface the fork to the owner before building the parallel path; a one-line question beats a full implement-review-rework cycle
+
 ## Requirement And Capability Fit Gate
 
 Pass this gate before proposing implementation or adding a compensating mechanism.

@@ -20,3 +20,9 @@ Protect source encoding and keep patches small, verifiable, and complete.
 - When a patch batch removes or renames an API, include the list of symbols that must have zero remaining references after application
 - After the user applies a delivered patch batch, re-read the touched regions and run a residual-symbol sweep for removed APIs before any compile claim, delivery claim, or further review conclusion
 - Treat "the user applied my patch" as unverified until the re-read confirms anchor placement and completeness
+
+## Deletion Round Residue
+
+- In deletion, revert, or slimming rounds, audit what the surviving code inherited from the deleted mechanism — registration timing, implicit sequencing, periodic coverage — and re-verify each against the new flow; attention naturally fixes on what is gone, while regressions hide in what remains
+- Sweep residue mechanically per touched file: the deleted mechanism's vocabulary at zero hits including tests, modification markers balanced in pairs, includes with no remaining consumer removed, blank lines left where blocks were removed collapsed
+- Judge the round against the ticket's base commit, not the previous working state: a file whose net change is whitespace only must be restored to base and leave the change surface entirely

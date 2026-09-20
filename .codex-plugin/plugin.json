@@ -1,6 +1,6 @@
 {
   "name": "ue-perfectworld",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Project-neutral Codex workflows for Unreal Engine read-only planning and change specification, investigation, implementation, review, Blueprint integration, and development documentation.",
   "author": {
     "name": "Liutianyuan / PerfectWorld",
