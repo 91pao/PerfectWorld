@@ -12,6 +12,14 @@ Use these rules for bugs, compile or link errors, runtime failures, UI issues, R
 - Add targeted diagnostics when a defensive return would otherwise hide an actionable failure
 - Explain why the remedy fixes the root cause and why it does not add unnecessary structure
 
+## Multiple Hypotheses And Probe Discipline
+
+- Before probing anything, list 3-5 ranked hypotheses, each falsifiable as "if X is the cause, changing Y removes the symptom (or changing Z worsens it)"; drop any hypothesis whose prediction you cannot state. Show the ranked list to the user before testing — domain knowledge may reorder it — but proceed on your own ranking when the user is away. Locking onto the first plausible cause and grinding one direction is the failure this prevents
+- One probe tests exactly one prediction: change one variable at a time, and prefer a breakpoint or a log that separates two hypotheses over bulk logging; never "log everything and grep"
+- Prefix every temporary diagnostic log with a unique token such as `[DEBUG-a4f2]`, and grep every token to zero before declaring the fix complete
+- A reproduction counts only after it actually ran once and produced the exact reported symptom; a loop that has never been red cannot validate a fix. When no loop can be built, stop and state what access or instrumentation permission is missing — never start hypothesizing without one
+- For performance regressions, establish a baseline measurement first (profiler, stat counters, timing harness) and bisect against it; measure first, fix second
+
 ## Mutable State And Event Identity
 
 - Do not use a mutable current selection as the identity of an asynchronous event, projectile, request, or delayed callback

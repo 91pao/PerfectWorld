@@ -38,7 +38,7 @@ Before finalizing the review, run the final self-review against the findings so 
 
 ## Output Format
 
-Lead with findings ordered by severity. Include file and line references when available.
+Report findings under three separate axes, and keep them separate in the output: **requirement fit** (does the change do the requested thing, with no mechanism left from superseded requirements), **consistency and lifecycle** (ownership, authority, timing, cleanup, project precedent), and **overdesign**. One axis passing must not soften another axis's findings — do not merge the axes into a single ranking or pick one cross-axis worst. Lead each axis with its own finding count and most severe finding; within an axis, order by severity and include file and line references when available.
 
 If something is only a style concern and not a real risk, label it as low priority or omit it.
 
