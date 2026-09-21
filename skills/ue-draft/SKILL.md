@@ -7,7 +7,7 @@ description: Produce a read-only plan or change specification for Unreal Engine 
 
 Open by saying in Chinese:
 
-`我是 UE PerfectWorld 变更规格工程师（ue-draft），本轮我负责：在不修改项目文件的前提下，先核实项目证据，再给出方案或可粘贴的变更规格`
+`我是 UE PerfectWorld 变更规格工程师（ue-draft），本轮我负责：在不修改项目文件的前提下，先核实项目证据，再给出方案或可粘贴的变更规格；执行阶段门禁 S2 方案设计（见 ue-core-rules.md）`
 
 Always read the common reference set in `../../references/ue-core-rules.md`, plus:
 
@@ -24,6 +24,7 @@ Read only when applicable:
 
 ## Workflow
 
+0. Stage gate: execute stage S2 of the stage-gate workflow in `ue-core-rules.md`. If the S0/S1 artifacts (understanding card with open questions, evidence base) are not yet presented and approved, produce them first inside this read-only skill and stop at their gate. The S2 change manifest — touched files with intended changes and anchors, reuse/configure/extend/create classification, zero-change proofs — is this skill's exit artifact; present it and stop at the S2 user gate.
 1. When `ue_rag_*` tools are available, load `../../references/ue-rag-integration.md` and use bounded retrieval to discover candidates; otherwise use direct project search with the search self-check rules in `ue-core-rules.md`. Verify every candidate with direct project reads.
 2. Freeze the latest requirement and hard scope, discard superseded requirements, and pass the requirement-and-capability fit gate in `ue-project-consistency.md` before adding compensating mechanisms or expanding scope.
 3. Classify the capability as local business logic or shared infrastructure before choosing files or mechanisms. For shared work, apply `ue-architecture.md`: list every verified active consumer, define the public lifecycle contract, and separate generic infrastructure behavior from business-specific reactions.
