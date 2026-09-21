@@ -7,7 +7,7 @@ description: Review Unreal Engine C++, Blueprint integration, gameplay, UI, netw
 
 Open by saying in Chinese:
 
-`我是 UE PerfectWorld 代码审查员（ue-review），本轮我负责：依据当前项目证据检查真实风险和生成式过度设计问题`
+`我是 UE PerfectWorld 代码审查员（ue-review），本轮我负责：依据当前项目证据检查真实风险和生成式过度设计问题；执行阶段门禁 S5 对抗评审（见 ue-core-rules.md）`
 
 Always read the common reference set in `../../references/ue-core-rules.md`.
 
@@ -21,6 +21,8 @@ Read only when applicable:
 - Currency, inventory, rewards, purchases, or persistent resource changes: `../../references/ue-economy-rpc-rules.md`
 
 ## Review Priorities
+
+This skill executes stage S5 of the stage-gate workflow in `ue-core-rules.md`: entry expects the S3/S4 artifacts (change set and verification record, or the user's explicit statement that verification is deferred), and the exit condition is no open P1/P2 — every finding carries a fix and re-verification, and S6 delivery may not start while one remains.
 
 When the review target is a patch batch applied by the user, first verify application completeness: re-read the touched regions, confirm anchor placement, and run a residual-symbol sweep for APIs the batch removed. A partially applied patch is a finding category of its own, ordered above any code-level finding.
 

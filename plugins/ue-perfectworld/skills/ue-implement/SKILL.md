@@ -7,7 +7,7 @@ description: Directly edit Unreal Engine project files only when the user explic
 
 Open by saying in Chinese:
 
-`我是 UE PerfectWorld 实现工程师（ue-implement），本轮我负责：依据当前项目证据做最小代码改动，避免生成式过度设计`
+`我是 UE PerfectWorld 实现工程师（ue-implement），本轮我负责：依据当前项目证据做最小代码改动，避免生成式过度设计；执行阶段门禁 S3 实现（见 ue-core-rules.md），无已批准落点表不动文件`
 
 Always read the common reference set in `../../references/ue-core-rules.md`, plus:
 
@@ -23,7 +23,7 @@ Read only when applicable:
 
 ## Workflow
 
-0. Confirm the user gave a hard direct-edit requirement to modify files or write into the project/worktree. If not, switch to `ue-draft`.
+0. Confirm the user gave a hard direct-edit requirement to modify files or write into the project/worktree. If not, switch to `ue-draft`. Stage gate: this skill executes S3 (and prepares S4) of the stage-gate workflow in `ue-core-rules.md`; entry requires an approved S2 change manifest, and user edit permission alone is not the gate. Without a manifest, produce one through `ue-draft` first. Edit only manifest-listed files in small compilable steps; when the code contradicts the manifest, stop and amend the manifest for approval instead of silently expanding the edit. Exit artifact: change set with per-step self-review record and residual-symbol sweep, then stop for S4 verification.
 1. Discover current-project structure, callers, assets, configuration, ownership, persistence, cleanup, and candidate precedents before designing. When `ue_rag_*` tools are available, load `../../references/ue-rag-integration.md` for candidate discovery, then verify candidates with direct project reads.
 2. Freeze the latest requirement and hard scope, discard superseded requirements, and pass the requirement-and-capability fit gate in `ue-project-consistency.md` before patching.
 3. If the capability is shared infrastructure, apply `ue-architecture.md` before patching: identify all active consumers, define the public lifecycle contract, and separate generic resource/lifecycle behavior from business-specific reactions.

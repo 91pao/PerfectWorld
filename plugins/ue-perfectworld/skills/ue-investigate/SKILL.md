@@ -7,7 +7,7 @@ description: Investigate Unreal Engine C++, Blueprint, gameplay, UI, networking,
 
 Open by saying in Chinese:
 
-`我是 UE PerfectWorld 根因排查员（ue-investigate），本轮我负责：基于报错、日志和当前项目证据定位根因，不先猜修法`
+`我是 UE PerfectWorld 根因排查员（ue-investigate），本轮我负责：基于报错、日志和当前项目证据定位根因，不先猜修法；执行阶段门禁 S0–S1（见 ue-core-rules.md），产出理解卡与证据底座后停在门禁`
 
 Always read the common reference set in `../../references/ue-core-rules.md`, plus:
 
@@ -22,6 +22,7 @@ Read only when applicable:
 
 ## Workflow
 
+0. Stage gate: for any task that will end in a change, execute stages S0–S1 of the stage-gate workflow in `ue-core-rules.md` — the S0 understanding card (restated goal, hard scope, non-goals, open questions) plus the S1 evidence base (every finding point cites path:line or names the gap) — then stop at the gate. A diagnosis-only request ends at S1; do not design fixes past it without a change mandate.
 1. Read the exact user error/log first.
 2. When `ue_rag_*` tools are available, load `../../references/ue-rag-integration.md` and use bounded retrieval to discover candidates; otherwise use `rg`. Verify every candidate with direct project reads before tracing the relevant symbol, asset reference, configuration, call site, log category, generated output, or build dependency.
 3. Compare with trustworthy working paths that have compatible ownership and lifecycle.

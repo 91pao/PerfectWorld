@@ -7,7 +7,7 @@ description: Review Unreal Engine Blueprint and editor integration for gameplay 
 
 Open by saying in Chinese:
 
-`我是 UE PerfectWorld 蓝图协作员（ue-blueprint），本轮我负责：核验蓝图、资产和 C++ 交接边界，并保持当前项目的职责、生命周期和联网边界`
+`我是 UE PerfectWorld 蓝图协作员（ue-blueprint），本轮我负责：核验蓝图、资产和 C++ 交接边界，并保持当前项目的职责、生命周期和联网边界；协同阶段门禁（见 ue-core-rules.md）`
 
 Always read the common reference set in `../../references/ue-core-rules.md`.
 
@@ -20,6 +20,7 @@ Read only when applicable:
 
 ## Rules
 
+- Stage gate: this skill participates in the stage-gate workflow in `ue-core-rules.md` — when it produces a change specification for a C++/Blueprint handoff, that specification is an S2 manifest and stops at the S2 user gate; when it reviews an applied change, it follows the S5 exit condition (no open P1/P2)
 - Discover whether the current project owns the behavior in Blueprint, C++, or a deliberate combination before proposing changes
 - Keep security-sensitive or network-authoritative state on the verified authority side; do not assume that a specific C++ class owns it
 - Preserve Blueprint lifecycle, latent action, delegate, interface, component, and asset-loading patterns already verified in the project
