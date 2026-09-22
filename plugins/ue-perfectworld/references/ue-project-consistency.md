@@ -125,3 +125,10 @@ For non-trivial or cross-system work, identify:
 - Do not add wrappers, managers, services, generic result types, delegates, or extension points without a current requirement and verified consumer
 - Keep the execution path easy to trace, change, and remove without access to the AI conversation
 - Use standard Unreal Engine conventions as the fallback when project evidence is missing or unreliable, and state that fallback explicitly
+
+## Authoring-Native Data Sources
+
+- Before designing any lookup or discovery, ask where the data already lives as authored references the team maintains: group member sets, actor-to-actor references, an existing containment method on a zone actor. The first candidate design is the user's stated chain rendered verbatim ("caller in box X → groups of X → their points"); every alternative — geometry scans, registries, collision markers, subsystem identity chains — must argue against that verbatim chain, not against performance.
+- Replacing the authoring-native chain with a runtime mechanism requires a named requirement the chain cannot satisfy. "Fewer moving parts at runtime", "index scalability", or "designers might forget" are not requirements until stated by the user with a scale or workflow fact; performance concerns are raised only with measurements of the authoring-native version.
+- When the user pushes back twice on a mechanism, stop defending and re-derive the design from their stated model; a third defense of the same mechanism against the same objection is a route error. Restate their model in one diagram before proposing anything again.
+- Never edit code while the conversation is a design discussion; a "simplification" to an approved manifest needs approval like any other change. Incident: a "borrow POI spawn points" feature whose stated chain was box→group→points passed through geometry scan, cached area resolution, physics overlap, and director-component chains — four mechanisms across five push-backs — before the verbatim chain (one authored reference plus one existing containment call) landed smaller than every intermediate version.
