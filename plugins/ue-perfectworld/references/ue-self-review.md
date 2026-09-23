@@ -66,3 +66,15 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 - Write the failure-probe list with expected values before the run; a probe list written after the run is narration, not acceptance
 - Trace one request GUID across subsystems — lease, budget reserve and commit and finalize, presentation, settlement — and check closure, interval sanity, and terminal-state semantics against the design
 - Judge warnings by tag census against older logs before calling a regression: a pattern present in history is not this change's defect
+
+## Claim Audit（共享占用三向审计）
+
+触发条件：本次改动给某个共享资源（点位/标志/租约/句柄/预算槽）新增了持有者（写入方）或门禁消费者（读它做拒绝条件）。三问缺一即回到评审台：
+
+1. 方向矩阵：列出"每个持有者 × 每个后来者"的完整组合，逐格回答"后来者看得见持有吗"。只验证自己新代码单方向的占用（如"任务占用→增援不借"）而漏掉反向（"增援占用→任务能否激活"），就是占用反转缺口。审查视角必须从共享资源向外（谁会来抢这个资源），不是从新代码向内（我的门逻辑对不对）。
+2. 最坏存活时间：消费的每个外部标志/锁，grep 其全部置位与清零点，回答"最坏能阻塞多久"。清零只发生在"下一次同类请求"或从不发生的，是无界阻塞，按缺陷处理。"不许改那边的代码"不等于不用深究——恰恰是消费别家生命周期的标志时最需要审计置位/清零全集，因为坏了也不能在那边修。
+3. 接缝优先：未改动的旧路径与新逻辑的交点（既有投放模式、取消/清理机制、旧入口），审计精力分配要高于自己的新代码——新代码你想过一遍，接缝一遍都没想过。没有被任何用例走过的旧路径视为未审计：测试场景照心智模型搭建，等于把确认偏误焊进用例设计；Force 注入式用例验证门谓词，不覆盖真实生命周期。
+
+事故案例（工单3 增援借用，S5 自评 P1/P2 清零后复议被抓回两处）：①借用使点位持有位置租约，但只验了"任务占用→增援不借"，未问"增援占用→任务激活"——Direct 投放走 LegacyPassthrough 全程不查位置租约，任务可在增援潜艇占点期间原地刷怪（方向矩阵缺格）；②借用门消费工单2 的取消闩，该闩清零只发生在下一次任务请求绑定——最后一波任务取消后共享点永久不可再借（无界阻塞）。修复：激活门加租约预检 + 借用门改为"闩住且请求未终态"。
+
+验收口径：方向矩阵逐格有答案；每个被消费的外部标志留下"置位点/清零点/最坏时长"三行记录；至少一条自动化或 PIE 用例穿过真实生命周期（如真实取消流程之后借用），并在验证记录中点名。

@@ -1,6 +1,6 @@
 {
   "name": "ue-perfectworld",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Project-neutral Codex workflows for Unreal Engine stage-gated development (S0-S6 requirement intake, evidence base, change specification, implementation, verification, review, delivery), plus investigation, Blueprint collaboration, and development documentation.",
   "author": {
     "name": "Liutianyuan / PerfectWorld",

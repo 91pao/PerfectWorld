@@ -58,6 +58,21 @@ if (PoolComponent->IsResourceReady())
 - The marker summary states what the change does in one line; it is not a changelog or a place for background story.
 - Do not add other author tags, dates, signatures, or banners beyond this format.
 - When marked code is later removed or migrated, remove its markers too. Do not leave empty, duplicated, or nested marker pairs.
+- Markers are territory fences, not logical sections: one contiguous run of the same author's code gets ONE begin/end pair, no matter how many logical steps it contains. Sub-explanations inside the region are plain `//` comments, never nested markers.
+
+```cpp
+// ppz begin: 增援按盒子引用链取点
+// include 引用链所需的头
+#include "AIZoneBox.h"
+
+// Map Check 消息
+#include "Logging/MessageLog.h"
+// ppz end
+```
+
+- Fuse adjacent same-author regions: when a new change lands directly next to (or inside) that author's earlier marked region — even across commit boundaries — delete the intermediate `end` + `begin` pair and keep one region. Only code owned by another author (for example `mengdie begin/end`) between two regions justifies keeping them separate.
+- The marker description is optional when trivial (a bare `// ppz begin` over an include is fine) and always short. Function-level or block-level descriptions are one short phrase, not a contract.
+- Declaration and definition comment pairs must stay word-for-word identical after any trim; trimming one side only creates review noise.
 
 ## Language And Encoding
 
