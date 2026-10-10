@@ -1,12 +1,12 @@
 {
   "name": "ue-perfectworld",
   "version": "0.6.0",
-  "description": "Project-neutral Codex workflows for Unreal Engine stage-gated development (S0-S6 requirement intake, evidence base, change specification, implementation, verification, review, delivery), plus investigation, Blueprint collaboration, and development documentation.",
+  "description": "Stage-gated Unreal Engine development workflows: evidence-backed planning (S0-S2), implementation (S3), verification (S4), adversarial review (S5), and delivery (S6). Includes investigation, Blueprint collaboration, and development documentation.",
   "author": {
-    "name": "Liutianyuan / PerfectWorld",
+    "name": "Liutianyuan",
     "url": "https://github.com/91pao"
   },
-  "homepage": "https://github.com/91pao/PerfectWorld/tree/main/plugins/ue-perfectworld",
+  "homepage": "https://github.com/91pao/PerfectWorld",
   "repository": "https://github.com/91pao/PerfectWorld",
   "license": "MIT",
   "keywords": [
@@ -15,28 +15,24 @@
     "codex",
     "cpp",
     "blueprint",
-    "debugging",
     "code-review",
     "architecture",
-    "async-resources",
-    "object-pooling",
-    "project-evidence",
-    "rag-integration",
+    "debugging",
     "documentation"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "UE PerfectWorld",
-    "shortDescription": "通用 UE 项目的规划、实现、审查、排查和蓝图协作规则。",
-    "longDescription": "UE PerfectWorld provides project-neutral Unreal Engine workflows that require evidence-backed ownership and lifecycle discovery, keep workspaces read-only until direct edits are authorized, and enforce a blocking final self-review before delivery. When UE Project RAG is installed, it uses cited retrieval results only to accelerate project evidence discovery.",
-    "developerName": "Liutianyuan / PerfectWorld",
+    "shortDescription": "UE 项目的阶段门禁开发工作流：规划、实现、审查、排查、蓝图协作、开发文档。",
+    "longDescription": "UE PerfectWorld enforces a stage-gated workflow for Unreal Engine development: S0 requirement intake, S1 evidence base, S2 change specification, S3 implementation, S4 verification, S5 adversarial review, S6 delivery. All stages require project-specific evidence before code is written, and a blocking final self-review before delivery. Includes investigation workflows for root-cause analysis, Blueprint collaboration rules, and development documentation generation.",
+    "developerName": "Liutianyuan",
     "category": "Engineering",
     "capabilities": [
       "Interactive",
       "Read",
       "Write"
     ],
-    "websiteURL": "https://github.com/91pao/PerfectWorld/tree/main/plugins/ue-perfectworld",
+    "websiteURL": "https://github.com/91pao/PerfectWorld",
     "brandColor": "#111827",
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/icon.png",
