@@ -1,0 +1,50 @@
+{
+  "name": "ue-perfectworld",
+  "version": "0.5.3",
+  "description": "Project-neutral Codex workflows for Unreal Engine stage-gated development (S0-S6 requirement intake, evidence base, change specification, implementation, verification, review, delivery), plus investigation, Blueprint collaboration, and development documentation.",
+  "author": {
+    "name": "Liutianyuan / PerfectWorld",
+    "url": "https://github.com/91pao"
+  },
+  "homepage": "https://github.com/91pao/PerfectWorld/tree/main/plugins/ue-perfectworld",
+  "repository": "https://github.com/91pao/PerfectWorld",
+  "license": "MIT",
+  "keywords": [
+    "unreal-engine",
+    "ue5",
+    "codex",
+    "cpp",
+    "blueprint",
+    "debugging",
+    "code-review",
+    "architecture",
+    "async-resources",
+    "object-pooling",
+    "project-evidence",
+    "rag-integration",
+    "documentation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "UE PerfectWorld",
+    "shortDescription": "通用 UE 项目的规划、实现、审查、排查和蓝图协作规则。",
+    "longDescription": "UE PerfectWorld provides project-neutral Unreal Engine workflows that require evidence-backed ownership and lifecycle discovery, keep workspaces read-only until direct edits are authorized, and enforce a blocking final self-review before delivery. When UE Project RAG is installed, it uses cited retrieval results only to accelerate project evidence discovery.",
+    "developerName": "Liutianyuan / PerfectWorld",
+    "category": "Engineering",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/91pao/PerfectWorld/tree/main/plugins/ue-perfectworld",
+    "brandColor": "#111827",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "logoDark": "./assets/icon.png",
+    "defaultPrompt": [
+      "用 UE PerfectWorld 规划这个 Unreal Engine 功能",
+      "用 UE PerfectWorld 排查这个 UE bug 的根因",
+      "用 UE PerfectWorld 审查当前 UE 代码"
+    ]
+  }
+}

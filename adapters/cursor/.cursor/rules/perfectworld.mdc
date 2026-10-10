@@ -1,0 +1,12 @@
+---
+description: PerfectWorld cross-agent engineering workflow
+alwaysApply: true
+---
+
+Read `<repo-root>/core/AGENT-CONTRACT.md` before responding to engineering requests.
+Read `<repo-root>/core/workflows/task-routing.md` to select the primary workflow for the current request.
+
+For general development, follow `<repo-root>/core/workflows/general-development.md`.
+For Unreal Engine work, follow `<repo-root>/core/workflows/unreal-engine.md`.
+When the UE Project RAG MCP server is available, follow `<repo-root>/core/policies/retrieval.md` and verify retrieved candidates against original project files.
+Use `<repo-root>/core/contracts/change-record.md` for implementation, review, and change-specification delivery.

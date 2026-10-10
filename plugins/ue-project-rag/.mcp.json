@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "ue-project-rag": {
+      "command": "python",
+      "args": [
+        "-u",
+        "server/ue_rag_mcp.py"
+      ],
+      "cwd": "."
+    }
+  }
+}

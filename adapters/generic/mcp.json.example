@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "ue-project-rag": {
+      "command": "python",
+      "args": ["<repo-root>/mcp/ue-project-rag/server.py"],
+      "cwd": "<repo-root>"
+    }
+  }
+}
