@@ -51,6 +51,12 @@ Every UE workflow skill loads the following; skill files list only their additio
 - A lifetime that must cover an unpredictable process (presentation length, network wait) is owned by a renewal/keep-alive callback, never by a predicted constant or one-shot config-derived value. Predicted lifetimes expire silently at exactly the wrong moment; renewals fail loudly and immediately when the system is broken.
 - Every swallowed failure needs a written justification at the swallow site: why the silent branch is the correct semantic (e.g., "session gone = delivery already cancelled, nothing to commit"), plus a Verbose log if the state could ever indicate a bug.
 
+## User Preference Override
+
+- When the user explicitly states a verification method (e.g., "PIE testing with log probes" over automated tests, or "return-path probes only" over tick-based monitoring), that preference overrides the plugin's default recommendations for the remainder of the session. Do not re-propose a mechanism the user has rejected unless new evidence changes the trade-off.
+- Track rejected mechanisms per-session. After the user rejects an approach once, subsequent responses must not re-introduce it without citing the new evidence that justifies revisiting the decision.
+- The same principle applies to scope minimization preferences: if the user prefers fewer touched files over stricter type guarantees (e.g., keeping `void` over changing to `bool` to avoid touching base-class files), respect that trade-off once stated.
+
 ## Stage Gate Workflow
 
 - The default path for any task whose endpoint is a project change (feature, bug fix, integration, asset or configuration change, or a paste-ready change specification) is S0 → S1 → S2 → S3 → S4 → S5 → S6. Small tasks may keep a stage brief, but no stage may be skipped, merged, or declared complete without its artifact.
