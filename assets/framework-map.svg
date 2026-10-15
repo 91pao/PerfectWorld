@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">UE PerfectWorld 框架组成图</title>
+  <desc id="desc">UE PerfectWorld 由任务路由、项目证据与一致性检查、UE 工程规则、S2 变更范围控制、验证评审和交付记录构成。可选 RAG 只帮助寻找候选，最终依据来自项目文件。</desc>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfcfe"/>
+      <stop offset="1" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <linearGradient id="center" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#19283c"/>
+      <stop offset="1" stop-color="#2b3f5e"/>
+    </linearGradient>
+    <linearGradient id="path" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4eb99f"/>
+      <stop offset=".55" stop-color="#7485ee"/>
+      <stop offset="1" stop-color="#df8d83"/>
+    </linearGradient>
+    <filter id="shadow" x="-15%" y="-20%" width="130%" height="145%">
+      <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#213149" flood-opacity=".10"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#8492a5"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="900" rx="24" fill="url(#canvas)"/>
+  <text x="72" y="70" fill="#172335" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="36" font-weight="700">框架图：技能负责分工，规则负责把关</text>
+  <text x="74" y="106" fill="#66758a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18">它不是单一提示词，而是任务路由、UE 项目核查和交付约束的组合。</text>
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="150" width="1296" height="112" rx="16" fill="#ffffff" stroke="#dbe3ed"/>
+  </g>
+  <text x="104" y="187" fill="#738197" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">入口</text>
+  <text x="104" y="225" fill="#27384e" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">UE 项目任务</text>
+  <text x="295" y="223" fill="#67768c" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16">新需求</text>
+  <circle cx="279" cy="218" r="4" fill="#53b99f"/>
+  <text x="400" y="223" fill="#67768c" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16">报错日志</text>
+  <circle cx="384" cy="218" r="4" fill="#e8a45e"/>
+  <text x="532" y="223" fill="#67768c" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16">已有 diff</text>
+  <circle cx="516" cy="218" r="4" fill="#7888e9"/>
+  <text x="660" y="223" fill="#67768c" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16">蓝图协作</text>
+  <circle cx="644" cy="218" r="4" fill="#d67f91"/>
+  <path d="M807 206h74" fill="none" stroke="#8492a5" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <rect x="902" y="171" width="424" height="70" rx="13" fill="#eff2ff"/>
+  <text x="930" y="199" fill="#4e5fd2" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">任务分流到对应技能</text>
+  <text x="930" y="224" fill="#59677d" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="15">investigate · draft · implement · review · blueprint · dev-doc</text>
+
+  <path d="M720 263v34" fill="none" stroke="#8492a5" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="313" width="1296" height="154" rx="16" fill="#ffffff" stroke="#dbe3ed"/>
+  </g>
+  <rect x="72" y="313" width="10" height="154" rx="5" fill="#4db69d"/>
+  <text x="108" y="351" fill="#217c6b" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">第 1 层 · 项目证据与一致性</text>
+  <text x="108" y="384" fill="#27384e" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="21" font-weight="700">先查工程里实际存在什么，再决定能不能改、该改哪里</text>
+
+  <g font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="15">
+    <rect x="108" y="408" width="224" height="40" rx="9" fill="#eef8f5"/>
+    <text x="220" y="434" text-anchor="middle" fill="#3e675f">活动调用方与项目先例</text>
+    <rect x="344" y="408" width="206" height="40" rx="9" fill="#eef8f5"/>
+    <text x="447" y="434" text-anchor="middle" fill="#3e675f">配置、表格与资产引用</text>
+    <rect x="562" y="408" width="208" height="40" rx="9" fill="#eef8f5"/>
+    <text x="666" y="434" text-anchor="middle" fill="#3e675f">责任归属与生命周期</text>
+    <rect x="782" y="408" width="206" height="40" rx="9" fill="#eef8f5"/>
+    <text x="885" y="434" text-anchor="middle" fill="#3e675f">权威侧、持久化、清理</text>
+    <rect x="1000" y="408" width="326" height="40" rx="9" fill="#eaf0ff"/>
+    <text x="1163" y="434" text-anchor="middle" fill="#5363bd">证据缺口明确报告，不用猜测补齐</text>
+  </g>
+
+  <path d="M720 468v32" fill="none" stroke="#8492a5" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="516" width="1296" height="166" rx="16" fill="url(#center)"/>
+  </g>
+  <text x="108" y="554" fill="#8ee0cf" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">第 2 层 · UE 工程规则</text>
+  <text x="108" y="584" fill="#ffffff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="21" font-weight="700">把通用编码任务放回 UE 的真实运行约束中检查</text>
+
+  <g font-family="Segoe UI, Microsoft YaHei, sans-serif">
+    <rect x="108" y="608" width="222" height="48" rx="10" fill="#30435d"/>
+    <text x="219" y="628" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">C++ 符号 / API</text>
+    <text x="219" y="647" text-anchor="middle" fill="#c3cfdf" font-size="12">声明 · 可见性 · 参数语义</text>
+
+    <rect x="345" y="608" width="222" height="48" rx="10" fill="#30435d"/>
+    <text x="456" y="628" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">C++ 与蓝图</text>
+    <text x="456" y="647" text-anchor="middle" fill="#c3cfdf" font-size="12">资产配置 · 责任交接</text>
+
+    <rect x="582" y="608" width="222" height="48" rx="10" fill="#30435d"/>
+    <text x="693" y="628" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">联网与事务</text>
+    <text x="693" y="647" text-anchor="middle" fill="#c3cfdf" font-size="12">权威校验 · 原子提交</text>
+
+    <rect x="819" y="608" width="222" height="48" rx="10" fill="#30435d"/>
+    <text x="930" y="628" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">异步与共享机制</text>
+    <text x="930" y="647" text-anchor="middle" fill="#c3cfdf" font-size="12">取消 · 复用 · 晚到回调</text>
+
+    <rect x="1056" y="608" width="270" height="48" rx="10" fill="#30435d"/>
+    <text x="1191" y="628" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">Bug 根因与自审</text>
+    <text x="1191" y="647" text-anchor="middle" fill="#c3cfdf" font-size="12">避免绕过问题的补丁链</text>
+  </g>
+
+  <path d="M720 683v32" fill="none" stroke="#8492a5" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="730" width="492" height="108" rx="16" fill="#edf0ff" stroke="#d7dcfa"/>
+    <rect x="590" y="730" width="350" height="108" rx="16" fill="#ffffff" stroke="#dbe3ed"/>
+    <rect x="966" y="730" width="402" height="108" rx="16" fill="#fff0eb" stroke="#f0d6cb"/>
+  </g>
+  <text x="104" y="770" fill="#4e5fd2" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">第 3 层 · 范围控制</text>
+  <text x="104" y="803" fill="#27384e" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="19" font-weight="700">S2 逐文件规格 → 用户批准 → 只改批准范围</text>
+  <text x="620" y="770" fill="#64738a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">第 4 层 · 验证与评审</text>
+  <text x="620" y="803" fill="#27384e" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">预期探针 → 真实验证 → 对抗审查</text>
+  <text x="996" y="770" fill="#b66049" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">交付产物</text>
+  <text x="996" y="803" fill="#27384e" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">代码 · 验证记录 · 交接文档</text>
+
+  <rect x="72" y="858" width="1296" height="1" fill="#dbe3ed"/>
+  <text x="74" y="883" fill="#77859a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="13">可选 RAG 只负责找候选文件；代码结论仍须回到工作区源码、配置和资产直接核实。</text>
+</svg>

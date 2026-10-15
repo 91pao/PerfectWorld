@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="790" viewBox="0 0 1440 790" role="img" aria-labelledby="title desc">
+  <title id="title">普通 Codex 对话与 UE PerfectWorld 工作方式对比</title>
+  <desc id="desc">普通 Codex 对话可以完成 UE 开发，但项目检查和验证深度依赖当轮提示。UE PerfectWorld 通过任务分流、项目证据、用户批准的变更规格、限定范围实现和可追溯验证交付，固定这些工作约定。</desc>
+  <defs>
+    <linearGradient id="plugin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17283c"/>
+      <stop offset="1" stop-color="#26395a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#45b99f"/>
+      <stop offset=".55" stop-color="#7485ee"/>
+      <stop offset="1" stop-color="#e78372"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="11" flood-color="#1c2b43" flood-opacity=".12"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#94a1b3"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="790" rx="24" fill="#f5f7fb"/>
+  <text x="72" y="72" fill="#182436" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="36" font-weight="700">差别不是“会不会写”，而是过程有没有固定护栏</text>
+  <text x="74" y="108" fill="#66758a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18">两种方式都能完成任务；插件把每轮容易遗漏的 UE 检查变成可复用的工作约定。</text>
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="150" width="484" height="550" rx="18" fill="#ffffff" stroke="#dce3ec"/>
+    <rect x="584" y="150" width="784" height="550" rx="18" fill="url(#plugin)"/>
+  </g>
+
+  <text x="108" y="198" fill="#34445b" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="23" font-weight="700">普通 Codex 对话</text>
+  <text x="108" y="228" fill="#718096" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="15">不加载专用 UE 工作流时</text>
+
+  <g font-family="Segoe UI, Microsoft YaHei, sans-serif">
+    <rect x="108" y="262" width="108" height="52" rx="12" fill="#eff3f8"/>
+    <text x="162" y="294" text-anchor="middle" fill="#47566d" font-size="16" font-weight="600">任务描述</text>
+    <path d="M225 288h48" fill="none" stroke="#aab5c3" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
+    <rect x="285" y="262" width="112" height="52" rx="12" fill="#eff3f8"/>
+    <text x="341" y="294" text-anchor="middle" fill="#47566d" font-size="16" font-weight="600">当轮上下文</text>
+    <path d="M406 288h42" fill="none" stroke="#aab5c3" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
+    <rect x="460" y="262" width="60" height="52" rx="12" fill="#fff0e8"/>
+    <text x="490" y="294" text-anchor="middle" fill="#a85a39" font-size="15" font-weight="700">回答</text>
+  </g>
+
+  <line x1="108" y1="344" x2="520" y2="344" stroke="#e5eaf0"/>
+  <text x="108" y="384" fill="#7d8999" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">过程取决于当次任务和提示</text>
+
+  <g font-family="Segoe UI, Microsoft YaHei, sans-serif">
+    <circle cx="120" cy="425" r="7" fill="#e7a96b"/>
+    <text x="142" y="431" fill="#46556b" font-size="16" font-weight="600">查哪些文件、追多深</text>
+    <text x="142" y="455" fill="#7b8797" font-size="14">可能有证据，也可能止于相似代码</text>
+
+    <circle cx="120" cy="493" r="7" fill="#e7a96b"/>
+    <text x="142" y="499" fill="#46556b" font-size="16" font-weight="600">先分析还是直接写</text>
+    <text x="142" y="523" fill="#7b8797" font-size="14">规划、排查和实现可能混在一起</text>
+
+    <circle cx="120" cy="561" r="7" fill="#e7a96b"/>
+    <text x="142" y="567" fill="#46556b" font-size="16" font-weight="600">UE 风险检查到哪一层</text>
+    <text x="142" y="591" fill="#7b8797" font-size="14">蓝图、权威侧、生命周期需额外提醒</text>
+
+    <circle cx="120" cy="629" r="7" fill="#e7a96b"/>
+    <text x="142" y="635" fill="#46556b" font-size="16" font-weight="600">验证和交接记录</text>
+    <text x="142" y="659" fill="#7b8797" font-size="14">范围与证据粒度由当轮要求决定</text>
+  </g>
+
+  <text x="620" y="198" fill="#ffffff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="23" font-weight="700">使用 UE PerfectWorld</text>
+  <text x="620" y="228" fill="#bdcadd" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="15">同样从你的任务开始，但关键步骤由专用技能和规则接住</text>
+
+  <line x1="668" y1="326" x2="1288" y2="326" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
+  <g font-family="Segoe UI, Microsoft YaHei, sans-serif" text-anchor="middle">
+    <g>
+      <circle cx="668" cy="326" r="25" fill="#53c9ad"/>
+      <text x="668" y="332" fill="#12362f" font-size="15" font-weight="700">01</text>
+      <text x="668" y="375" fill="#ffffff" font-size="16" font-weight="700">任务分流</text>
+      <text x="668" y="401" fill="#bdcadd" font-size="13">排查 / 规划 / 实现</text>
+      <text x="668" y="421" fill="#bdcadd" font-size="13">审查 / 蓝图 / 文档</text>
+    </g>
+    <g>
+      <circle cx="823" cy="326" r="25" fill="#63b9bd"/>
+      <text x="823" y="332" fill="#102f37" font-size="15" font-weight="700">02</text>
+      <text x="823" y="375" fill="#ffffff" font-size="16" font-weight="700">项目证据</text>
+      <text x="823" y="401" fill="#bdcadd" font-size="13">源码 / 调用方 / 配置</text>
+      <text x="823" y="421" fill="#bdcadd" font-size="13">资产 / 生命周期</text>
+    </g>
+    <g>
+      <circle cx="978" cy="326" r="25" fill="#7988ee"/>
+      <text x="978" y="332" fill="#ffffff" font-size="15" font-weight="700">03</text>
+      <text x="978" y="375" fill="#ffffff" font-size="16" font-weight="700">规格与批准</text>
+      <text x="978" y="401" fill="#bdcadd" font-size="13">列明文件和落点</text>
+      <text x="978" y="421" fill="#bdcadd" font-size="13">S2 等你确认</text>
+    </g>
+    <g>
+      <circle cx="1133" cy="326" r="25" fill="#d58c9a"/>
+      <text x="1133" y="332" fill="#3a1b2a" font-size="15" font-weight="700">04</text>
+      <text x="1133" y="375" fill="#ffffff" font-size="16" font-weight="700">限定范围实现</text>
+      <text x="1133" y="401" fill="#bdcadd" font-size="13">只改批准的范围</text>
+      <text x="1133" y="421" fill="#bdcadd" font-size="13">逐符号核验</text>
+    </g>
+    <g>
+      <circle cx="1288" cy="326" r="25" fill="#efaa68"/>
+      <text x="1288" y="332" fill="#4b2e10" font-size="15" font-weight="700">05</text>
+      <text x="1288" y="375" fill="#ffffff" font-size="16" font-weight="700">验证与交付</text>
+      <text x="1288" y="401" fill="#bdcadd" font-size="13">验证 / 对抗评审</text>
+      <text x="1288" y="421" fill="#bdcadd" font-size="13">文档 / 证据清单</text>
+    </g>
+  </g>
+
+  <rect x="620" y="476" width="712" height="1" fill="#52647c"/>
+  <text x="620" y="515" fill="#83ddc8" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="15" font-weight="700">你得到的不是“保证正确”，而是更明确的过程状态</text>
+  <g font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14">
+    <rect x="620" y="540" width="214" height="44" rx="10" fill="#32445e"/>
+    <text x="727" y="568" text-anchor="middle" fill="#e7eef8">依据能回到项目文件</text>
+    <rect x="847" y="540" width="214" height="44" rx="10" fill="#32445e"/>
+    <text x="954" y="568" text-anchor="middle" fill="#e7eef8">未验证项会明确列出</text>
+    <rect x="1074" y="540" width="258" height="44" rx="10" fill="#32445e"/>
+    <text x="1203" y="568" text-anchor="middle" fill="#e7eef8">提交与推送由你决定</text>
+  </g>
+
+  <rect x="620" y="616" width="712" height="48" rx="12" fill="#172b38" stroke="#3d6f69"/>
+  <circle cx="644" cy="640" r="7" fill="#54cdb2"/>
+  <text x="664" y="646" fill="#c8eee5" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14">插件技能已加载并适用于任务时，这些约束才会进入本轮工作。</text>
+
+  <text x="72" y="750" fill="#8290a1" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14">普通对话并非做不到这些检查；UE PerfectWorld 的价值是把它们固定下来，并要求过程与结论对得上。</text>
+</svg>
