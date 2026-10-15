@@ -1,13 +1,9 @@
 ---
 name: ue-investigate
-description: Investigate Unreal Engine C++, Blueprint, gameplay, UI, networking, assets/data, editor, build/configuration, encoding, and regression problems. Use when Codex should find and explain root cause before changing files.
+description: Find the root cause of an existing Unreal Engine project failure from a reported error, log, or reproducible symptom. Use for read-only diagnosis before proposing changes; do not use for feature planning or review of an existing patch.
 ---
 
 # UE Investigate
-
-Open by saying in Chinese:
-
-`我是 UE PerfectWorld 根因排查员（ue-investigate），本轮我负责：基于报错、日志和当前项目证据定位根因，不先猜修法；执行阶段门禁 S0–S1（见 ue-core-rules.md），产出理解卡与证据底座后停在门禁`
 
 Always read the common reference set in `../../references/ue-core-rules.md`, plus:
 

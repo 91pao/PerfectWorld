@@ -1,7 +1,7 @@
 {
   "name": "ue-perfectworld",
-  "version": "0.6.0",
-  "description": "Stage-gated Unreal Engine development workflows: evidence-backed planning (S0-S2), implementation (S3), verification (S4), adversarial review (S5), and delivery (S6). Includes investigation, Blueprint collaboration, and development documentation.",
+  "version": "0.6.1",
+  "description": "Stage-gated Unreal Engine development workflows (S0-S6) for planning, implementation, investigation, review, Blueprint collaboration, onboarding, and development documentation.",
   "author": {
     "name": "Liutianyuan",
     "url": "https://github.com/91pao"
@@ -21,6 +21,11 @@
     "documentation"
   ],
   "skills": "./skills/",
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/ue-setup/SKILL.md"
+    }
+  },
   "interface": {
     "displayName": "UE PerfectWorld",
     "shortDescription": "UE 项目的阶段门禁开发工作流：规划、实现、审查、排查、蓝图协作、开发文档。",

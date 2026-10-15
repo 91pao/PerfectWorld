@@ -5,10 +5,32 @@ Unreal Engine 项目的阶段门禁开发工作流插件。适用于任何 UE5 �
 ## 安装
 
 ```bash
-git clone https://github.com/91pao/PerfectWorld.git
+codex plugin marketplace add 91pao/PerfectWorld
+codex plugin add ue-perfectworld@perfectworld
+codex plugin list
 ```
 
-将本仓库添加为 ZCode / Codex 插件目录，或复制 `skills/` 和 `references/` 到你的插件目录。
+更新已安装插件：
+
+```bash
+codex plugin marketplace upgrade perfectworld
+codex plugin list
+```
+
+安装或更新后，重启 Codex 或新开对话以加载技能。插件安装后可运行 `ue-setup` 检查项目位置和可选工具。
+
+## 技能路由
+
+| 技能 | 何时使用 | 边界 |
+| --- | --- | --- |
+| `ue-investigate` | 已有报错、日志或可复现症状，需要只读定位根因 | 不用于新功能规划或已有改动审查 |
+| `ue-draft` | 用户要方案、变更规格、可粘贴代码，或实现意图仍有歧义 | 只读；不替代故障根因排查 |
+| `ue-implement` | S2 落点表已获批准，且用户明确授权修改 | 不接手未批准落点表的实现 |
+| `ue-review` | 用户要求审查已有 diff、补丁或已应用改动 | 只审查，不修改文件 |
+| `ue-blueprint` | 任务实际涉及蓝图资产、编辑器配置或 C++/蓝图交接 | 协作参考；主任务仍由规划、实现、排查或审查技能承接 |
+| `ue-dev-doc` | 一次 UE 改动完成后，需要开发、交接或技术文档 | 不用于新功能方案 |
+
+技能不需要在每轮对话重复角色口号；直接说明当前阶段和要处理的结果即可。
 
 ## 工作流概览
 
@@ -34,6 +56,7 @@ git clone https://github.com/91pao/PerfectWorld.git
 | `ue-investigate` | 根因排查（只读） | S0-S1 |
 | `ue-blueprint` | 蓝图与 C++ 协作规则 | 全程 |
 | `ue-dev-doc` | 开发文档撰写 | S6 |
+| `ue-setup` | 首次安装后的项目与可选 RAG 检查 | 安装配置 |
 
 ## 核心规则
 
@@ -42,6 +65,14 @@ git clone https://github.com/91pao/PerfectWorld.git
 - **阻断性自审**：交付前必须通过 `ue-self-review`（含环境矩阵审计、Claim Audit 共享占用三向审计）
 - **贴码门禁**：将要写入项目的代码，写前逐符号查证声明处、读实现处确认参数语义、include 照抄同模块先例
 - **用户偏好覆盖**：用户明确表达的验证偏好（如 PIE 实测＋日志探针）覆盖插件默认推荐
+
+## RAG（可选）
+
+UE PerfectWorld 不包含 RAG 服务或索引器。只有当前 Codex 环境另行提供 `ue_rag_*` 工具时，技能才会使用 RAG：
+
+- 先检查 `ue_rag_status`，再用有界查询找候选位置；索引缺失或过期时按已配置工具的能力处理。
+- RAG 结果只用于发现候选，不是代码、蓝图、生命周期、联网行为或清理逻辑的证据；结论仍须回到项目文件直接核实。
+- 如果没有 `ue_rag_*` 工具，直接使用 `rg` 和项目文件读取，不要假称已检索索引。
 
 ## 版本历史
 

@@ -1,13 +1,9 @@
 ---
 name: ue-blueprint
-description: Review Unreal Engine Blueprint and editor integration for gameplay features, UI, assets, events, exposed APIs, and C++/Blueprint handoff while preserving the current project's ownership model, lifecycle, and network authority.
+description: Use as a supporting workflow when an Unreal Engine task actually involves Blueprint assets, editor configuration, Blueprint events, or a C++/Blueprint handoff. Pair it with the primary plan, implement, investigate, or review skill; do not use it as a generic UE task router.
 ---
 
 # UE Blueprint
-
-Open by saying in Chinese:
-
-`我是 UE PerfectWorld 蓝图协作员（ue-blueprint），本轮我负责：核验蓝图、资产和 C++ 交接边界，并保持当前项目的职责、生命周期和联网边界；协同阶段门禁（见 ue-core-rules.md）`
 
 Always read the common reference set in `../../references/ue-core-rules.md`.
 

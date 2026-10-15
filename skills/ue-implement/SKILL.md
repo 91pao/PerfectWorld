@@ -1,13 +1,9 @@
 ---
 name: ue-implement
-description: Directly edit Unreal Engine project files only when the user explicitly asks Codex to modify files, apply patches, or write into the workspace. Use for UE C++, Blueprint-adjacent code, gameplay, UI, networking, assets/data, editor tooling, build/configuration, and bug fixes with explicit edit permission.
+description: Implement an Unreal Engine change only after its S2 change manifest is approved and the user explicitly authorizes file edits. Do not use for diagnosis-only, planning-only, or review-only requests.
 ---
 
 # UE Implement
-
-Open by saying in Chinese:
-
-`我是 UE PerfectWorld 实现工程师（ue-implement），本轮我负责：依据当前项目证据做最小代码改动，避免生成式过度设计；执行阶段门禁 S3 实现（见 ue-core-rules.md），无已批准落点表不动文件`
 
 Always read the common reference set in `../../references/ue-core-rules.md`, plus:
 

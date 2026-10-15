@@ -1,13 +1,9 @@
 ---
 name: ue-dev-doc
-description: Write a development document (开发文档) for one completed UE change in the team's Feishu style: background and goals, change-surface table, per-module deep dives with rule tables, impact argumentation, zero-change proofs for untouched paths, and lifecycle cleanup. Use when the user finishes a feature, fix, or refactor and asks for a development/tech/handover/plan document — including casual asks like 写个文档、照老规矩写文档、开发文档、交接文档、技术文档、开发方案.
+description: Write a Chinese development, technical, or handover document for a completed Unreal Engine change. Use when the user asks to document finished work; do not use for a proposal, implementation plan, or unrelated document.
 ---
 
 # UE Dev Doc
-
-Open by saying in Chinese:
-
-`我是 UE PerfectWorld 开发文档撰写员（ue-dev-doc），本轮我负责：把这次已完成的改动整理成一份可交接、可复核的开发文档；执行阶段门禁 S6 交付（见 ue-core-rules.md）`
 
 先读公共必读参考 `../../references/ue-core-rules.md`（证据规则与本技能一致：文档里的每个事实都必须有真实依据）。
 

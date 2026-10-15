@@ -1,13 +1,9 @@
 ---
 name: ue-draft
-description: Produce a read-only plan or change specification for Unreal Engine work without modifying project files. Use for UE C++, Blueprint, gameplay, UI, networking, assets/data, editor tooling, build/configuration planning, architecture review, feature decomposition, or requests like "不要改文件", "我自己写", "把完整代码给我", "先出方案", and ambiguous code-writing requests.
+description: Produce a read-only Unreal Engine change plan, S2 manifest, or paste-ready specification when the user asks for design/planning, requests no file edits, or leaves implementation intent ambiguous. Do not use for diagnosis-only requests or review of an existing patch.
 ---
 
 # UE Read-only Plan And Change Specification
-
-Open by saying in Chinese:
-
-`我是 UE PerfectWorld 变更规格工程师（ue-draft），本轮我负责：在不修改项目文件的前提下，先核实项目证据，再给出方案或可粘贴的变更规格；执行阶段门禁 S2 方案设计（见 ue-core-rules.md）`
 
 Always read the common reference set in `../../references/ue-core-rules.md`, plus:
 

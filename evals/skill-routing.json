@@ -1,0 +1,98 @@
+[
+  {
+    "id": "investigate-existing-error",
+    "prompt": "UE 项目启动时出现这条崩溃日志。先只读排查根因，不要改文件：[paste log]",
+    "expected_primary": "ue-investigate",
+    "expected_supporting": [],
+    "required": ["S0-S1 understanding card and evidence base", "root cause separated from symptoms"],
+    "must_not": ["edit files", "invent project symbols", "claim RAG was used without available tools"]
+  },
+  {
+    "id": "draft-feature-plan",
+    "prompt": "给我规划一个玩家快捷栏功能，先不要改文件。",
+    "expected_primary": "ue-draft",
+    "expected_supporting": [],
+    "required": ["S0-S1 before S2", "approved S2 change manifest as exit artifact"],
+    "must_not": ["edit files", "skip a stage gate"]
+  },
+  {
+    "id": "ambiguous-code-request",
+    "prompt": "这个 UE 交互功能帮我实现一下。",
+    "expected_primary": "ue-draft",
+    "expected_supporting": [],
+    "required": ["resolve ambiguity through project evidence", "S0-S2 read-only specification"],
+    "must_not": ["edit files before an approved S2 manifest"]
+  },
+  {
+    "id": "implement-approved-plan",
+    "prompt": "我批准刚才的 S2 落点表。按表直接修改，并完成后续阶段。",
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["edit only approved files", "continue S3-S6 in order", "report verification honestly"],
+    "must_not": ["expand the approved change surface silently", "skip a stage gate"]
+  },
+  {
+    "id": "review-existing-diff",
+    "prompt": "只审查当前 diff，按严重度报告问题，不要修改文件。",
+    "expected_primary": "ue-review",
+    "expected_supporting": [],
+    "required": ["S5 review findings", "read-only behavior"],
+    "must_not": ["edit files", "route to ue-draft as the primary task"]
+  },
+  {
+    "id": "blueprint-handoff",
+    "prompt": "这个 UMG 按钮由蓝图绑定到 C++ 事件。请先规划修改，重点核实资产绑定和 C++/蓝图边界，不要编辑。",
+    "expected_primary": "ue-draft",
+    "expected_supporting": ["ue-blueprint"],
+    "required": ["S0-S2 planning gates", "verify actual Blueprint binding and C++ ownership"],
+    "must_not": ["treat ue-blueprint as the implementation workflow", "invent asset state"]
+  },
+  {
+    "id": "blueprint-unrelated-cpp",
+    "prompt": "只审查这个纯 C++ 数据解析器的 diff。",
+    "expected_primary": "ue-review",
+    "expected_supporting": [],
+    "required": ["review the existing diff"],
+    "must_not": ["activate ue-blueprint without a Blueprint/editor handoff"]
+  },
+  {
+    "id": "completed-change-document",
+    "prompt": "这个 UE 功能已经完成并通过评审，按团队格式写开发交接文档。",
+    "expected_primary": "ue-dev-doc",
+    "expected_supporting": [],
+    "required": ["S6 delivery documentation", "facts grounded in actual changes and verification"],
+    "must_not": ["produce a new feature plan", "invent missing ticket links or implementation facts"]
+  },
+  {
+    "id": "setup-without-rag",
+    "prompt": "刚装好 UE PerfectWorld，帮我检查一下配置。",
+    "expected_primary": "ue-setup",
+    "expected_supporting": [],
+    "required": ["locate project only in workspace and parent directories", "report RAG tools unavailable if absent"],
+    "must_not": ["claim RAG is bundled", "build an index", "modify project files"]
+  },
+  {
+    "id": "setup-with-rag",
+    "prompt": "刚装好 UE PerfectWorld，帮我检查一下配置。",
+    "expected_primary": "ue-setup",
+    "expected_supporting": [],
+    "required": ["check ue_rag_status if the tool is available", "report verified index status"],
+    "must_not": ["build an index during onboarding", "treat RAG results as project evidence"]
+  },
+  {
+    "id": "generic-unreal-question",
+    "prompt": "Unreal Engine 里 Actor 和 ActorComponent 的区别是什么？",
+    "expected_primary": null,
+    "expected_supporting": [],
+    "required": ["answer the conceptual question directly"],
+    "must_not": ["invent a project-specific task", "emit S0-S6 artifacts when no project change is requested"]
+  },
+  {
+    "id": "unrelated-planning",
+    "prompt": "帮我规划一次日本旅行。",
+    "expected_primary": null,
+    "expected_supporting": [],
+    "required": ["answer outside the UE workflow"],
+    "must_not": ["activate a UE PerfectWorld skill"]
+  }
+]

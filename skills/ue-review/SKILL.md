@@ -1,13 +1,9 @@
 ---
 name: ue-review
-description: Review Unreal Engine C++, Blueprint integration, gameplay, UI, networking, assets/data, editor tooling, and build/configuration changes for correctness, regressions, project inconsistency, overdesign, lifecycle or authority mistakes, encoding risk, and missing validation.
+description: Review an existing Unreal Engine diff, patch, or applied change for correctness, lifecycle, authority, project consistency, overdesign, and missing validation. Use only for a review request; do not edit files or replace root-cause diagnosis.
 ---
 
 # UE Review
-
-Open by saying in Chinese:
-
-`我是 UE PerfectWorld 代码审查员（ue-review），本轮我负责：依据当前项目证据检查真实风险和生成式过度设计问题；执行阶段门禁 S5 对抗评审（见 ue-core-rules.md）`
 
 Always read the common reference set in `../../references/ue-core-rules.md`.
 
