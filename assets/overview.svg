@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">UE PerfectWorld 项目总览</title>
+  <desc id="desc">一个面向 Unreal Engine 项目的 Codex 阶段门禁工作流插件，从需求接入、证据核实、变更规格到实现、验证、评审和交付。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#17243b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0" stop-color="#45d2b7"/>
+      <stop offset="1" stop-color="#7387ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#030712" flood-opacity=".35"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="820" rx="26" fill="url(#bg)"/>
+  <circle cx="1260" cy="100" r="210" fill="#7387ff" opacity=".08"/>
+  <circle cx="120" cy="760" r="180" fill="#45d2b7" opacity=".07"/>
+
+  <text x="84" y="96" fill="#ffffff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="52" font-weight="700">UE PerfectWorld</text>
+  <text x="86" y="140" fill="#b9c7dc" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="23">面向 Unreal Engine 的 Codex 阶段门禁开发工作流插件</text>
+
+  <rect x="86" y="190" width="1228" height="132" rx="18" fill="#111c2e" stroke="#2b3b56"/>
+  <text x="122" y="235" fill="#79e3ca" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">核心定位</text>
+  <text x="122" y="276" fill="#f4f7fb" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="27" font-weight="600">让每次 UE 改动都先有证据、再有规格、最后才写代码</text>
+  <text x="122" y="306" fill="#9fb0c8" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="17">它是 Codex 的工作流与技能插件，不是 Unreal Editor 扩展；RAG 仅作为可选的候选检索入口。</text>
+
+  <text x="86" y="380" fill="#ffffff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="21" font-weight="700">四个稳定支点</text>
+
+  <g filter="url(#shadow)">
+    <rect x="86" y="410" width="278" height="152" rx="16" fill="#18263c" stroke="#2b3b56"/>
+    <rect x="386" y="410" width="278" height="152" rx="16" fill="#18263c" stroke="#2b3b56"/>
+    <rect x="686" y="410" width="278" height="152" rx="16" fill="#18263c" stroke="#2b3b56"/>
+    <rect x="986" y="410" width="328" height="152" rx="16" fill="#18263c" stroke="#2b3b56"/>
+  </g>
+
+  <circle cx="126" cy="452" r="19" fill="#45d2b7"/>
+  <path d="M117 452l7 7 13-16" fill="none" stroke="#0b1220" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="158" y="459" fill="#ffffff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">证据优先</text>
+  <text x="112" y="500" fill="#b9c7dc" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16">结论回到项目文件，</text>
+  <text x="112" y="526" fill="#b9c7dc" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16">用 path:line 支撑。</text>
+
+  <circle cx="426" cy="452" r="19" fill="#7387ff"/>
+  <path d="M417 452h18M426 443v18" stroke="#0b1220" stroke-width="4" stroke-linecap="round"/>
+  <text x="458" y="459" fill="#ffffff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">强门禁</text>
+  <text x="412" y="500" fill="#b9c7dc" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16">S2 变更规格需要用户</text>
+  <text x="412" y="526" fill="#b9c7dc" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16">明确批准后才可实现。</text>
+
+  <circle cx="726" cy="452" r="19" fill="#f3b562"/>
+  <path d="M718 452h16M726 444v16" stroke="#0b1220" stroke-width="4" stroke-linecap="round"/>
+  <text x="758" y="459" fill="#ffffff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">UE 语境</text>
+  <text x="712" y="500" fill="#b9c7dc" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16">覆盖 C++、蓝图、</text>
+  <text x="712" y="526" fill="#b9c7dc" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16">网络边界和资产交接。</text>
+
+  <circle cx="1026" cy="452" r="19" fill="#e67b9c"/>
+  <path d="M1018 452c0-6 4-10 10-10s10 4 10 10c0 8-10 14-10 14s-10-6-10-14z" fill="none" stroke="#0b1220" stroke-width="3"/>
+  <circle cx="1028" cy="450" r="2.5" fill="#0b1220"/>
+  <text x="1058" y="459" fill="#ffffff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">可追溯交付</text>
+  <text x="1012" y="500" fill="#b9c7dc" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16">验证记录、对抗评审、</text>
+  <text x="1012" y="526" fill="#b9c7dc" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16">开发文档和提交边界清晰。</text>
+
+  <text x="86" y="628" fill="#ffffff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="21" font-weight="700">从问题到交付</text>
+  <line x1="120" y1="694" x2="1280" y2="694" stroke="#3f5270" stroke-width="4"/>
+  <line x1="120" y1="694" x2="1280" y2="694" stroke="url(#accent)" stroke-width="4" stroke-dasharray="6 22" stroke-linecap="round"/>
+
+  <g font-family="Segoe UI, Microsoft YaHei, sans-serif" text-anchor="middle">
+    <g>
+      <circle cx="120" cy="694" r="27" fill="#45d2b7"/>
+      <text x="120" y="702" fill="#0b1220" font-size="18" font-weight="700">S0</text>
+      <text x="120" y="756" fill="#ffffff" font-size="16" font-weight="700">需求接入</text>
+    </g>
+    <g>
+      <circle cx="313" cy="694" r="27" fill="#45d2b7"/>
+      <text x="313" y="702" fill="#0b1220" font-size="18" font-weight="700">S1</text>
+      <text x="313" y="756" fill="#ffffff" font-size="16" font-weight="700">证据底座</text>
+    </g>
+    <g>
+      <circle cx="506" cy="694" r="27" fill="#7387ff"/>
+      <text x="506" y="702" fill="#ffffff" font-size="18" font-weight="700">S2</text>
+      <text x="506" y="756" fill="#ffffff" font-size="16" font-weight="700">变更规格</text>
+    </g>
+    <g>
+      <circle cx="699" cy="694" r="27" fill="#f3b562"/>
+      <text x="699" y="702" fill="#0b1220" font-size="18" font-weight="700">S3</text>
+      <text x="699" y="756" fill="#ffffff" font-size="16" font-weight="700">实现</text>
+    </g>
+    <g>
+      <circle cx="892" cy="694" r="27" fill="#f3b562"/>
+      <text x="892" y="702" fill="#0b1220" font-size="18" font-weight="700">S4</text>
+      <text x="892" y="756" fill="#ffffff" font-size="16" font-weight="700">验证</text>
+    </g>
+    <g>
+      <circle cx="1085" cy="694" r="27" fill="#e67b9c"/>
+      <text x="1085" y="702" fill="#0b1220" font-size="18" font-weight="700">S5</text>
+      <text x="1085" y="756" fill="#ffffff" font-size="16" font-weight="700">对抗评审</text>
+    </g>
+    <g>
+      <circle cx="1280" cy="694" r="27" fill="#e67b9c"/>
+      <text x="1280" y="702" fill="#0b1220" font-size="18" font-weight="700">S6</text>
+      <text x="1280" y="756" fill="#ffffff" font-size="16" font-weight="700">交付</text>
+    </g>
+  </g>
+
+  <text x="86" y="798" fill="#72839d" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14">UE PerfectWorld · Codex workflow plugin · v0.6.1</text>
+</svg>

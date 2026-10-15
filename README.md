@@ -2,6 +2,20 @@
 
 Unreal Engine 项目的阶段门禁开发工作流插件。适用于任何 UE5 项目的 C++ / 蓝图混合开发。
 
+<p>
+  <a href="https://github.com/91pao/PerfectWorld/tags"><img alt="Latest version tag" src="https://img.shields.io/github/v/tag/91pao/PerfectWorld?style=flat-square&label=version"></a>
+  <a href="https://github.com/91pao/PerfectWorld/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/91pao/PerfectWorld?style=flat-square&color=e8b86d"></a>
+  <a href="https://github.com/91pao/PerfectWorld/blob/main/LICENSE"><img alt="MIT license" src="https://img.shields.io/github/license/91pao/PerfectWorld?style=flat-square"></a>
+  <img alt="Codex plugin" src="https://img.shields.io/badge/Codex-plugin-7387ff?style=flat-square">
+  <img alt="Stage-gated workflow" src="https://img.shields.io/badge/workflow-S0%E2%80%93S6-4c9f70?style=flat-square">
+</p>
+
+<p align="center">
+  <img src="assets/overview.svg" alt="UE PerfectWorld 项目总览图：证据优先、强门禁、UE 语境、可追溯交付，并通过 S0 到 S6 推进工作" width="100%">
+</p>
+
+UE PerfectWorld 的重点不是让模型“直接改代码”，而是把 UE 工作拆成可检查的阶段：先理解需求，核实项目证据，确认变更规格，再实现、验证、评审和交付。
+
 ## 安装
 
 ```bash
@@ -35,6 +49,10 @@ codex plugin list
 ## 工作流概览
 
 所有以项目变更为终点的任务，走 S0→S6 七阶段门禁：
+
+<p align="center">
+  <img src="assets/s0-s6.svg" alt="S0 到 S6 阶段门禁图：每一阶段都有产出物和停止条件，S2 是实现前最重的用户批准门禁" width="100%">
+</p>
 
 | 阶段 | 职责 | 产出物 | 门禁 |
 | --- | --- | --- | --- |
