@@ -1,6 +1,6 @@
 {
   "name": "ue-perfectworld",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Stage-gated Unreal Engine development workflows (S0-S6) for planning, implementation, investigation, review, Blueprint collaboration, onboarding, and development documentation.",
   "author": {
     "name": "Liutianyuan",

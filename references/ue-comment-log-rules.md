@@ -13,21 +13,21 @@
 
 ## Distribute Comments Inside The Function
 
-- A function body made of several logical steps must carry a one-line `//` comment on each block — validation, branch, loop with purpose, async binding, state transition, cleanup — so the function reads top-to-bottom like a checklist. Only trivially short or self-evident bodies (such as one-line accessors) may go without internal comments.
+- In a new or meaningfully changed multi-step function, add a concise one-line `//` comment before each meaningful logical step — validation, branch, loop purpose, async binding, state transition, or cleanup — so its execution is easy to scan.
+- Do not add comments to untouched code just to make the surrounding function look uniformly documented. Do not narrate obvious assignments, calls, or control flow; the comment must explain intent, a contract, ownership, or a non-obvious reason.
+- Keep comments to one line by default. A multi-line comment is only acceptable for a genuinely complex contract that cannot be split into short notes, such as network authority, replication edge cases, or an engine workaround.
 - Do not open a function (or any single spot) with a multi-line comment block that tries to explain everything up front. Long blocks get skipped, and then the code has no guidance inside.
-- A multi-line comment is acceptable only when a genuinely complex contract cannot be split (network authority, replication edge cases, engine workaround), and it must stay as short as possible.
 - Scannable order: a reader moving through the function should be able to reconstruct the execution logic from the one-line comments alone.
 
 ## Declaration And Definition Comments
 
-- Every function gets its one-line purpose comment at both sites: above the declaration in the header and above the implementation in the `.cpp`. One without the other is incomplete.
-- The two comments must be identical: write the text once and copy it verbatim. If the purpose changes, change both sites together. Divergent header and source comments mislead readers about which one is current.
-- Functions declared and defined in the same `.cpp` (file-local helpers) carry the comment once, above the definition.
-- For `UFUNCTION`s the header comment doubles as the Blueprint editor tooltip, so the shared text must read well for both programmers and designers.
+- Add a purpose comment to a new or meaningfully changed function only when its contract or role is not clear from its name and signature. Do not add duplicate purpose comments above both declaration and definition by default.
+- For `UFUNCTION`s, a needed header comment doubles as the Blueprint editor tooltip and must describe exposed behavior for designers.
+- Do not edit comments on untouched declarations or definitions merely to satisfy a blanket comment rule.
 
 ## What To Comment
 
-- Give every added or meaningfully changed class, struct, function, and important property a one-line purpose comment.
+- Give a new or meaningfully changed class, struct, function, or important property a one-line purpose comment when its role or contract is not already clear from its name and surrounding code.
 - State units and valid ranges on numeric configuration and parameters: seconds versus milliseconds, clamped ranges, and sentinel values such as `0`, `-1`, or `INDEX_NONE`.
 - Wherever a call starts async work, state the completion expectation: which callback fires, and what the caller does on failure or cancellation.
 - Comment critical validation, state transitions, delegate lifetime, replication handling, asset loading, and non-obvious engine calls at the exact line they occur.
@@ -41,40 +41,42 @@
 
 ## Modification Markers
 
-- Wrap every modified or added block with the team marker format: `// <作者> begin: <一句话说明本次改动>` on the line above, `// <作者> end` on the line below. Example:
+- At the first point in each task that requires adding or changing code comments or markers, ask the user who the author is. Do not infer the author from previous tasks, repository history, or a default. Once confirmed, use that author marker consistently for this task.
+- Wrap every code block added or modified in this task with `// <作者> begin: <用一行说明这段改动>` on the line above and `// <作者> end` on the line below. The begin line is the explanation for the marked change; do not add a second comment immediately below it that repeats the same explanation.
+- Keep marker boundaries limited to code actually added or changed. Do not add markers around untouched code or comments just to provide context, and do not change another author's marker range.
+- Preserve existing comments and marker blocks owned by other authors. Do not add this task's author markers to their unchanged code or comments. If an existing comment has become semantically wrong because of this change, edit only the necessary comment text and preserve its original marker boundaries.
+- If this task changes code inside another author's marker range, preserve that author's begin/end lines and scope exactly; add a narrow pair using the confirmed author only around the code changed by this task.
+- Each logical block inside a marked region may still have its own concise one-line explanation when needed to distinguish a non-obvious step. Do not repeat the begin-line explanation immediately below the marker.
+- Fuse adjacent or nearby regions owned by the confirmed author when they describe one cohesive change and can be combined without pulling unrelated untouched code or another author's region into the marker. Never merge across another author's marker block.
+- Example:
 
 ```cpp
-// ppz begin: 激光改为资源就绪回调驱动，去掉 Tick 轮询
-// 每次启动重置绑定状态，防止上一轮残留委托生效
+// <作者> begin: 重置激光资源回调绑定状态并同步处理缓存命中
 bLaserResourceReadyCallbackBound = false;
 
-// 池组件可能已缓存资源，同步检查命中则直接激活，不等异步回调
+// 池组件可能已缓存资源，同步检查命中则直接激活
 if (PoolComponent->IsResourceReady())
 {
 	ActivateLaserImmediately();
 	return;
 }
-// ppz end
+// <作者> end
 ```
 
 - The marker summary states what the change does in one line; it is not a changelog or a place for background story.
 - Do not add other author tags, dates, signatures, or banners beyond this format.
-- When marked code is later removed or migrated, remove its markers too. Do not leave empty, duplicated, or nested marker pairs.
-- Markers are territory fences, not logical sections: one contiguous run of the same author's code gets ONE begin/end pair, no matter how many logical steps it contains. Sub-explanations inside the region are plain `//` comments, never nested markers.
+- When marked code is later removed or migrated, remove its markers too. Do not leave empty or duplicated pairs. A narrowly scoped pair using this task's confirmed author inside another author's unchanged range is allowed only when this task actually changes code there and preserving the outer range requires it.
+- Markers are territory fences, not logical sections: one contiguous run of this task's code gets ONE begin/end pair, no matter how many logical steps it contains. Sub-explanations inside the region are plain `//` comments; nested `ppz` pairs are used only for the foreign-range exception above.
 
 ```cpp
-// ppz begin: 增援按盒子引用链取点
-// include 引用链所需的头
+// <作者> begin: 增援按盒子引用链取点并引入 Map Check 消息支持
 #include "AIZoneBox.h"
 
-// Map Check 消息
 #include "Logging/MessageLog.h"
-// ppz end
+// <作者> end
 ```
 
-- Fuse adjacent same-author regions: when a new change lands directly next to (or inside) that author's earlier marked region — even across commit boundaries — delete the intermediate `end` + `begin` pair and keep one region. Only code owned by another author (for example `mengdie begin/end`) between two regions justifies keeping them separate.
-- The marker description is optional when trivial (a bare `// ppz begin` over an include is fine) and always short. Function-level or block-level descriptions are one short phrase, not a contract.
-- Declaration and definition comment pairs must stay word-for-word identical after any trim; trimming one side only creates review noise.
+- Replace `<作者>` with the author confirmed for this task. The marker description is required and always a short, single-line explanation, including for include changes.
 
 ## Language And Encoding
 
@@ -92,17 +94,11 @@ if (PoolComponent->IsResourceReady())
 
 ## Comment Examples
 
-Prefer this: declaration and implementation carry the identical comment, each logic block inside gets a one-liner, no trailing periods.
+Prefer this: changed code has one concise marker using the author confirmed for this task, logical steps have one-line explanations, no duplicate function-purpose comments, no trailing periods.
 
 ```cpp
-// GFBeaconLaserFxComponent.h
-// 资源就绪回调：句柄失效或组件已回池时直接返回
-void HandleLaserResourceReady(int32 SpawnHandle);
-```
-
-```cpp
-// GFBeaconLaserFxComponent.cpp —— 注释与声明处一字不差
-// 资源就绪回调：句柄失效或组件已回池时直接返回
+// GFBeaconLaserFxComponent.cpp
+// <作者> begin: 按句柄校验资源回调并安全激活激光
 void UGFBeaconLaserFxComponent::HandleLaserResourceReady(int32 SpawnHandle)
 {
 	// 校验句柄，防止迟到回调写复用后的组件
@@ -115,6 +111,7 @@ void UGFBeaconLaserFxComponent::HandleLaserResourceReady(int32 SpawnHandle)
 	UpdateTailSocketTransform();
 	NiagaraComponent->Activate();
 }
+// <作者> end
 ```
 
 Not this: a top-of-function block that narrates everything, `/** */` style, trailing periods.
@@ -130,7 +127,7 @@ void HandleLaserResourceReady(int32 SpawnHandle) { ... }
 
 ## Direct Project Edits
 
-- Match nearby comment density and formatting: a sparsely commented production file should not gain banner comments; a heavily commented module should not gain undocumented code.
+- Follow the rules above for new or meaningfully changed code; nearby comment density does not justify adding comments to untouched code.
 - Preserve useful comments and update comments made inaccurate by the code change.
 - Synchronize comments after every correctness or simplicity rewrite; a refactor that leaves old comments in place silently poisons later evidence.
 
