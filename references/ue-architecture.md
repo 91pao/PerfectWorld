@@ -9,13 +9,13 @@ Use this reference whenever a UE task touches a shared component, manager, subsy
 - Map the complete contract before selecting a mechanism: acquisition, initialization, readiness, success, failure, cancellation, reuse, release, and cleanup.
 - Identify the authoritative owner of each state. A caller may request or consume a state, but should not duplicate the shared component's loading or lifecycle state without evidence.
 - Keep the public API responsible for generic lifecycle behavior; keep each business caller responsible only for its domain-specific reaction.
+- Before adding an interception, guard, or acknowledgement path, trace the runtime overrides and existing request/response chain. Confirm that the proposed protection will not reject the operation's own completion; prefer the verified local or framework-native entry point over another layer.
 
 ## Implicit Contract Enumeration
 
 - When the integrating party's shape differs from the framework's original caller (synchronous vs. asynchronous, with-target vs. target-less, persistent vs. one-shot, wave-based vs. single-batch), enumerate every gate at the framework's entry points: validation checks, capability declarations, input contracts, timing requirements, resource leases, and lifecycle notifications. Each gate is an implicit contract that only fails at runtime.
 - For each enumerated gate, mark whether the new consumer satisfies it. A gate that the original consumer satisfies by design (not by explicit declaration) is the most dangerous: neither side knows it exists until the new consumer triggers it.
-- Expect the contract count to be proportional to the framework's maturity: a framework with milestone-tested gates (M1/M2/M3) typically has 8-12 implicit contracts at its boundary for a differently-shaped consumer. Budget integration discovery time accordingly.
-- The contracts are serial, not parallel: fixing one exposes the next. Track progress by counting gates passed, not by counting fix rounds.
+- Track verified contracts and unresolved gaps without inventing a fixed gate count. Investigate independent boundaries in parallel; preserve genuine sequencing dependencies.
 
 ## Event Versus Tick
 

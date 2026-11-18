@@ -16,7 +16,7 @@ Read only when applicable:
 
 ## Rules
 
-- Stage gate: this skill participates in the stage-gate workflow in `ue-core-rules.md` — when it produces a change specification for a C++/Blueprint handoff, that specification is an S2 manifest and stops at the S2 user gate; when it reviews an applied change, it follows the S5 exit condition (no open P1/P2)
+- Follow the S0-S6 evidence checkpoints in `ue-core-rules.md`: a read-only handoff ends with its S2 specification; an authorized implementation continues through verification and review without separate stage approvals. Use one writer for each binary asset or shared editor session
 - Discover whether the current project owns the behavior in Blueprint, C++, or a deliberate combination before proposing changes
 - Keep security-sensitive or network-authoritative state on the verified authority side; do not assume that a specific C++ class owns it
 - Preserve Blueprint lifecycle, latent action, delegate, interface, component, and asset-loading patterns already verified in the project
@@ -29,7 +29,7 @@ Read only when applicable:
 - Do not infer state creation from a visible widget, aggregation behavior from a child widget, or persistence from a local Blueprint callback
 - Do not copy empty Blueprint events or C++ lifecycle overrides merely because a reference widget declares them
 - State required asset, binding, and editor configuration constraints without inventing extra Blueprint architecture
-- If file edits are needed, use `ue-implement` only when the user explicitly authorized direct edits; otherwise provide a read-only change specification
+- For a clear implementation or fix mandate, follow `ue-implement` within that scope; honor planning-only, review-only, and explicit no-edit limits
 - When a change specification is produced, run the final self-review as a blocking gate before responding
 
 ## Output

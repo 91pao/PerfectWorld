@@ -18,10 +18,10 @@ Read only when applicable:
 
 ## Workflow
 
-0. Stage gate: for any task that will end in a change, execute stages S0–S1 of the stage-gate workflow in `ue-core-rules.md` — the S0 understanding card (restated goal, hard scope, non-goals, open questions) plus the S1 evidence base (every finding point cites path:line or names the gap) — then stop at the gate. A diagnosis-only request ends at S1; do not design fixes past it without a change mandate.
+0. Gather the relevant S0-S1 scope and evidence in one investigation. A diagnosis-only request ends with root cause, evidence, and limits; do not edit. Under an existing fix mandate, hand verified evidence directly to `ue-implement` and continue without an artificial stage approval.
 1. Read the exact user error/log first.
 2. When `ue_rag_*` tools are available, load `../../references/ue-rag-integration.md` and use bounded retrieval to discover candidates; otherwise use `rg`. Verify every candidate with direct project reads before tracing the relevant symbol, asset reference, configuration, call site, log category, generated output, or build dependency.
-3. Compare with trustworthy working paths that have compatible ownership and lifecycle.
+3. Compare with trustworthy working paths that have compatible ownership and lifecycle. Delegate independent hypotheses or contract traces when useful; share observations and avoid duplicate probes under `ue-core-rules.md`.
 4. If the failing path is shared infrastructure, first determine whether the problem is a contract/ownership/mechanism issue or only a local caller issue. Compare event-driven completion with Tick polling for asynchronous transitions.
 5. Build a responsibility evidence matrix for the failing path; verify object acquisition, guards, diagnostics, UI composition, navigation, state, and cleanup independently when applicable.
 6. Separate likely root cause from symptoms.
@@ -32,8 +32,8 @@ Read only when applicable:
 11. Reject fixes that only add fallback state, retries, timers, wrappers, conditions, or managers without proving root cause and every affected lifecycle link.
 12. Apply the recovery gate in `ue-bugfix-discipline.md` when related failures keep accumulating.
 13. Do not run full UE builds by default.
-14. If editing is required but direct edits were not explicitly requested, switch to `ue-draft`.
-15. If the user explicitly asked for direct file edits, switch to the implementation workflow and follow edit safety.
+14. If the user asked only for diagnosis or a proposed remedy, keep it read-only and use `ue-draft` for a requested detailed plan.
+15. If the user clearly requested a fix, switch to the implementation workflow within that scope and follow edit safety.
 16. Keep the diagnosis and proposed remedy minimal, evidence-backed, and explicit about unresolved uncertainty.
 
 ## Checks

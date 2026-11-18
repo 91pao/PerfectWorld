@@ -1,7 +1,7 @@
 {
   "name": "ue-perfectworld",
-  "version": "0.6.2",
-  "description": "Stage-gated Unreal Engine development workflows (S0-S6) for planning, implementation, investigation, review, Blueprint collaboration, onboarding, and development documentation.",
+  "version": "0.7.0",
+  "description": "Evidence-driven Unreal Engine workflows with S0-S6 checkpoints, conservative bounded implementation, runtime-aware parallel work, independent review, and verified delivery.",
   "author": {
     "name": "Liutianyuan",
     "url": "https://github.com/91pao"
@@ -28,8 +28,8 @@
   },
   "interface": {
     "displayName": "UE PerfectWorld",
-    "shortDescription": "UE 项目的阶段门禁开发工作流：规划、实现、审查、排查、蓝图协作、开发文档。",
-    "longDescription": "UE PerfectWorld enforces a stage-gated workflow for Unreal Engine development: S0 requirement intake, S1 evidence base, S2 change specification, S3 implementation, S4 verification, S5 adversarial review, S6 delivery. All stages require project-specific evidence before code is written, and a blocking final self-review before delivery. Includes investigation workflows for root-cause analysis, Blueprint collaboration rules, and development documentation generation.",
+    "shortDescription": "UE 项目的证据驱动工作流：保守实现、授权内连续推进、并行协作与独立审查。",
+    "longDescription": "UE PerfectWorld retains S0-S6 as evidence checkpoints for requirements, project evidence, compact scope and specification, implementation, verification, independent review, and delivery. A clear implementation or fix request authorizes bounded edits after the scope is stated, allowing checkpoints to be combined and completed in one authorized turn. Planning, diagnosis, review, and no-edit requests remain read-only. Prefer reuse, configuration, and local fixes before new mechanisms. Substantial separable work uses runtime-aware parallel agents with one writer per file or asset; findings can be fixed within scope, verified, and independently reviewed on the latest integrated version. Setup initialization configures and verifies a default ceiling of 12 spawned agents while inspection-only requests remain read-only; saved configuration does not prove current runtime capacity. Pause for unresolved decisions, expanded scope, or separately unauthorized build, external, or version-control actions. Never commit or push automatically.",
     "developerName": "Liutianyuan",
     "category": "Engineering",
     "capabilities": [

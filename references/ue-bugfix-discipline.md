@@ -14,10 +14,10 @@ Use these rules for bugs, compile or link errors, runtime failures, UI issues, R
 
 ## Multiple Hypotheses And Probe Discipline
 
-- Before probing anything, list 3-5 ranked hypotheses, each falsifiable as "if X is the cause, changing Y removes the symptom (or changing Z worsens it)"; drop any hypothesis whose prediction you cannot state. Show the ranked list to the user before testing — domain knowledge may reorder it — but proceed on your own ranking when the user is away. Locking onto the first plausible cause and grinding one direction is the failure this prevents
+- Keep plausible causes falsifiable and rank them by the reported evidence; do not invent 3-5 hypotheses for a deterministic failure. Parallelize independent traces or probes when useful, but avoid concurrent mutation of the same runtime or asset
 - One probe tests exactly one prediction: change one variable at a time, and prefer a breakpoint or a log that separates two hypotheses over bulk logging; never "log everything and grep"
 - Prefix every temporary diagnostic log with a unique token such as `[DEBUG-a4f2]`, and grep every token to zero before declaring the fix complete
-- A reproduction counts only after it actually ran once and produced the exact reported symptom; a loop that has never been red cannot validate a fix. When no loop can be built, stop and state what access or instrumentation permission is missing — never start hypothesizing without one
+- A runtime reproduction counts only after it produced the reported symptom. Without runtime access, investigate source and existing logs, distinguish hypotheses from confirmed causes, and state the missing validation; never present a simulation or syntax check as the actual reproduction
 - For performance regressions, establish a baseline measurement first (profiler, stat counters, timing harness) and bisect against it; measure first, fix second
 
 ## Mutable State And Event Identity
@@ -32,12 +32,13 @@ Use these rules for bugs, compile or link errors, runtime failures, UI issues, R
 - After multiple related failures or patches to the same feature, stop adding local fixes and retrace ownership, data flow, lifecycle, registration, and project precedent end to end
 - Before adding a new condition, manager, field, DataAsset, delegate, or lifecycle override during recovery, pass the mandatory evidence gate in `ue-project-consistency.md`; do not use a new abstraction to conceal an unverified trigger, persistence, or cleanup path
 - Remove temporary investigation code and obsolete workaround state before finalizing
+- Track the temporary probes introduced by this task, including their tokens, counters, bindings, and helper files. Remove them after their purpose is met unless explicitly retained; preserve the production fix and pre-existing diagnostics
 - Do not claim completion until the runtime path and required editor/data setup are verified or explicitly identified as unverified
 
 ## Serial Gate Debugging
 
 - Multi-gate serial chains (validation → resource → execution → settlement) have a characteristic debugging pattern: fixing one gate exposes the next. This is progress, not regression. Track which gate number you are on, not how many fix rounds have elapsed.
-- When the total gate count is known or estimable (e.g., 8-12 for a mature framework integration), use gate-count progress tracking to maintain debugging direction and team morale. "We're on gate 7 of 10" is actionable; "it's still broken after 6 rounds" is not.
+- Track the contracts actually verified and the next observable failure. Do not guess a total gate count or treat repeated patches as evidence of progress.
 - Do not conflate "the previous fix didn't work" with "the previous fix exposed a new failure." Verify by checking whether the previous failure mode still reproduces; if it does not, the fix worked and the new failure is a downstream gate.
 
 ## Rejected Patterns

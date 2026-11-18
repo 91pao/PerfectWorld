@@ -4,12 +4,13 @@ Run this as a blocking gate before delivering code, direct edits, or a code-revi
 
 ## Environment Matrix Audit
 
-Before declaring verification complete, enumerate the deployment contexts the change will run in and verify in each (or explicitly list as unverified):
+Before declaring verification complete, identify the deployment contexts relevant to this change and verify the required ones (or explicitly list them as unverified). Do not expand a local task into testing unrelated platforms or world types:
 
 - Map topology: regular single-level map vs World Partition map vs Data Layer workflow
 - Build target: editor (PIE) vs cooked/packaged (Shipping)
 - World type: game world vs editor utility world
-- Network mode: standalone vs listen server vs client
+- Network mode: standalone vs listen server vs dedicated server vs client
+- For mixed C++/Lua/data changes, check the actual loaded module, Lua search path, reflected schema, CSV import source, and saved asset versions where relevant. Attribute a failure to the changed feature only after separating it from stale binaries, mismatched endpoints, or other processes
 
 A change verified only in a small test map with the editor target has not been verified for World Partition data layers or packaged builds. Every P1/P2 found in an unverified context is a direct consequence of this gap. At minimum, state which contexts were checked and which were not before declaring success.
 
@@ -47,7 +48,8 @@ A change verified only in a small test map with the editor target has not been v
 - Compare the result with the smallest complete project-consistent implementation
 - Reopen the requirement-and-capability fit gate if complexity grew through another file, shared integration point, state owner, persistence path, RPC, cache, delegate, timer, manager, or configuration source
 - Require every added file, class, function, field, delegate, override, configuration item, and abstraction to have a current requirement and real consumer
-- Remove duplicate data authority, unused state, empty lifecycle overrides, speculative extension points, one-use wrappers, generic managers, compatibility branches, and parallel execution paths
+- Remove unnecessary mechanisms introduced by this task: duplicate data authority, unused state, empty lifecycle overrides, speculative extension points, one-use wrappers, generic managers, compatibility branches, and parallel paths. Do not turn this into a sweep of unrelated upstream code or comments
+- Review net growth against the task baseline, including public contracts, persistent fields, files, and dependencies. Every retained addition needs a current consumer and a gap that a smaller complete solution cannot satisfy; correctness-critical checks must not be deleted merely to reduce the count
 - If a later discovery exposes an existing capability, remove all code and configuration introduced only to compensate for its previously assumed absence
 - Keep one authoritative source for each tag, ID, state, and configuration value
 - Apply the change test: a normal requirement change has an obvious bounded edit location
@@ -71,6 +73,9 @@ A change verified only in a small test map with the editor target has not been v
 - State which compile, editor, automation, and packaging checks were run or skipped
 - If repeated local fixes accumulated, apply the recovery gate in `ue-bugfix-discipline.md` before finalizing
 - Include the final create, replace, configure, and reuse-only surface summary so the user can distinguish required work from existing project infrastructure
+- For delegated work, reconcile file ownership and review results on the final integrated version. Fix confirmed in-scope findings and recheck affected paths; an earlier clean review does not cover later edits
+- Syntax checks and mocks verify only the contracts they exercise. Do not count a mock of a framework override, reflection, import side effect, or network callback as verification of the real implementation
+- Reconcile relevant Git and P4 changes, new files, CSV sources, saved assets, and active Lua overrides before claiming delivery readiness; report missing additions or imports without performing an unauthorized submit
 
 ## Runtime Log Acceptance
 

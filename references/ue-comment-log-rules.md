@@ -6,14 +6,14 @@
 - Comments state what the code cannot: intent, contract, ownership, units, and failure behavior. They never narrate syntax.
 - Comments describe standing behavior and contracts of the code as it exists now. They never narrate the change that introduced them — change rationale belongs in the review response or commit message, not in the code. A comment like `// 含 Direct，一键检查即全图重刷` narrates a past decision; `// 全部点刷新圈色` describes current behavior.
 - Comments and modification markers must not reference task IDs, ticket numbers, phase names, or project-management artifacts. These are workflow labels, not code documentation.
-- Use `//` line comments exclusively. Do not use `/* */` or `/** */` block comments.
+- Use the source language's line comments: `//` for C++, `--` for Lua. Do not introduce block comments as task narration.
 - Do not end a comment with 句号 (。) or other sentence-ending punctuation. Separate clauses with `；` when needed.
 - Be concise but never empty: `// 处理数据` says nothing; `// 按 FX 表行 ID 查池组件，查不到走兜底` says the right amount.
-- Prefer deleting a comment over maintaining a stale one. A wrong comment is worse than no comment: it poisons every later reader and every later agent investigation.
+- Correct or remove comments made stale by the authorized change. A wrong comment misleads later readers, but that does not authorize sweeping unrelated upstream comments.
 
 ## Distribute Comments Inside The Function
 
-- In a new or meaningfully changed multi-step function, add a concise one-line `//` comment before each meaningful logical step — validation, branch, loop purpose, async binding, state transition, or cleanup — so its execution is easy to scan.
+- In a new or meaningfully changed multi-step function, add a concise line comment where a step's intent, contract, ownership, or failure behavior is not evident. Do not require a comment for every branch, call, or assignment.
 - Do not add comments to untouched code just to make the surrounding function look uniformly documented. Do not narrate obvious assignments, calls, or control flow; the comment must explain intent, a contract, ownership, or a non-obvious reason.
 - Keep comments to one line by default. A multi-line comment is only acceptable for a genuinely complex contract that cannot be split into short notes, such as network authority, replication edge cases, or an engine workaround.
 - Do not open a function (or any single spot) with a multi-line comment block that tries to explain everything up front. Long blocks get skipped, and then the code has no guidance inside.
@@ -42,6 +42,7 @@
 ## Modification Markers
 
 - At the first point in each task that requires adding or changing code comments or markers, ask the user who the author is. Do not infer the author from previous tasks, repository history, or a default. Once confirmed, use that author marker consistently for this task.
+- The coordinator shares that current-task confirmation with delegated agents; a subtask or context compaction does not require asking again. Use `--` instead of `//` for Lua markers.
 - Wrap every code block added or modified in this task with `// <作者> begin: <用一行说明这段改动>` on the line above and `// <作者> end` on the line below. The begin line is the explanation for the marked change; do not add a second comment immediately below it that repeats the same explanation.
 - Keep marker boundaries limited to code actually added or changed. Do not add markers around untouched code or comments just to provide context, and do not change another author's marker range.
 - Preserve existing comments and marker blocks owned by other authors. Do not add this task's author markers to their unchanged code or comments. If an existing comment has become semantically wrong because of this change, edit only the necessary comment text and preserve its original marker boundaries.
@@ -89,7 +90,7 @@ if (PoolComponent->IsResourceReady())
 - Do not repeat clear symbol names, types, signatures, assignments, or obvious control flow.
 - Do not use comments to excuse indirect code; simplify the implementation first.
 - Do not place operational instructions, unresolved assumptions, placeholders, or TODOs inside delivered code. Route genuine future work to the task tracker or handoff document instead.
-- Do not keep commented-out code as a backup after a rewrite or migration. Delete it: version control preserves history, and stale commented code misleads later readers and agents.
+- Do not keep this task's commented-out code as a backup after a rewrite or migration. Delete that residue; do not extend the cleanup to unrelated upstream code.
 - Do not leave a workaround uncommented or half-commented: a workaround comment must name the blocking cause and the condition under which the workaround can be removed.
 
 ## Comment Examples

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="650" viewBox="0 0 1440 650" role="img" aria-labelledby="title desc">
   <title id="title">UE PerfectWorld 如何融入 UE 项目开发</title>
-  <desc id="desc">将 Unreal Engine 项目中的 C++、蓝图和日志交给 Codex 的 UE 专用技能分析；变更规格经过用户批准后，形成有证据、有验证记录的开发交付。图中说明这是 Codex 工作流插件，不是 Unreal Editor 扩展。</desc>
+  <desc id="desc">从 Unreal Engine 项目的 C++、蓝图和日志查证；明确实现或修复授权下，先说明紧凑规格，再连续完成有界改动、验证与独立审查。规划、诊断和审查请求保持只读。图中说明这是 Codex 工作流插件，不是 Unreal Editor 扩展。</desc>
   <defs>
     <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#fbfcff"/>
@@ -29,7 +29,7 @@
 
   <text x="72" y="82" fill="#52627a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="16" font-weight="700">UE DEVELOPMENT WORKFLOW · CODEX PLUGIN</text>
   <text x="72" y="146" fill="#172335" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="42" font-weight="700">让改动从项目证据出发</text>
-  <text x="74" y="184" fill="#52627a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20">理解现状 → 明确改动 → 经你批准 → 验证并交接</text>
+  <text x="74" y="184" fill="#52627a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20">项目查证 → 紧凑规格 → 授权内连续推进 → 验证、复审并交接</text>
 
   <g filter="url(#shadow)">
     <rect x="72" y="232" width="320" height="270" rx="18" fill="#ffffff" stroke="#dbe4ed"/>
@@ -72,7 +72,7 @@
   </g>
   <rect x="520" y="440" width="310" height="38" rx="9" fill="#30435b" stroke="#536983"/>
   <circle cx="540" cy="459" r="6" fill="#f2bb62"/>
-  <text x="555" y="465" fill="#f7e5c7" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="600">S2 变更规格：等你明确批准</text>
+  <text x="555" y="465" fill="#f7e5c7" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="600">S2 紧凑规格：授权内连续推进</text>
 
   <path d="M884 366H936" fill="none" stroke="#8b9aae" stroke-width="3" marker-end="url(#arrow)"/>
   <circle cx="905" cy="366" r="6" fill="#7688f8"/>
@@ -87,10 +87,10 @@
     <text x="1050" y="365" fill="#34445b" font-size="16" font-weight="600">项目证据与问题定位</text>
     <circle cx="1021" cy="407" r="16" fill="#eef0ff"/>
     <path d="M1014 407h14M1021 400v14" stroke="#5968d5" stroke-width="2.5" stroke-linecap="round"/>
-    <text x="1050" y="413" fill="#34445b" font-size="16" font-weight="600">获批范围内的实现</text>
+    <text x="1050" y="413" fill="#34445b" font-size="16" font-weight="600">复用、配置与局部修复</text>
     <circle cx="1021" cy="455" r="16" fill="#fff0e7"/>
     <path d="M1013 455l5 5 11-12" fill="none" stroke="#d97752" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="1050" y="461" fill="#34445b" font-size="16" font-weight="600">验证记录与交接文档</text>
+    <text x="1050" y="461" fill="#34445b" font-size="16" font-weight="600">独立审查、验证与交接</text>
   </g>
 
   <rect x="72" y="538" width="1296" height="62" rx="14" fill="#ffffff" stroke="#dbe4ed"/>

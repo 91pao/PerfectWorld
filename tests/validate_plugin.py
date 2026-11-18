@@ -102,19 +102,56 @@ if marketplace:
         if not (source_root / ".codex-plugin" / "plugin.json").is_file():
             fail("marketplace source path does not contain the plugin manifest")
 
-if evals is not None:
+eval_count = 0
+if not isinstance(evals, list):
+    fail("routing evals must be a JSON array")
+else:
+    eval_count = len(evals)
+    if not evals:
+        fail("routing evals must contain at least one case")
     seen_ids: set[str] = set()
-    for case in evals:
+    for index, case in enumerate(evals):
+        if not isinstance(case, dict):
+            fail(f"routing eval {index}: case must be an object")
+            continue
         case_id = case.get("id")
-        if not case_id or case_id in seen_ids:
+        label = case_id if isinstance(case_id, str) and case_id.strip() else f"routing eval {index}"
+        if not isinstance(case_id, str) or not case_id.strip():
+            fail(f"{label}: id must be a non-empty string")
+        elif case_id in seen_ids:
             fail(f"routing eval has missing or duplicate id: {case_id}")
-        seen_ids.add(case_id)
+        else:
+            seen_ids.add(case_id)
+        prompt = case.get("prompt")
+        if not isinstance(prompt, str) or not prompt.strip():
+            fail(f"{label}: prompt must be a non-empty string")
+        if "expected_primary" not in case:
+            fail(f"{label}: expected_primary is required; use null for no UE skill")
         primary = case.get("expected_primary")
-        if primary is not None and primary not in skill_names:
-            fail(f"{case_id}: unknown expected primary skill {primary}")
-        for supporting in case.get("expected_supporting", []):
-            if supporting not in skill_names:
-                fail(f"{case_id}: unknown supporting skill {supporting}")
+        if primary is not None and (not isinstance(primary, str) or primary not in skill_names):
+            fail(f"{label}: unknown expected primary skill {primary}")
+        for field in ("expected_supporting", "required", "must_not", "setup"):
+            if field == "setup" and field not in case:
+                continue
+            values = case.get(field)
+            if not isinstance(values, list):
+                fail(f"{label}: {field} must be an array")
+                continue
+            if field != "expected_supporting" and not values:
+                fail(f"{label}: {field} must contain at least one item")
+            seen_values: set[str] = set()
+            for value in values:
+                if not isinstance(value, str) or not value.strip():
+                    fail(f"{label}: {field} items must be non-empty strings")
+                    continue
+                if value in seen_values:
+                    fail(f"{label}: {field} contains a duplicate item")
+                seen_values.add(value)
+                if field == "expected_supporting":
+                    if value not in skill_names:
+                        fail(f"{label}: unknown supporting skill {value}")
+                    if value == primary:
+                        fail(f"{label}: primary skill must not also be supporting")
 
 core_rules = (ROOT / "references" / "ue-core-rules.md").read_text(encoding="utf-8")
 for stage in range(7):
@@ -127,5 +164,6 @@ if ERRORS:
 
 print(
     f"OK: plugin manifests, {len(skill_names)} skills, "
-    f"{len(evals)} routing evals, and S0-S6 references"
+    f"{eval_count} routing eval schemas, and S0-S6 references "
+    "(behavioral cases were not executed)"
 )

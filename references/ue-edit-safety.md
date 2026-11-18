@@ -25,4 +25,10 @@ Protect source encoding and keep patches small, verifiable, and complete.
 
 - In deletion, revert, or slimming rounds, audit what the surviving code inherited from the deleted mechanism — registration timing, implicit sequencing, periodic coverage — and re-verify each against the new flow; attention naturally fixes on what is gone, while regressions hide in what remains
 - Sweep residue mechanically per touched file: the deleted mechanism's vocabulary at zero hits including tests, modification markers balanced in pairs, includes with no remaining consumer removed, blank lines left where blocks were removed collapsed
-- Judge the round against the ticket's base commit, not the previous working state: a file whose net change is whitespace only must be restored to base and leave the change surface entirely
+- Compare the task's net change with its baseline, not only the previous patch. Remove whitespace churn introduced by this task; never restore a whole file to base if that would discard someone else's changes
+
+## Shared Table And Import Edits
+
+- Before an importer or bulk edit touches a shared registry, inspect the actual API's side effects, including global import state and each asset's source-file metadata. A successful return value alone does not prove rows or import sources survived
+- Preflight the intended row type, keys, source paths, and expected edits; retain recoverable originals before destructive imports. Verify that existing rows and unrelated fields remain, each table still points to its own source, and a repeat run does not duplicate or overwrite unrelated data
+- Keep one writer for each shared table and editor session. Save only after those checks pass; use the existing authoring tools rather than building a general recovery framework for a local import task

@@ -25,13 +25,14 @@ Pass this gate for each responsibility before introducing code, state, configura
 - Classify the required action as `reuse`, `configure`, `extend`, or `create`; select `extend` or `create` only after every responsibility-compatible `reuse` and `configure` candidate has been disproven with current-project evidence
 - For UI interaction and presentation, prefer this order: configure the existing widget instance, configure inherited component or base-widget properties, reuse existing table or routing configuration, call the established project helper, add local feature code, then modify shared framework code
 - Keep a compact admission record containing the required behavior, existing owner, available API or configuration, evidence of any capability gap, and the selected action; do not output implementation while a required candidate remains merely unchecked
+- In the S2 manifest, justify necessary new files, public APIs, persistent fields, guards, and asynchronous mechanisms against the smallest complete verified alternative. Prefer no new mechanism; do not extract a one-use wrapper or duplicate state for hypothetical future reuse. A small file with a real separate responsibility can be simpler than enlarging an unrelated owner
 
 ## Route Precedent
 
 - When an existing constraint blocks the obvious path, the routes are reuse, align with a sibling implementation that already solved the same problem class, or build a parallel mechanism; a parallel mechanism is the last resort and requires recorded proof that the sibling does not fit — "afraid of touching their code" and "no time to ask" are not proof
 - Read the sibling's sequencing, not its interface: who runs first, who owns the window, who owns the lifecycle. "Do not modify others' code" never forbids reading it; its silent escalation into "do not read others' code" is the fork where parallel mechanisms are born
 - Find siblings among other callers of the same problem — same source kind, same subsystem, or whoever touched this concern in recent commits — and read their timing through logs or the debugger before designing
-- When the blocked path belongs to a domain another person maintains, surface the fork to the owner before building the parallel path; a one-line question beats a full implement-review-rework cycle
+- When a blocked path needs a decision from another domain owner, report the exact fork to the user and continue independent work; do not message the owner without user authorization or build a parallel path to avoid the decision
 
 ## Requirement And Capability Fit Gate
 
@@ -45,6 +46,7 @@ Pass this gate before proposing implementation or adding a compensating mechanis
 - Treat a new DataAsset, red-point identity, message ID, save structure, RPC, delegate, manager, lifecycle override, proxy state, or synchronization path for a display or navigation requirement as a blocking complexity signal; rerun the capability admission and state-identity checks before continuing
 - After a requirement changes, remove or reject every mechanism that exists only for the superseded behavior before continuing
 - If later evidence reveals an existing capability that replaces an assumed gap, discard every compensating mechanism introduced for that gap instead of retaining parallel paths for compatibility
+- Apply these removals only to this task's authorized changes. Existing upstream code, comments, and public contracts are not cleanup targets merely because the new route no longer calls them; record a separate cleanup candidate unless its modification is necessary and within scope
 
 ## Mandatory Evidence Gate
 
@@ -60,7 +62,7 @@ Before proposing a project-specific design, complete code, editor configuration,
 - Trace each link from producer to consumer. A nearby class, a matching name, or a single method is not sufficient evidence.
 - Keep adjacent responsibilities separate. Display or parent-child aggregation does not prove message creation; a UI click path does not prove server persistence; a true condition does not prove removal or expiry.
 - Select a project precedent only after verifying its complete active path has compatible ownership, lifecycle, authority, and cleanup behavior.
-- If any required link is unverified, report the exact evidence gap and stop at a diagnosis or bounded investigation plan. Do not output complete implementation steps or add conditions, managers, DataAssets, fields, delegates, tags, or lifecycle hooks to bridge the gap.
+- If a required design link is unverified, report the exact gap and block only the dependent design or edits; continue independent investigation or implementation within the existing mandate. Do not add conditions, managers, DataAssets, fields, delegates, tags, or lifecycle hooks as a substitute for evidence.
 
 ## Completion Claim Gate
 
@@ -131,4 +133,4 @@ For non-trivial or cross-system work, identify:
 - Before designing any lookup or discovery, ask where the data already lives as authored references the team maintains: group member sets, actor-to-actor references, an existing containment method on a zone actor. The first candidate design is the user's stated chain rendered verbatim ("caller in box X → groups of X → their points"); every alternative — geometry scans, registries, collision markers, subsystem identity chains — must argue against that verbatim chain, not against performance.
 - Replacing the authoring-native chain with a runtime mechanism requires a named requirement the chain cannot satisfy. "Fewer moving parts at runtime", "index scalability", or "designers might forget" are not requirements until stated by the user with a scale or workflow fact; performance concerns are raised only with measurements of the authoring-native version.
 - When the user pushes back twice on a mechanism, stop defending and re-derive the design from their stated model; a third defense of the same mechanism against the same objection is a route error. Restate their model in one diagram before proposing anything again.
-- Never edit code while the conversation is a design discussion; a "simplification" to an approved manifest needs approval like any other change. Incident: a "borrow POI spawn points" feature whose stated chain was box→group→points passed through geometry scan, cached area resolution, physics overlap, and director-component chains — four mechanisms across five push-backs — before the verbatim chain (one authored reference plus one existing containment call) landed smaller than every intermediate version.
+- Keep design discussions read-only. During authorized implementation, simplify within the current requirements and hard boundaries without another approval round; a changed requirement or boundary still needs the user's decision. Incident: a "borrow POI spawn points" feature whose stated chain was box→group→points passed through geometry scan, cached area resolution, physics overlap, and director-component chains before the simpler authored chain was adopted.

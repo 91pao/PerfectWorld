@@ -1,6 +1,6 @@
 ---
 name: ue-implement
-description: Implement an Unreal Engine change only after its S2 change manifest is approved and the user explicitly authorizes file edits. Do not use for diagnosis-only, planning-only, or review-only requests.
+description: Implement or fix an Unreal Engine feature under a clear user mandate, with conservative changes, parallel agents, verification, and independent review. Do not edit for diagnosis-only, planning-only, or review-only requests.
 ---
 
 # UE Implement
@@ -19,7 +19,7 @@ Read only when applicable:
 
 ## Workflow
 
-0. Confirm the user gave a hard direct-edit requirement to modify files or write into the project/worktree. If not, switch to `ue-draft`. Stage gate: this skill executes S3 (and prepares S4) of the stage-gate workflow in `ue-core-rules.md`; entry requires an approved S2 change manifest, and user edit permission alone is not the gate. Without a manifest, produce one through `ue-draft` first. Edit only manifest-listed files in small compilable steps; when the code contradicts the manifest, stop and amend the manifest for approval instead of silently expanding the edit. Exit artifact: change set with per-step self-review record and residual-symbol sweep, then stop for S4 verification.
+0. Confirm a clear implementation or fix mandate and honor explicit no-edit or plan-first limits. Complete the relevant S0-S2 evidence and compact change manifest before dependent edits, then continue through S3-S6 within that mandate. A separate S2 approval is not required unless the user requested it or the proposed change crosses a hard boundary. Resolve implementation details autonomously; ask only for a real scope or product decision.
 1. Discover current-project structure, callers, assets, configuration, ownership, persistence, cleanup, and candidate precedents before designing. When `ue_rag_*` tools are available, load `../../references/ue-rag-integration.md` for candidate discovery, then verify candidates with direct project reads.
 2. Freeze the latest requirement and hard scope, discard superseded requirements, and pass the requirement-and-capability fit gate in `ue-project-consistency.md` before patching.
 3. If the capability is shared infrastructure, apply `ue-architecture.md` before patching: identify all active consumers, define the public lifecycle contract, and separate generic resource/lifecycle behavior from business-specific reactions.
@@ -27,12 +27,12 @@ Read only when applicable:
 5. For asynchronous resource or initialization work, prefer an existing completion event, delegate, callback, or future. Do not add Tick polling as the default wait mechanism; retain it only with an explicit compatibility reason and a removal boundary.
 6. Build the responsibility evidence matrix and verify every introduced UI, navigation, state, object-access, guard, and diagnostic mechanism independently when applicable.
 7. Verify that the chosen precedents are active, maintained, and compatible with the target ownership, lifecycle, authority, and cleanup behavior.
-8. If a required link is missing, stop before editing and report the gap; do not add a condition, manager, field, DataAsset, delegate, or lifecycle hook as a substitute for evidence.
-9. State the implementation direction briefly if the change is non-trivial.
+8. If a required design link is missing, pause only dependent edits and report the gap while continuing unblocked work; do not add a condition, manager, field, DataAsset, delegate, or lifecycle hook as a substitute for evidence.
+9. State the implementation direction briefly. For substantial separable work, apply the parallel agent workflow in `ue-core-rules.md`: bounded roles, agreed interfaces, one writer per resource, and useful coordinator work in parallel.
 10. Patch only the required files and blocks.
 11. Apply the loaded reference rules as hard constraints.
 12. Apply code style as a local, evidence-backed constraint: do not reformat unrelated code, and do not turn context-dependent recommendations into blocking changes.
-13. Run `ue-self-review.md` as a blocking gate and correct every known in-scope issue before responding.
+13. Run `ue-self-review.md`, obtain independent review for substantial changes when agents are available, and correct confirmed in-scope issues without another approval round. Reverify affected checks and re-review the latest integrated result; report unresolved blockers honestly.
 14. Do not run a full UE build unless explicitly asked.
 
 ## Final Response

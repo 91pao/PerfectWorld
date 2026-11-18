@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="790" viewBox="0 0 1440 790" role="img" aria-labelledby="title desc">
   <title id="title">普通 Codex 对话与 UE PerfectWorld 工作方式对比</title>
-  <desc id="desc">普通 Codex 对话可以完成 UE 开发，但项目检查和验证深度依赖当轮提示。UE PerfectWorld 通过任务分流、项目证据、用户批准的变更规格、限定范围实现和可追溯验证交付，固定这些工作约定。</desc>
+  <desc id="desc">普通 Codex 对话可以完成 UE 开发，但项目检查和验证深度依赖当轮提示。UE PerfectWorld 通过任务分流、项目证据、紧凑范围规格、授权内有界实现、独立审查和修复复审，固定可追溯的工作约定。</desc>
   <defs>
     <linearGradient id="plugin" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#17283c"/>
@@ -85,23 +85,23 @@
     <g>
       <circle cx="978" cy="326" r="25" fill="#7988ee"/>
       <text x="978" y="332" fill="#ffffff" font-size="15" font-weight="700">03</text>
-      <text x="978" y="375" fill="#ffffff" font-size="16" font-weight="700">规格与批准</text>
-      <text x="978" y="401" fill="#bdcadd" font-size="13">列明文件和落点</text>
-      <text x="978" y="421" fill="#bdcadd" font-size="13">S2 等你确认</text>
+      <text x="978" y="375" fill="#ffffff" font-size="16" font-weight="700">范围与授权</text>
+      <text x="978" y="401" fill="#bdcadd" font-size="13">紧凑文件与落点</text>
+      <text x="978" y="421" fill="#bdcadd" font-size="13">有界改动可继续</text>
     </g>
     <g>
       <circle cx="1133" cy="326" r="25" fill="#d58c9a"/>
       <text x="1133" y="332" fill="#3a1b2a" font-size="15" font-weight="700">04</text>
       <text x="1133" y="375" fill="#ffffff" font-size="16" font-weight="700">限定范围实现</text>
-      <text x="1133" y="401" fill="#bdcadd" font-size="13">只改批准的范围</text>
-      <text x="1133" y="421" fill="#bdcadd" font-size="13">逐符号核验</text>
+      <text x="1133" y="401" fill="#bdcadd" font-size="13">复用 / 配置 / 局部修复</text>
+      <text x="1133" y="421" fill="#bdcadd" font-size="13">单一写入者</text>
     </g>
     <g>
       <circle cx="1288" cy="326" r="25" fill="#efaa68"/>
       <text x="1288" y="332" fill="#4b2e10" font-size="15" font-weight="700">05</text>
       <text x="1288" y="375" fill="#ffffff" font-size="16" font-weight="700">验证与交付</text>
-      <text x="1288" y="401" fill="#bdcadd" font-size="13">验证 / 对抗评审</text>
-      <text x="1288" y="421" fill="#bdcadd" font-size="13">文档 / 证据清单</text>
+      <text x="1288" y="401" fill="#bdcadd" font-size="13">验证 / 独立审查</text>
+      <text x="1288" y="421" fill="#bdcadd" font-size="13">范围内修复复审</text>
     </g>
   </g>
 
@@ -118,7 +118,7 @@
 
   <rect x="620" y="616" width="712" height="48" rx="12" fill="#172b38" stroke="#3d6f69"/>
   <circle cx="644" cy="640" r="7" fill="#54cdb2"/>
-  <text x="664" y="646" fill="#c8eee5" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14">插件技能已加载并适用于任务时，这些约束才会进入本轮工作。</text>
+  <text x="664" y="646" fill="#c8eee5" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14">S0-S6 可合并连续推进；只读请求、真实决策与额外授权边界仍然有效。</text>
 
   <text x="72" y="750" fill="#8290a1" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14">普通对话并非做不到这些检查；UE PerfectWorld 的价值是把它们固定下来，并要求过程与结论对得上。</text>
 </svg>

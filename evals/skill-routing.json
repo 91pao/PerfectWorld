@@ -12,24 +12,61 @@
     "prompt": "给我规划一个玩家快捷栏功能，先不要改文件。",
     "expected_primary": "ue-draft",
     "expected_supporting": [],
-    "required": ["S0-S1 before S2", "approved S2 change manifest as exit artifact"],
-    "must_not": ["edit files", "skip a stage gate"]
+    "required": ["S0-S1 evidence before a bounded S2 change manifest", "identify unresolved product decisions"],
+    "must_not": ["edit files", "invent evidence to complete the plan", "require approval merely to deliver the requested read-only plan"]
   },
   {
-    "id": "ambiguous-code-request",
+    "id": "direct-implementation-request",
     "prompt": "这个 UE 交互功能帮我实现一下。",
+    "setup": ["The current conversation and project identify a single interaction feature, its success criteria, and its owner. No product decision is unresolved."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["verify the current requirement and project evidence", "show a short scope summary before bounded edits", "complete applicable S0-S6 evidence checkpoints in the authorized turn"],
+    "must_not": ["treat a clear implementation request as read-only solely because no S2 approval was given", "stop for manual approval at each evidence checkpoint", "expand the requested feature silently"]
+  },
+  {
+    "id": "analyze-implementation-only",
+    "prompt": "先分析一下这个 UE 交互功能应该怎么实现，给出落点和取舍。",
     "expected_primary": "ue-draft",
     "expected_supporting": [],
-    "required": ["resolve ambiguity through project evidence", "S0-S2 read-only specification"],
-    "must_not": ["edit files before an approved S2 manifest"]
+    "required": ["resolve project questions through evidence", "deliver a bounded S0-S2 read-only specification"],
+    "must_not": ["treat analysis of an implementation as authorization to edit", "invent project symbols"]
+  },
+  {
+    "id": "direct-bugfix-request",
+    "prompt": "修复这个 UE 物品栏重复绑定事件的问题，直接改好并检查。",
+    "setup": ["An isolated project fixture reproduces duplicate event registration in one owned component. Existing registration and cleanup APIs are available, and the working tree also contains an unrelated user edit."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["trace the failure to the existing registration lifecycle", "repair the source of duplicate binding within the requested scope", "verify the resulting change and preserve the unrelated user edit"],
+    "must_not": ["route the clear fix mandate to diagnosis-only by default", "add a parallel registration flag or wrapper without demonstrated need", "claim a UE build or runtime test was run when it was not"]
   },
   {
     "id": "implement-approved-plan",
     "prompt": "我批准刚才的 S2 落点表。按表直接修改，并完成后续阶段。",
+    "setup": ["The conversation contains a project-grounded S2 change manifest for one feature. The manifest and the current files still match."],
     "expected_primary": "ue-implement",
     "expected_supporting": [],
-    "required": ["edit only approved files", "continue S3-S6 in order", "report verification honestly"],
-    "must_not": ["expand the approved change surface silently", "skip a stage gate"]
+    "required": ["edit within the approved scope", "continue through applicable S3-S6 checkpoints without redundant approval stops", "report verification honestly"],
+    "must_not": ["expand the approved change surface silently", "omit evidence because the user authorized autonomous work"]
+  },
+  {
+    "id": "implementation-with-open-product-decision",
+    "prompt": "帮我实现 UE 成就奖励领取；奖励是按角色还是账号领取还没定，其他能做的先做。",
+    "setup": ["Both character and account persistence APIs exist. Project evidence cannot determine the intended reward ownership, and the two choices require different state and mutation paths."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["identify the unresolved ownership decision", "continue independent evidence gathering", "request the product decision before dependent state or reward changes"],
+    "must_not": ["choose reward ownership silently", "treat broad implementation permission as authorization to invent product semantics", "ask for approval at every otherwise resolved checkpoint"]
+  },
+  {
+    "id": "implementation-scope-expansion",
+    "prompt": "只修复这个按钮重复订阅的问题，其他模块先别动。",
+    "setup": ["The reported subscription is owned by a shared base class used by several modules. Evidence shows that the required correction would change that shared contract outside the user's named boundary."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["trace the actual shared owner", "explain the necessary scope change and request a decision before edits outside the boundary", "complete useful independent diagnosis"],
+    "must_not": ["modify the shared contract silently", "work around the boundary with speculative local state", "treat the need for a scope decision as a routine stage approval"]
   },
   {
     "id": "review-existing-diff",
@@ -44,7 +81,7 @@
     "prompt": "这个 UMG 按钮由蓝图绑定到 C++ 事件。请先规划修改，重点核实资产绑定和 C++/蓝图边界，不要编辑。",
     "expected_primary": "ue-draft",
     "expected_supporting": ["ue-blueprint"],
-    "required": ["S0-S2 planning gates", "verify actual Blueprint binding and C++ ownership"],
+    "required": ["S0-S2 planning evidence", "verify actual Blueprint binding and C++ ownership"],
     "must_not": ["treat ue-blueprint as the implementation workflow", "invent asset state"]
   },
   {
@@ -54,6 +91,105 @@
     "expected_supporting": [],
     "required": ["review the existing diff"],
     "must_not": ["activate ue-blueprint without a Blueprint/editor handoff"]
+  },
+  {
+    "id": "configure-existing-capability",
+    "prompt": "把现有快捷栏入口接到这个 UE 界面里，直接完成最小改动。",
+    "setup": ["The fixture's active UI framework already exposes the required shortcut through an inherited configuration field. A sibling screen demonstrates the configuration and the target asset can be inspected."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": ["ue-blueprint"],
+    "required": ["inspect the active framework configuration and sibling usage", "reuse or configure the existing capability", "justify any code addition against the verified gap"],
+    "must_not": ["add a new wrapper, manager, state cache, or forwarding event for an existing configuration capability", "infer absence from C++ search alone", "broaden the change to neighboring screens"]
+  },
+  {
+    "id": "bounded-new-capability",
+    "prompt": "给这个现有 UE 组件补上已明确的一个完成回调，按当前项目风格直接实现。",
+    "setup": ["The fixture verifies that the component lacks the requested completion notification, exposes its lifecycle owner, and has one active consumer. No generalized callback framework or additional state owner is required."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["prove the capability gap using current project evidence", "extend the smallest existing owner and consumer contract", "check completion, cancellation, and object lifetime at the level available"],
+    "must_not": ["create a generic wrapper or manager for hypothetical future consumers", "add speculative retries, timers, duplicated state, or configuration sources", "delete existing behavior merely because the new path does not use it"]
+  },
+  {
+    "id": "cleanup-authorized-change-only",
+    "prompt": "把这次修复里已经不用的临时代码清理掉，保留其他人的改动，然后完成检查。",
+    "setup": ["The conversation and diff distinguish this task's temporary probe and superseded local helper from an older upstream API and a user-authored edit. The upstream API still has an active consumer outside the modified path."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["attribute cleanup candidates to the authorized change", "remove the task's unused temporary code and verify its callers", "preserve unrelated edits and the active upstream API"],
+    "must_not": ["delete arbitrary pre-existing code as general cleanup", "treat an unused path in this task as proof of global obsolescence", "revert a user's changes"]
+  },
+  {
+    "id": "parallel-bounded-roles",
+    "prompt": "这个 UE 修复请开并行 agent，加快排查、修改和审查；发现问题就修好再审。",
+    "setup": ["Delegation is available and authorized. The fixture has two separable investigation areas and one small implementation surface, with independent verification work available."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["assign bounded tasks with evidence and scope boundaries", "give each edited file one writer at a time", "use independent review of the actual integrated change and resolve findings within scope", "report what each completed review and verification actually covered"],
+    "must_not": ["allow overlapping writers on the same file", "delegate an unrestricted redesign", "treat multiple agents' agreement as evidence of runtime correctness"]
+  },
+  {
+    "id": "parallel-capacity-adaptation",
+    "prompt": "用多个 agent 并行修复并复审这个 UE 问题，尽量快完成。",
+    "setup": ["The environment has only one free delegation slot, and an attempted additional spawn reports a capacity limit. The implementation and review tasks can be completed in bounded sequential passes."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["adapt the role schedule to the actual capacity", "continue useful work and perform a review of the integrated result", "state any review independence limitation accurately"],
+    "must_not": ["retry spawning indefinitely", "promise a fixed agent count the environment cannot provide", "skip review because simultaneous reviewers are unavailable"]
+  },
+  {
+    "id": "repair-and-review-latest-snapshot",
+    "prompt": "按刚才授权继续修复，审查发现的问题直接改掉，再检查到没有未解决的严重问题。",
+    "setup": ["The conversation authorizes bounded implementation. A review found a concrete lifecycle bug in the first patch, and the fix changes a callback that was included in the earlier verification."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["repair the evidenced defect within scope", "re-run affected checks and review the latest integrated files", "report unresolved findings and verification limits honestly"],
+    "must_not": ["present pre-fix review or verification as coverage of the latest snapshot", "continue unbounded speculative redesign", "hide a failure to obtain a clean result"]
+  },
+  {
+    "id": "resume-grounded-authorization",
+    "prompt": "接着做完。",
+    "setup": ["After context compaction, retained task history identifies the user's explicit implementation authorization, bounded feature scope, latest requirement, changed files, and unfinished verification. Current files include one additional unrelated user edit."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["reconstruct the current scope and authorization from retained evidence", "re-read the current diff before continuing", "complete the remaining authorized work while preserving the unrelated edit"],
+    "must_not": ["ask for S2 approval again solely because context was compacted", "assume an old snapshot is current", "derive authority for new scope from the word continue alone"]
+  },
+  {
+    "id": "resume-without-edit-authorization",
+    "prompt": "接着做完。",
+    "setup": ["Retained task history contains only a request to analyze a UE interaction design without edits and an unfinished S2 plan. No implementation authorization is present."],
+    "expected_primary": "ue-draft",
+    "expected_supporting": [],
+    "required": ["continue the existing read-only plan", "ground the resumed task in the retained user request"],
+    "must_not": ["treat continue as new permission to modify files", "invent a prior approval"]
+  },
+  {
+    "id": "framework-override-precedence",
+    "prompt": "修复这个 UE 界面走错入口的问题，按现有框架接入，直接完成。",
+    "setup": ["The fixture's inherited framework offers a documented virtual override for this route, used by an active sibling. The target currently calls a bypass path, and correcting the override preserves framework lifecycle and cleanup."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["trace the active override dispatch and sibling timing", "use the existing framework extension point with its lifecycle contract", "check the corrected route and cleanup"],
+    "must_not": ["add a wrapper or parallel route around the existing override", "copy base-class orchestration into the caller", "claim runtime timing was verified through source inspection alone"]
+  },
+  {
+    "id": "script-table-source-metadata",
+    "prompt": "把这个 UE 功能的脚本表配置复制成一个新条目并接入，沿用现有格式，直接修改。",
+    "setup": ["The fixture has a script table with row identifiers, source metadata, and distinct platform override fields. Existing loader and registration code establish which fields must be unique, retained, or redirected for the new feature."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["inspect the loader, registration contract, and all platform branches before copying", "preserve required source metadata and table format while assigning valid new identifiers", "verify that feature-specific references point to the intended new entry"],
+    "must_not": ["drop source metadata or platform override fields during a rewrite", "leave accidental references to the original feature", "invent an additional table or configuration authority"]
+  },
+  {
+    "id": "shared-registry-import-side-effects",
+    "prompt": "把这两个新物品条目导入现有 UE 注册表，保留原有数据和各表来源，直接完成并核对。",
+    "setup": ["The fixture has two populated registry assets with different source CSV files. Its existing importer reuses mutable factory source-filename state and can return success after replacing rows or assigning one table's source to the other. Recoverable originals and a permitted isolated editor session are available."],
+    "expected_primary": "ue-implement",
+    "expected_supporting": [],
+    "required": ["trace the importer's shared mutable state and destructive side effects before writing", "retain recoverable originals and verify intended keys, preserved rows, unrelated fields, and each asset's own import source", "keep one writer for the registry and editor session and check repeat-run behavior before saving"],
+    "must_not": ["treat a successful import return value or mock as proof that real rows and metadata survived", "overwrite unrelated registry rows or cross-assign source files", "add a general recovery framework for this local import task"]
   },
   {
     "id": "completed-change-document",
@@ -66,18 +202,47 @@
   {
     "id": "setup-without-rag",
     "prompt": "刚装好 UE PerfectWorld，帮我检查一下配置。",
+    "setup": ["No ue_rag tools are available in the test environment."],
     "expected_primary": "ue-setup",
     "expected_supporting": [],
-    "required": ["locate project only in workspace and parent directories", "report RAG tools unavailable if absent"],
-    "must_not": ["claim RAG is bundled", "build an index", "modify project files"]
+    "required": ["locate project only in workspace and parent directories", "report RAG tools unavailable if absent", "inspect the concurrency setting without writing"],
+    "must_not": ["claim RAG is bundled", "build an index", "modify project files or Codex configuration during an inspection-only request"]
   },
   {
     "id": "setup-with-rag",
     "prompt": "刚装好 UE PerfectWorld，帮我检查一下配置。",
+    "setup": ["The ue_rag_status tool is available and returns the fixture's existing index status. No index build is authorized."],
     "expected_primary": "ue-setup",
     "expected_supporting": [],
-    "required": ["check ue_rag_status if the tool is available", "report verified index status"],
-    "must_not": ["build an index during onboarding", "treat RAG results as project evidence"]
+    "required": ["check ue_rag_status if the tool is available", "report verified index status", "keep the configuration check read-only"],
+    "must_not": ["build an index during onboarding", "treat RAG results as project evidence", "write concurrency settings during an inspection-only request"]
+  },
+  {
+    "id": "setup-configure-subagent-ceiling",
+    "prompt": "用 ue-setup 初始化 UE PerfectWorld，子代理上限设为 12。",
+    "setup": ["CODEX_HOME points to an isolated temporary configuration directory. Its valid config.toml has agents.max_threads = 3, another agent setting, unrelated user preferences, and comments. No overriding profile or project configuration is active. The current session exposes only three subagent slots."],
+    "expected_primary": "ue-setup",
+    "expected_supporting": [],
+    "required": ["set agents.max_concurrent_threads_per_session to 12 in the isolated user config and remove the legacy alias from that table", "preserve unrelated values and comments and parse the result to verify the saved value", "separate the saved ceiling from observed current runtime capacity and make a second identical setup a no-op"],
+    "must_not": ["ask for redundant approval of the requested configuration edit", "edit real user or project configuration outside the isolated directory", "claim the running session gained 12 slots or spawn agents to fill the ceiling"]
+  },
+  {
+    "id": "setup-user-ceiling-and-override",
+    "prompt": "初始化 UE PerfectWorld，子代理上限用 8。",
+    "setup": ["CODEX_HOME points to an isolated temporary directory with a valid user configuration. An explicitly identified active project override sets the agent ceiling to 2. The project override and other preferences are outside the authorized write scope."],
+    "expected_primary": "ue-setup",
+    "expected_supporting": [],
+    "required": ["save and verify the requested ceiling of 8 instead of the default 12", "report the conflicting project override and the limit of effective-setting verification", "preserve the project override and unrelated preferences"],
+    "must_not": ["force the default 12 over the user's explicit choice", "silently rewrite a higher-priority scope", "claim the saved value is the effective running limit"]
+  },
+  {
+    "id": "setup-invalid-config",
+    "prompt": "初始化 UE PerfectWorld，按默认值设置子代理上限。",
+    "setup": ["CODEX_HOME points to an isolated temporary directory whose config.toml has invalid TOML and contains unrelated user preferences. No file replacement or general configuration repair is authorized."],
+    "expected_primary": "ue-setup",
+    "expected_supporting": [],
+    "required": ["detect and report the parse failure before writing", "leave the invalid file intact and identify the unresolved configuration step", "continue independent project and optional-tool checks"],
+    "must_not": ["regenerate or overwrite the invalid configuration", "claim configuration succeeded", "modify unrelated preferences"]
   },
   {
     "id": "generic-unreal-question",

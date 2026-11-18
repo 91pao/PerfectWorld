@@ -3,9 +3,9 @@
 Use these rules for every Unreal Engine project task.
 
 - Answer in Simplified Chinese unless the user explicitly asks otherwise
-- Treat the current UE project workspace as read-only unless the user clearly asks Codex to modify files, apply a patch, or write into the workspace
-- Version-control mutations (commit, reset, push, or file-level checkout) require per-action user consent, even when file edits are already authorized; a chat-delivery preference for patches extends to git operations
-- Route ambiguous requests such as "帮我实现", "修一下", "给我代码", "看看怎么改" to read-only implementation or investigation instead of mutating files
+- Treat planning, diagnosis-only, review-only, paste-ready code, and explicit no-edit requests as read-only. A clear request to implement, fix, or apply a change authorizes the necessary bounded file edits; do not require a special phrase such as "write into the workspace"
+- Commit, push, reset, destructive restore, publication, and other separately restricted operations require authorization for that operation. Honor authorization already given; an implementation mandate alone does not authorize them
+- Resolve genuinely ambiguous goals before dependent edits; a request such as "帮我实现" or "修一下" with an established target is an implementation mandate, while "先分析怎么改" remains planning
 - Do not assume a project module, class, function, directory, message identifier, data schema, or ownership model exists until it is found in the current workspace
 - Treat existing code as evidence rather than automatic authority; use `ue-project-consistency.md` before adopting a project-specific design
 - Freeze the latest requirement and scope baseline, then pass the requirement-and-capability fit gate in `ue-project-consistency.md` before introducing compensating mechanisms or expanding the design
@@ -15,6 +15,9 @@ Use these rules for every Unreal Engine project task.
 - Do not run full UE builds, editor builds, packaging, or long compile commands unless the user explicitly asks; when the user authorizes build verification, prefer an incremental single-module build over a full build
 - When files are changed without a UE build, state that clearly and request the user's local compile result when relevant
 - Do not refactor unrelated code, rename stable APIs, move files, or broaden the requested scope for cosmetic cleanup
+- Default to conservative code growth: reuse or configure verified capabilities first, then make the smallest complete local change. Every new mechanism needs a present requirement, a real consumer, and an evidenced gap; future flexibility alone is insufficient
+- Minimize responsibilities, state, dependencies, and changed contracts rather than chasing line counts. Do not compress code into an unrelated owner or remove necessary validation just to touch fewer files
+- Cleanup authority is bounded by the task. Remove this change's abandoned mechanisms, but do not delete or reformat unrelated upstream code or comments merely because a search finds no caller
 - Use `rg` first to discover project structure and relevant patterns before reading broad files
 - Before claiming a symbol, API, or string is absent from the project, validate the search with a known positive control: run the same command on a symbol known to exist, and treat a zero-result search as unverified until the control also matches
 - On Windows shells, avoid search patterns that begin with `/` (MSYS path conversion) and embedded double quotes (argument mangling); prefer hex escapes such as `\x22` or character classes, and remember `rg -v` filters whole lines by substring and can hide valid qualified call sites
@@ -38,11 +41,11 @@ Every UE workflow skill loads the following; skill files list only their additio
 - Do not treat the first named caller as the owner when the request mentions a common, public, generic, pooled, or reusable capability; classify local business logic versus shared infrastructure before choosing files or mechanisms
 - For asynchronous resource or initialization work, pass the architecture check before accepting Tick polling; Tick is reserved for continuous progression, tracking, simulation, or parameter updates
 
-## Integration Timing Maps
+## Integration Timing
 
-- Before integrating with a shared framework or subsystem, draw a complete timing map (not a call graph): time on the horizontal axis, participants on the vertical axis, with the actual execution moment of every key function annotated. Use different line styles for synchronous calls and asynchronous callbacks.
-- When the integrating party and the framework's original caller have different execution models (synchronous contract vs. deferred start, immediate return vs. completion callback), the timing map is the only tool that exposes the conflict before code is written. Reading what a function does is not the same as reading when it runs.
-- Run the existing consumer's full flow once (via log timestamps or debugger) to establish the ground-truth timing before designing the integration. Do not assume the existing consumer's timing applies to the new consumer.
+- Trace the actual runtime type, overrides, local/server boundary, callbacks, and failure result before reusing a framework API. A familiar UE name does not prove standard engine behavior
+- For an ordering-sensitive integration, keep a compact timing trace of the original and new consumers; draw a diagram when it clarifies a synchronous/asynchronous or request/acknowledgement difference
+- Use existing logs or a permitted debugger run to verify timing when available. Without runtime access, continue independent source checks and mark timing unverified rather than inventing a protective mechanism
 
 ## Fail-Loud Error Handling
 
@@ -56,16 +59,29 @@ Every UE workflow skill loads the following; skill files list only their additio
 - When the user explicitly states a verification method (e.g., "PIE testing with log probes" over automated tests, or "return-path probes only" over tick-based monitoring), that preference overrides the plugin's default recommendations for the remainder of the session. Do not re-propose a mechanism the user has rejected unless new evidence changes the trade-off.
 - Track rejected mechanisms per-session. After the user rejects an approach once, subsequent responses must not re-introduce it without citing the new evidence that justifies revisiting the decision.
 - The same principle applies to scope minimization preferences: if the user prefers fewer touched files over stricter type guarantees (e.g., keeping `void` over changing to `bool` to avoid touching base-class files), respect that trade-off once stated.
+- After resuming or compaction, recover the latest user mandate, hard boundaries, rejected approaches, confirmed author, and current change baseline from the actual conversation and files. A summary saying "approved" is not independent authorization.
 
-## Stage Gate Workflow
+## Parallel Agent Workflow
 
-- The default path for any task whose endpoint is a project change (feature, bug fix, integration, asset or configuration change, or a paste-ready change specification) is S0 → S1 → S2 → S3 → S4 → S5 → S6. Small tasks may keep a stage brief, but no stage may be skipped, merged, or declared complete without its artifact.
-- Announce the current stage and gate status at the top of every response. A stage counts as complete only when its named artifact exists in the conversation; announcing completion without the artifact is fabrication, not progress.
-- S0 Requirement Intake: restate the goal, the hard scope, explicit non-goals, success criteria, and every question the project cannot answer. Artifact: the understanding card with open questions.
-- S1 Evidence And Precedent Base: read-only. For every requirement point cite an existing capability (path:line) or name it as a gap; run the route-precedent check for integration points the framework already reserved; read precedents by timing, not by interface. Artifact: the evidence base. S0 and S1 may share one gate stop because both are read-only.
-- S2 Change Specification: read-only. Artifact: the change manifest — every touched file with the intended change and anchors, configuration design, each item classified reuse/configure/extend/create where create must prove no existing capability fits, and zero-change proofs for neighboring paths. Unresolved S0 questions or unnamed S1 gaps block this gate. Gate: the user approves the manifest; this is the heaviest human gate.
-- S3 Implementation: edit only manifest-approved files in small compilable steps; when the code shows the manifest is wrong, stop and amend the manifest for approval instead of silently expanding the edit. Artifact: the change set with a per-step self-review record and a residual-symbol sweep. User edit permission does not substitute for this gate — no approved manifest, no file edits.
-- S4 Verification: write the probe checklist and expected values before any run; verify what can be verified (incremental build, PIE log acceptance by single request GUID per `ue-self-review.md`); list explicitly what was not run. Artifact: the verification record. Gate: the user sees the evidence or accepts the not-run list.
-- S5 Adversarial Review: review the delivered change against the audits in `ue-self-review.md` (interruption and latecomer, survivor residue, runtime log acceptance) plus project consistency and overdesign. Artifact: findings ordered by severity, each with a fix and re-verification. Gate: no open P1/P2.
-- S6 Delivery: write the development document (`ue-dev-doc`), prepare the single-ticket commit, and reconcile the delivery — every stage's audit fingerprint appears in the final response. Gate: the user confirms delivery; commits and pushes still need per-action consent.
-- Between stages, stop and wait for explicit user approval (an answer to the gate question, "过", or "继续"). Never announce two stages' completions in one response; the shared S0+S1 stop is the only exception. If the user orders a stage skipped, name the skipped artifacts and risks in the response and proceed only on that explicit instruction — never advance silently.
+- For substantial work with separable responsibilities, use available subagents early for independent evidence gathering, bounded implementation, or review. The coordinator advances the critical path while they work; do not delegate everything and wait
+- Adapt to the actual tools, available slots, and user preferences. A configured ceiling such as 12 is a limit, not a target or permission to exceed the runtime cap. Reuse agents; avoid duplicate investigations, empty roles, and recursive fan-out
+- Give each agent a bounded goal, current requirements and exclusions, relevant evidence paths, allowed side effects, and expected result. Share current-task decisions and author confirmation so agents do not ask the user again
+- Assign one writer per file, asset, registry, or other shared mutable resource. Serialize overlapping edits and ownership handoffs; use separate worktrees only when integration benefits justify them. Only one owner drives a build or shared editor session at a time
+- Agree cross-file interfaces before parallel implementation. Report discoveries that invalidate another worker's assumption promptly; the coordinator integrates and checks the combined contract
+- Review a stable diff with its baseline and relevant requirements. Reviewers receive source, configuration, and verification evidence, not an instruction to confirm the implementer's conclusion. An author does not supply their own independent review
+- Start review of stable, independent portions while other work continues. Findings on a moving file are provisional until the reviewer checks the final integrated version
+- Confirm findings before fixing them. Within the authorized scope, repair confirmed defects, remove unnecessary additions, run affected checks, and have the reviewer recheck the changed result. Do not stop merely to ask permission for each correction
+- If a fix needs a new requirement or crosses a hard boundary, present that decision while continuing unblocked work. If iterations repeat without new evidence or progress, retrace the contract and report the concrete blocker instead of adding more patches
+- When delegation is unavailable or the task is too small to benefit, perform the same checks locally and state the review's limits; never claim an independent agent review that did not occur
+
+## S0-S6 Evidence Checkpoints
+
+- Keep S0-S6 as a dependency-aware quality workflow, not seven mandatory user approval rounds. Checkpoints may share one compact record and run in one authorized turn; independent work may overlap, but implementation cannot outrun its required evidence or scope
+- S0 Scope: identify the latest goal, hard boundaries, non-goals, and observable success criteria. Ask only for a missing decision that blocks dependent work
+- S1 Evidence: verify the relevant owners, active capabilities, contracts, and lifecycle against current project files. Record source locations and specific gaps; parallelize independent questions
+- S2 Change Specification: before edits, keep a compact manifest of intended files, behavior, reuse/configure/extend/create choices, and necessary new mechanisms. Give the user a short scope summary. A clear implementation mandate covers a plan inside that scope; separate S2 approval is needed only if requested by the user or a real decision or boundary change requires it
+- S3 Implementation: assign bounded file ownership, make small coherent edits, and update the manifest as evidence resolves details within scope. Preserve unrelated changes and trace removed or renamed symbols
+- S4 Verification: choose risk-relevant checks and expected outcomes before running them; use authorized checks and distinguish source, syntax, compile/UHT, editor, network, and packaged results. Missing runtime access does not block independent static checks
+- S5 Review And Correction: independently review substantial integrated changes for requirement fit, project contracts, lifecycle, and unnecessary growth. Confirm and fix in-scope P1/P2 findings, then reverify and re-review affected paths on the latest version. Unresolved findings or required unavailable checks remain explicit limits, never a clean result
+- S6 Delivery: report final behavior, scope, verification, review outcome, and remaining gaps. Reconcile C++, Lua, CSV, saved assets, and Git/P4 delivery where relevant. Produce a separate development document only when requested or required by the project
+- Continue automatically across checkpoints covered by the existing mandate. Planning-only work ends with its plan; review-only work ends with findings. Pause dependent work only for a genuine unresolved decision, scope expansion, or separately unauthorized operation, and never reset completed checks merely to print stage labels

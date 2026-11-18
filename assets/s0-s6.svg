@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-labelledby="title desc">
-  <title id="title">UE PerfectWorld S0 到 S6 阶段门禁图</title>
-  <desc id="desc">七个阶段从需求接入到交付，每个阶段都有明确输入、产出和停止条件；S2 是实现前最重的用户批准门禁。</desc>
+  <title id="title">UE PerfectWorld S0 到 S6 证据检查点图</title>
+  <desc id="desc">七个证据检查点从需求接入到交付，可合并并在同一授权轮次连续推进。明确的实现或修复请求在紧凑范围规格后可进入有界改动；只读请求保持只读，真实待决策、范围扩张及未授权的额外操作才需确认。</desc>
   <defs>
     <linearGradient id="line" x1="0" x2="1">
       <stop offset="0" stop-color="#45d2b7"/>
@@ -14,7 +14,7 @@
 
   <rect width="1600" height="760" rx="22" fill="#f5f7fb"/>
   <text x="76" y="78" fill="#101828" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="40" font-weight="700">S0 → S6：把 UE 改动变成可审计的交付</text>
-  <text x="78" y="118" fill="#52627a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20">每一步都有产出物；没有证据或没有批准，就停在门外。</text>
+  <text x="78" y="118" fill="#52627a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20">保留证据要求，可合并并连续推进；明确实现或修复授权下，先说明紧凑范围与规格。</text>
 
   <line x1="126" y1="210" x2="1475" y2="210" stroke="#d8e0eb" stroke-width="8" stroke-linecap="round"/>
   <line x1="126" y1="210" x2="1475" y2="210" stroke="url(#line)" stroke-width="8" stroke-dasharray="8 20" stroke-linecap="round"/>
@@ -53,7 +53,7 @@
       <text x="500" y="305">变更规格</text>
       <text x="710" y="305">实现</text>
       <text x="920" y="305">验证</text>
-      <text x="1130" y="305">对抗评审</text>
+      <text x="1130" y="305">独立评审</text>
       <text x="1340" y="305">交付</text>
     </g>
 
@@ -64,42 +64,42 @@
       <text x="290" y="350">项目文件证据</text>
       <text x="290" y="378">path:line</text>
       <text x="290" y="406">证据矩阵</text>
-      <text x="500" y="350">落点表</text>
-      <text x="500" y="378">改哪些文件</text>
-      <text x="500" y="406">零改动证明</text>
-      <text x="710" y="350">只改批准范围</text>
+      <text x="500" y="350">文件与落点</text>
+      <text x="500" y="378">优先现有能力</text>
+      <text x="500" y="406">范围与验证</text>
+      <text x="710" y="350">只改授权范围</text>
       <text x="710" y="378">小步实现</text>
       <text x="710" y="406">自审记录</text>
       <text x="920" y="350">先列探针</text>
       <text x="920" y="378">再跑验证</text>
       <text x="920" y="406">诚实记录</text>
-      <text x="1130" y="350">三轴审查</text>
-      <text x="1130" y="378">占用审计</text>
-      <text x="1130" y="406">P1 / P2 清零</text>
-      <text x="1340" y="350">开发文档</text>
-      <text x="1340" y="378">交付清单</text>
+      <text x="1130" y="350">最新整合版本</text>
+      <text x="1130" y="378">范围内修复</text>
+      <text x="1130" y="406">未解 P1/P2 阻断</text>
+      <text x="1340" y="350">所需交接信息</text>
+      <text x="1340" y="378">证据与未验证项</text>
       <text x="1340" y="406">提交边界</text>
     </g>
 
     <g font-size="15" font-weight="700">
       <rect x="77" y="476" width="152" height="46" rx="9" fill="#e8f8f3"/>
-      <text x="153" y="505" text-anchor="middle" fill="#237b69">用户确认理解</text>
+      <text x="153" y="505" text-anchor="middle" fill="#237b69">仅真实决策需确认</text>
       <rect x="287" y="476" width="152" height="46" rx="9" fill="#e8f8f3"/>
-      <text x="363" y="505" text-anchor="middle" fill="#237b69">可与 S0 共停</text>
+      <text x="363" y="505" text-anchor="middle" fill="#237b69">证据支撑再推进</text>
       <rect x="497" y="476" width="152" height="46" rx="9" fill="#eceeff"/>
-      <text x="573" y="505" text-anchor="middle" fill="#4c5dd2">用户明确批准</text>
+      <text x="573" y="505" text-anchor="middle" fill="#4c5dd2">授权内连续推进</text>
       <rect x="707" y="476" width="152" height="46" rx="9" fill="#fff4df"/>
-      <text x="783" y="505" text-anchor="middle" fill="#96651f">停给 S4</text>
+      <text x="783" y="505" text-anchor="middle" fill="#96651f">单一写入者</text>
       <rect x="917" y="476" width="152" height="46" rx="9" fill="#fff4df"/>
-      <text x="993" y="505" text-anchor="middle" fill="#96651f">用户看证据</text>
+      <text x="993" y="505" text-anchor="middle" fill="#96651f">如实记录结果</text>
       <rect x="1127" y="476" width="152" height="46" rx="9" fill="#fce9ef"/>
-      <text x="1203" y="505" text-anchor="middle" fill="#a33d60">无开放 P1/P2</text>
+      <text x="1203" y="505" text-anchor="middle" fill="#a33d60">修复后复验复审</text>
       <rect x="1340" y="476" width="180" height="46" rx="9" fill="#fce9ef"/>
-      <text x="1430" y="505" text-anchor="middle" fill="#a33d60">用户确认交付</text>
+      <text x="1430" y="505" text-anchor="middle" fill="#a33d60">不自动提交推送</text>
     </g>
   </g>
 
   <rect x="76" y="632" width="1448" height="70" rx="13" fill="#101828"/>
   <text x="108" y="675" fill="#ffffff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">最重要的边界</text>
-  <text x="302" y="675" fill="#c6d1e1" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="17">S2 没有明确批准，不进入实现；RAG 找到的内容也必须回到项目文件直接核实。</text>
+  <text x="302" y="675" fill="#c6d1e1" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="17">只读请求保持只读；真实决策、范围扩张及未授权的构建、外部写入和版本控制操作需确认。</text>
 </svg>

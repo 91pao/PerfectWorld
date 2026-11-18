@@ -18,7 +18,9 @@ Read only when applicable:
 
 ## Review Priorities
 
-This skill executes stage S5 of the stage-gate workflow in `ue-core-rules.md`: entry expects the S3/S4 artifacts (change set and verification record, or the user's explicit statement that verification is deferred), and the exit condition is no open P1/P2 — every finding carries a fix and re-verification, and S6 delivery may not start while one remains.
+This skill performs the S5 review of the available change and verification evidence. Missing earlier stage paperwork does not block review; inspect the actual patch and report unavailable checks. A review-only request remains read-only. When supporting an authorized implementation, return confirmed findings to its owner for bounded correction and recheck the resulting version before a clean conclusion.
+
+For substantial work, follow the parallel agent workflow in `ue-core-rules.md`: split independent review responsibilities when useful, inspect a stable baseline and diff, and reconcile findings with the final integrated snapshot. Reviewers must verify actual contracts and scope rather than endorse the author's summary. The coordinator confirms disputed findings; review-only agents do not edit.
 
 When the review target is a patch batch applied by the user, first verify application completeness: re-read the touched regions, confirm anchor placement, and run a residual-symbol sweep for APIs the batch removed. A partially applied patch is a finding category of its own, ordered above any code-level finding.
 
@@ -36,7 +38,7 @@ Before finalizing the review, run the final self-review against the findings so 
 
 ## Output Format
 
-Report findings under three separate axes, and keep them separate in the output: **requirement fit** (does the change do the requested thing, with no mechanism left from superseded requirements), **consistency and lifecycle** (ownership, authority, timing, cleanup, project precedent), and **overdesign**. One axis passing must not soften another axis's findings — do not merge the axes into a single ranking or pick one cross-axis worst. Lead each axis with its own finding count and most severe finding; within an axis, order by severity and include file and line references when available.
+Check **requirement fit**, **consistency and lifecycle**, and **overdesign** independently; passing one does not clear another. Follow the user's requested format. Otherwise lead with actionable findings ordered by severity, with source locations and relevant verification gaps; group by axis only when that helps the reader. Do not print empty categories or require a separate stage report for a small review.
 
 If something is only a style concern and not a real risk, label it as low priority or omit it.
 

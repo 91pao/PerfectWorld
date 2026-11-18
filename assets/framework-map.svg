@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
   <title id="title">UE PerfectWorld 框架组成图</title>
-  <desc id="desc">UE PerfectWorld 由任务路由、项目证据与一致性检查、UE 工程规则、S2 变更范围控制、验证评审和交付记录构成。可选 RAG 只帮助寻找候选，最终依据来自项目文件。</desc>
+  <desc id="desc">UE PerfectWorld 由任务路由、项目证据、保守实现、S2 紧凑范围规格、按真实容量的并行协作、独立审查与修复复审构成。授权内可连续推进，每个文件或资产保持单一写入者。可选 RAG 只帮助寻找候选，最终依据来自项目文件。</desc>
   <defs>
     <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#fbfcfe"/>
@@ -53,7 +53,7 @@
   </g>
   <rect x="72" y="313" width="10" height="154" rx="5" fill="#4db69d"/>
   <text x="108" y="351" fill="#217c6b" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">第 1 层 · 项目证据与一致性</text>
-  <text x="108" y="384" fill="#27384e" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="21" font-weight="700">先查工程里实际存在什么，再决定能不能改、该改哪里</text>
+  <text x="108" y="384" fill="#27384e" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="21" font-weight="700">先查工程现有能力，优先复用、配置或局部有界修复</text>
 
   <g font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="15">
     <rect x="108" y="408" width="224" height="40" rx="9" fill="#eef8f5"/>
@@ -106,12 +106,13 @@
     <rect x="966" y="730" width="402" height="108" rx="16" fill="#fff0eb" stroke="#f0d6cb"/>
   </g>
   <text x="104" y="770" fill="#4e5fd2" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">第 3 层 · 范围控制</text>
-  <text x="104" y="803" fill="#27384e" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="19" font-weight="700">S2 逐文件规格 → 用户批准 → 只改批准范围</text>
+  <text x="104" y="803" fill="#27384e" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">S2 紧凑规格 → 授权内连续推进</text>
   <text x="620" y="770" fill="#64738a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">第 4 层 · 验证与评审</text>
-  <text x="620" y="803" fill="#27384e" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">预期探针 → 真实验证 → 对抗审查</text>
+  <text x="620" y="799" fill="#27384e" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="17" font-weight="700">验证 → 独立审查 → 范围内修复</text>
+  <text x="620" y="822" fill="#64738a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="13">复验并复审最新整合版本</text>
   <text x="996" y="770" fill="#b66049" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">交付产物</text>
   <text x="996" y="803" fill="#27384e" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">代码 · 验证记录 · 交接文档</text>
 
   <rect x="72" y="858" width="1296" height="1" fill="#dbe3ed"/>
-  <text x="74" y="883" fill="#77859a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="13">可选 RAG 只负责找候选文件；代码结论仍须回到工作区源码、配置和资产直接核实。</text>
+  <text x="74" y="883" fill="#77859a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="13">可分离工作按真实容量并行，每个文件或资产保持单一写入者；可选 RAG 只找候选，结论仍须回到项目文件核实。</text>
 </svg>
