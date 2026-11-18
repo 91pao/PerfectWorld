@@ -1,124 +1,98 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="790" viewBox="0 0 1440 790" role="img" aria-labelledby="title desc">
-  <title id="title">普通 Codex 对话与 UE PerfectWorld 工作方式对比</title>
-  <desc id="desc">普通 Codex 对话可以完成 UE 开发，但项目检查和验证深度依赖当轮提示。UE PerfectWorld 通过任务分流、项目证据、紧凑范围规格、授权内有界实现、独立审查和修复复审，固定可追溯的工作约定。</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="920" viewBox="0 0 1440 920" role="img" aria-labelledby="title desc">
+  <title id="title">普通 Codex 对话与 UE PerfectWorld 的执行组织对比</title>
+  <desc id="desc">普通 Codex 也可以使用多代理，具体查证、拆分和评审方式取决于当轮约定。UE PerfectWorld 将多子代理协作作为明确执行层：主代理锁定目标、拆分任务并持续关键路径，子代理按依赖并行证据、分块实施、验证和独立审查，主代理整合后对确认缺陷进行范围内修复、受影响复验和最新版复审。</desc>
   <defs>
-    <linearGradient id="plugin" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#17283c"/>
-      <stop offset="1" stop-color="#26395a"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#45b99f"/>
-      <stop offset=".55" stop-color="#7485ee"/>
-      <stop offset="1" stop-color="#e78372"/>
-    </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
-      <feDropShadow dx="0" dy="10" stdDeviation="11" flood-color="#1c2b43" flood-opacity=".12"/>
-    </filter>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto">
-      <path d="M0 0L10 5L0 10z" fill="#94a1b3"/>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0L8 4L0 8z" fill="#8b9cb0"/>
+    </marker>
+    <marker id="loop" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0L8 4L0 8z" fill="#ecad96"/>
     </marker>
   </defs>
-
-  <rect width="1440" height="790" rx="24" fill="#f5f7fb"/>
-  <text x="72" y="72" fill="#182436" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="36" font-weight="700">差别不是“会不会写”，而是过程有没有固定护栏</text>
-  <text x="74" y="108" fill="#66758a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18">两种方式都能完成任务；插件把每轮容易遗漏的 UE 检查变成可复用的工作约定。</text>
-
-  <g filter="url(#shadow)">
-    <rect x="72" y="150" width="484" height="550" rx="18" fill="#ffffff" stroke="#dce3ec"/>
-    <rect x="584" y="150" width="784" height="550" rx="18" fill="url(#plugin)"/>
-  </g>
-
-  <text x="108" y="198" fill="#34445b" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="23" font-weight="700">普通 Codex 对话</text>
-  <text x="108" y="228" fill="#718096" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="15">不加载专用 UE 工作流时</text>
-
+  <rect width="1440" height="920" rx="20" fill="#f5f7fb"/>
   <g font-family="Segoe UI, Microsoft YaHei, sans-serif">
-    <rect x="108" y="262" width="108" height="52" rx="12" fill="#eff3f8"/>
-    <text x="162" y="294" text-anchor="middle" fill="#47566d" font-size="16" font-weight="600">任务描述</text>
-    <path d="M225 288h48" fill="none" stroke="#aab5c3" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
-    <rect x="285" y="262" width="112" height="52" rx="12" fill="#eff3f8"/>
-    <text x="341" y="294" text-anchor="middle" fill="#47566d" font-size="16" font-weight="600">当轮上下文</text>
-    <path d="M406 288h42" fill="none" stroke="#aab5c3" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
-    <rect x="460" y="262" width="60" height="52" rx="12" fill="#fff0e8"/>
-    <text x="490" y="294" text-anchor="middle" fill="#a85a39" font-size="15" font-weight="700">回答</text>
+    <text x="48" y="62" fill="#172335" font-size="35" font-weight="700">把多子代理协作变成可复核的执行组织</text>
+    <text x="48" y="102" fill="#52627a" font-size="18">从项目证据出发，按职责分工，以最终整合版本的验证与独立审查收敛。</text>
+
+    <rect x="48" y="142" width="352" height="644" rx="8" fill="#ffffff" stroke="#d9e2ec"/>
+    <text x="76" y="187" fill="#27384e" font-size="23" font-weight="700">普通 Codex 对话</text>
+    <text x="76" y="219" fill="#718096" font-size="14">未加载专用 UE 工作流时</text>
+    <g text-anchor="middle">
+      <rect x="94" y="253" width="260" height="66" rx="8" fill="#eff3f8"/>
+      <text x="224" y="293" fill="#47566d" font-size="19" font-weight="700">任务与当轮约定</text>
+      <path d="M224 321V351" fill="none" stroke="#8b9cb0" stroke-width="2.5" marker-end="url(#arrow)"/>
+      <rect x="94" y="355" width="260" height="66" rx="8" fill="#eff3f8"/>
+      <text x="224" y="395" fill="#47566d" font-size="19" font-weight="700">查证 / 拆分 / 执行</text>
+      <path d="M224 423V453" fill="none" stroke="#8b9cb0" stroke-width="2.5" marker-end="url(#arrow)"/>
+      <rect x="94" y="457" width="260" height="66" rx="8" fill="#fff0e9"/>
+      <text x="224" y="497" fill="#aa5d44" font-size="19" font-weight="700">验证 / 评审 / 回答</text>
+    </g>
+    <line x1="76" y1="558" x2="372" y2="558" stroke="#d9e2ec"/>
+    <text x="76" y="594" fill="#52627a" font-size="15">可以采用多代理与深入查证</text>
+    <text x="76" y="626" fill="#52627a" font-size="15">具体分工、整合与复审方式</text>
+    <text x="76" y="658" fill="#52627a" font-size="15">依赖当轮提示和实际执行</text>
+    <text x="76" y="735" fill="#718096" font-size="14">专用约定需要随任务明确</text>
+
+    <rect x="424" y="142" width="968" height="644" rx="8" fill="#20334c"/>
+    <text x="452" y="187" fill="#ffffff" font-size="23" font-weight="700">UE PerfectWorld · 主代理 + 多子代理</text>
+    <text x="452" y="219" fill="#cbd7e5" font-size="14">大且可分离的任务尽早并行；下列角色按依赖启动，可跨检查点复用</text>
+
+    <g fill="none" stroke="#8b9cb0" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M658 368H692V289H726"/>
+      <path d="M692 368H726"/>
+      <path d="M692 368V447H726"/>
+      <path d="M1000 289H1028V368H1056"/>
+      <path d="M1000 368H1056"/>
+      <path d="M1000 447H1028V368"/>
+    </g>
+    <rect x="452" y="267" width="206" height="202" rx="8" fill="#304760" stroke="#59738f"/>
+    <text x="476" y="306" fill="#83ddc8" font-size="20" font-weight="700">主代理统筹</text>
+    <text x="476" y="345" fill="#ffffff" font-size="17">目标与授权范围</text>
+    <text x="476" y="377" fill="#d1dce8" font-size="15">拆分 / 接口 / 依赖</text>
+    <text x="476" y="409" fill="#d1dce8" font-size="15">持续推进关键路径</text>
+    <text x="476" y="445" fill="#f3ce8b" font-size="13">不等待所有子任务才行动</text>
+
+    <rect x="728" y="255" width="272" height="68" rx="8" fill="#e6f6f0"/>
+    <text x="750" y="284" fill="#217c6b" font-size="18" font-weight="700">证据子代理</text>
+    <text x="750" y="307" fill="#45675e" font-size="13">调用链 / 配置 / 资产 / 所有权</text>
+    <rect x="728" y="334" width="272" height="68" rx="8" fill="#edf0ff"/>
+    <text x="750" y="363" fill="#4e5fc2" font-size="18" font-weight="700">分块实施子代理</text>
+    <text x="750" y="386" fill="#59677d" font-size="13">证据与规格就绪 · 单一写入者</text>
+    <rect x="728" y="413" width="272" height="68" rx="8" fill="#fff0e9"/>
+    <text x="750" y="442" fill="#aa5d44" font-size="18" font-weight="700">验证 / 独立审查子代理</text>
+    <text x="750" y="465" fill="#856a5d" font-size="13">稳定分块可重叠 · 最终重读最新版</text>
+
+    <rect x="1058" y="267" width="306" height="202" rx="8" fill="#304760" stroke="#59738f"/>
+    <text x="1082" y="306" fill="#83ddc8" font-size="20" font-weight="700">主代理汇合整合</text>
+    <text x="1082" y="345" fill="#ffffff" font-size="17">组合契约与最终源码</text>
+    <text x="1082" y="377" fill="#d1dce8" font-size="15">确认发现、处理范围内问题</text>
+    <text x="1082" y="409" fill="#d1dce8" font-size="15">对账验证与未验证事项</text>
+    <text x="1082" y="445" fill="#f3ce8b" font-size="13">优先复用、配置与局部修复</text>
+
+    <line x1="452" y1="517" x2="1364" y2="517" stroke="#526a85"/>
+    <text x="452" y="551" fill="#83ddc8" font-size="17" font-weight="700">整合后的修复复审回环</text>
+    <g text-anchor="middle">
+      <rect x="452" y="580" width="184" height="70" rx="8" fill="#304760" stroke="#59738f"/>
+      <text x="544" y="622" fill="#ffffff" font-size="16" font-weight="700">确认缺陷</text>
+      <rect x="694" y="580" width="184" height="70" rx="8" fill="#304760" stroke="#59738f"/>
+      <text x="786" y="622" fill="#ffffff" font-size="16" font-weight="700">范围内修复</text>
+      <rect x="936" y="580" width="184" height="70" rx="8" fill="#304760" stroke="#59738f"/>
+      <text x="1028" y="622" fill="#ffffff" font-size="16" font-weight="700">受影响复验</text>
+      <rect x="1178" y="580" width="186" height="70" rx="8" fill="#304760" stroke="#59738f"/>
+      <text x="1271" y="622" fill="#ffffff" font-size="16" font-weight="700">最新版独立复审</text>
+    </g>
+    <g fill="none" stroke="#8b9cb0" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M638 615H692"/>
+      <path d="M880 615H934"/>
+      <path d="M1122 615H1176"/>
+    </g>
+    <path d="M1271 652V694H544V652" fill="none" stroke="#ecad96" stroke-width="2.5" marker-end="url(#loop)"/>
+    <rect x="789" y="681" width="240" height="26" fill="#20334c"/>
+    <text x="909" y="700" text-anchor="middle" fill="#ecad96" font-size="14">仍有确认缺陷 → 继续修复复审</text>
+    <text x="452" y="752" fill="#cbd7e5" font-size="14">按真实容量安排并发；每文件或资产单写者；不为局部需求增加通用机制</text>
+
+    <rect x="48" y="818" width="1344" height="62" rx="8" fill="#ffffff" stroke="#d9e2ec"/>
+    <text x="72" y="844" fill="#27384e" font-size="15" font-weight="700">S0-S6 是检查点，不是七轮审批或七个代理；明确实现授权内可连续推进，只读请求保持只读</text>
+    <text x="72" y="867" fill="#52627a" font-size="13">setup 默认子代理上限 12（不含主代理），受运行时容量约束且不强制填满；未运行验证如实列出，不自动提交或推送</text>
   </g>
-
-  <line x1="108" y1="344" x2="520" y2="344" stroke="#e5eaf0"/>
-  <text x="108" y="384" fill="#7d8999" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14" font-weight="700">过程取决于当次任务和提示</text>
-
-  <g font-family="Segoe UI, Microsoft YaHei, sans-serif">
-    <circle cx="120" cy="425" r="7" fill="#e7a96b"/>
-    <text x="142" y="431" fill="#46556b" font-size="16" font-weight="600">查哪些文件、追多深</text>
-    <text x="142" y="455" fill="#7b8797" font-size="14">可能有证据，也可能止于相似代码</text>
-
-    <circle cx="120" cy="493" r="7" fill="#e7a96b"/>
-    <text x="142" y="499" fill="#46556b" font-size="16" font-weight="600">先分析还是直接写</text>
-    <text x="142" y="523" fill="#7b8797" font-size="14">规划、排查和实现可能混在一起</text>
-
-    <circle cx="120" cy="561" r="7" fill="#e7a96b"/>
-    <text x="142" y="567" fill="#46556b" font-size="16" font-weight="600">UE 风险检查到哪一层</text>
-    <text x="142" y="591" fill="#7b8797" font-size="14">蓝图、权威侧、生命周期需额外提醒</text>
-
-    <circle cx="120" cy="629" r="7" fill="#e7a96b"/>
-    <text x="142" y="635" fill="#46556b" font-size="16" font-weight="600">验证和交接记录</text>
-    <text x="142" y="659" fill="#7b8797" font-size="14">范围与证据粒度由当轮要求决定</text>
-  </g>
-
-  <text x="620" y="198" fill="#ffffff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="23" font-weight="700">使用 UE PerfectWorld</text>
-  <text x="620" y="228" fill="#bdcadd" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="15">同样从你的任务开始，但关键步骤由专用技能和规则接住</text>
-
-  <line x1="668" y1="326" x2="1288" y2="326" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
-  <g font-family="Segoe UI, Microsoft YaHei, sans-serif" text-anchor="middle">
-    <g>
-      <circle cx="668" cy="326" r="25" fill="#53c9ad"/>
-      <text x="668" y="332" fill="#12362f" font-size="15" font-weight="700">01</text>
-      <text x="668" y="375" fill="#ffffff" font-size="16" font-weight="700">任务分流</text>
-      <text x="668" y="401" fill="#bdcadd" font-size="13">排查 / 规划 / 实现</text>
-      <text x="668" y="421" fill="#bdcadd" font-size="13">审查 / 蓝图 / 文档</text>
-    </g>
-    <g>
-      <circle cx="823" cy="326" r="25" fill="#63b9bd"/>
-      <text x="823" y="332" fill="#102f37" font-size="15" font-weight="700">02</text>
-      <text x="823" y="375" fill="#ffffff" font-size="16" font-weight="700">项目证据</text>
-      <text x="823" y="401" fill="#bdcadd" font-size="13">源码 / 调用方 / 配置</text>
-      <text x="823" y="421" fill="#bdcadd" font-size="13">资产 / 生命周期</text>
-    </g>
-    <g>
-      <circle cx="978" cy="326" r="25" fill="#7988ee"/>
-      <text x="978" y="332" fill="#ffffff" font-size="15" font-weight="700">03</text>
-      <text x="978" y="375" fill="#ffffff" font-size="16" font-weight="700">范围与授权</text>
-      <text x="978" y="401" fill="#bdcadd" font-size="13">紧凑文件与落点</text>
-      <text x="978" y="421" fill="#bdcadd" font-size="13">有界改动可继续</text>
-    </g>
-    <g>
-      <circle cx="1133" cy="326" r="25" fill="#d58c9a"/>
-      <text x="1133" y="332" fill="#3a1b2a" font-size="15" font-weight="700">04</text>
-      <text x="1133" y="375" fill="#ffffff" font-size="16" font-weight="700">限定范围实现</text>
-      <text x="1133" y="401" fill="#bdcadd" font-size="13">复用 / 配置 / 局部修复</text>
-      <text x="1133" y="421" fill="#bdcadd" font-size="13">单一写入者</text>
-    </g>
-    <g>
-      <circle cx="1288" cy="326" r="25" fill="#efaa68"/>
-      <text x="1288" y="332" fill="#4b2e10" font-size="15" font-weight="700">05</text>
-      <text x="1288" y="375" fill="#ffffff" font-size="16" font-weight="700">验证与交付</text>
-      <text x="1288" y="401" fill="#bdcadd" font-size="13">验证 / 独立审查</text>
-      <text x="1288" y="421" fill="#bdcadd" font-size="13">范围内修复复审</text>
-    </g>
-  </g>
-
-  <rect x="620" y="476" width="712" height="1" fill="#52647c"/>
-  <text x="620" y="515" fill="#83ddc8" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="15" font-weight="700">你得到的不是“保证正确”，而是更明确的过程状态</text>
-  <g font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14">
-    <rect x="620" y="540" width="214" height="44" rx="10" fill="#32445e"/>
-    <text x="727" y="568" text-anchor="middle" fill="#e7eef8">依据能回到项目文件</text>
-    <rect x="847" y="540" width="214" height="44" rx="10" fill="#32445e"/>
-    <text x="954" y="568" text-anchor="middle" fill="#e7eef8">未验证项会明确列出</text>
-    <rect x="1074" y="540" width="258" height="44" rx="10" fill="#32445e"/>
-    <text x="1203" y="568" text-anchor="middle" fill="#e7eef8">提交与推送由你决定</text>
-  </g>
-
-  <rect x="620" y="616" width="712" height="48" rx="12" fill="#172b38" stroke="#3d6f69"/>
-  <circle cx="644" cy="640" r="7" fill="#54cdb2"/>
-  <text x="664" y="646" fill="#c8eee5" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14">S0-S6 可合并连续推进；只读请求、真实决策与额外授权边界仍然有效。</text>
-
-  <text x="72" y="750" fill="#8290a1" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="14">普通对话并非做不到这些检查；UE PerfectWorld 的价值是把它们固定下来，并要求过程与结论对得上。</text>
 </svg>

@@ -1,6 +1,6 @@
 {
   "name": "ue-perfectworld",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Evidence-driven Unreal Engine workflows with S0-S6 checkpoints, conservative bounded implementation, runtime-aware parallel work, independent review, and verified delivery.",
   "author": {
     "name": "Liutianyuan",

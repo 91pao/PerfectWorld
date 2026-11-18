@@ -1,105 +1,139 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-labelledby="title desc">
-  <title id="title">UE PerfectWorld S0 到 S6 证据检查点图</title>
-  <desc id="desc">七个证据检查点从需求接入到交付，可合并并在同一授权轮次连续推进。明确的实现或修复请求在紧凑范围规格后可进入有界改动；只读请求保持只读，真实待决策、范围扩张及未授权的额外操作才需确认。</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1130" viewBox="0 0 1600 1130" role="img" aria-labelledby="title desc">
+  <title id="title">S0-S6 证据检查点与多子代理执行映射</title>
+  <desc id="desc">S0-S6 是有依赖的证据检查点，不是七轮审批或七个代理。主代理全程统筹并推进关键路径；证据子代理可并行查证，证据和范围规格就绪后再分块实施，文件资产保持单一写入者。稳定分块的验证和独立审查可与其他实施重叠，确认缺陷后在范围内修复、受影响复验并复审最新整合版本。</desc>
   <defs>
-    <linearGradient id="line" x1="0" x2="1">
-      <stop offset="0" stop-color="#45d2b7"/>
-      <stop offset=".5" stop-color="#7387ff"/>
-      <stop offset="1" stop-color="#e67b9c"/>
-    </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#07111f" flood-opacity=".18"/>
-    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0L8 4L0 8z" fill="#74869b"/>
+    </marker>
+    <marker id="loop" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0L8 4L0 8z" fill="#ba5d48"/>
+    </marker>
   </defs>
-
-  <rect width="1600" height="760" rx="22" fill="#f5f7fb"/>
-  <text x="76" y="78" fill="#101828" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="40" font-weight="700">S0 → S6：把 UE 改动变成可审计的交付</text>
-  <text x="78" y="118" fill="#52627a" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="20">保留证据要求，可合并并连续推进；明确实现或修复授权下，先说明紧凑范围与规格。</text>
-
-  <line x1="126" y1="210" x2="1475" y2="210" stroke="#d8e0eb" stroke-width="8" stroke-linecap="round"/>
-  <line x1="126" y1="210" x2="1475" y2="210" stroke="url(#line)" stroke-width="8" stroke-dasharray="8 20" stroke-linecap="round"/>
-
+  <rect width="1600" height="1130" rx="20" fill="#f5f7fb"/>
   <g font-family="Segoe UI, Microsoft YaHei, sans-serif">
-    <g filter="url(#shadow)">
-      <rect x="56" y="260" width="194" height="300" rx="14" fill="#ffffff" stroke="#cfe8e1"/>
-      <rect x="266" y="260" width="194" height="300" rx="14" fill="#ffffff" stroke="#cfe8e1"/>
-      <rect x="476" y="260" width="194" height="300" rx="14" fill="#ffffff" stroke="#cfd5fa"/>
-      <rect x="686" y="260" width="194" height="300" rx="14" fill="#ffffff" stroke="#f0ddbd"/>
-      <rect x="896" y="260" width="194" height="300" rx="14" fill="#ffffff" stroke="#f0ddbd"/>
-      <rect x="1106" y="260" width="194" height="300" rx="14" fill="#ffffff" stroke="#f0ccda"/>
-      <rect x="1316" y="260" width="228" height="300" rx="14" fill="#ffffff" stroke="#f0ccda"/>
-    </g>
+    <text x="48" y="61" fill="#172335" font-size="35" font-weight="700">S0-S6：证据检查点与多子代理执行映射</text>
+    <text x="48" y="103" fill="#52627a" font-size="19">检查点可合并连续推进；按职责与依赖组织代理，不是七轮审批，也不是七个代理。</text>
 
+    <text x="48" y="172" fill="#52627a" font-size="16" font-weight="700">证据检查点</text>
+    <text x="48" y="202" fill="#718096" font-size="14">依赖就绪再推进</text>
     <g text-anchor="middle">
-      <circle cx="153" cy="210" r="32" fill="#45d2b7"/>
-      <text x="153" y="218" fill="#10251f" font-size="20" font-weight="700">S0</text>
-      <circle cx="363" cy="210" r="32" fill="#45d2b7"/>
-      <text x="363" y="218" fill="#10251f" font-size="20" font-weight="700">S1</text>
-      <circle cx="573" cy="210" r="32" fill="#7387ff"/>
-      <text x="573" y="218" fill="#ffffff" font-size="20" font-weight="700">S2</text>
-      <circle cx="783" cy="210" r="32" fill="#f3b562"/>
-      <text x="783" y="218" fill="#34230e" font-size="20" font-weight="700">S3</text>
-      <circle cx="993" cy="210" r="32" fill="#f3b562"/>
-      <text x="993" y="218" fill="#34230e" font-size="20" font-weight="700">S4</text>
-      <circle cx="1203" cy="210" r="32" fill="#e67b9c"/>
-      <text x="1203" y="218" fill="#3a1423" font-size="20" font-weight="700">S5</text>
-      <circle cx="1430" cy="210" r="32" fill="#e67b9c"/>
-      <text x="1430" y="218" fill="#3a1423" font-size="20" font-weight="700">S6</text>
+      <rect x="304" y="148" width="158" height="114" rx="8" fill="#e6f6f0" stroke="#b9ded1"/>
+      <text x="383" y="180" fill="#217c6b" font-size="19" font-weight="700">S0 · 目标</text>
+      <text x="383" y="211" fill="#45675e" font-size="14">范围 / 非目标</text>
+      <text x="383" y="238" fill="#45675e" font-size="14">成功标准</text>
+      <rect x="480" y="148" width="158" height="114" rx="8" fill="#e6f6f0" stroke="#b9ded1"/>
+      <text x="559" y="180" fill="#217c6b" font-size="19" font-weight="700">S1 · 证据</text>
+      <text x="559" y="211" fill="#45675e" font-size="14">所有者 / 契约</text>
+      <text x="559" y="238" fill="#45675e" font-size="14">path:line</text>
+      <rect x="656" y="148" width="158" height="114" rx="8" fill="#edf0ff" stroke="#cdd5f6"/>
+      <text x="735" y="180" fill="#4e5fc2" font-size="19" font-weight="700">S2 · 规格</text>
+      <text x="735" y="211" fill="#59677d" font-size="14">文件 / 落点 / 依赖</text>
+      <text x="735" y="238" fill="#59677d" font-size="14">有界改动与验证</text>
+      <rect x="832" y="148" width="158" height="114" rx="8" fill="#edf0ff" stroke="#cdd5f6"/>
+      <text x="911" y="180" fill="#4e5fc2" font-size="19" font-weight="700">S3 · 实现</text>
+      <text x="911" y="211" fill="#59677d" font-size="14">按归属分块</text>
+      <text x="911" y="238" fill="#59677d" font-size="14">单一写入者</text>
+      <rect x="1008" y="148" width="158" height="114" rx="8" fill="#e6f6f0" stroke="#b9ded1"/>
+      <text x="1087" y="180" fill="#217c6b" font-size="19" font-weight="700">S4 · 验证</text>
+      <text x="1087" y="211" fill="#45675e" font-size="14">探针 / 预期结果</text>
+      <text x="1087" y="238" fill="#45675e" font-size="14">如实记录层级</text>
+      <rect x="1184" y="148" width="158" height="114" rx="8" fill="#fff0e9" stroke="#edcdbf"/>
+      <text x="1263" y="180" fill="#aa5d44" font-size="19" font-weight="700">S5 · 评审</text>
+      <text x="1263" y="211" fill="#856a5d" font-size="14">独立审查与纠正</text>
+      <text x="1263" y="238" fill="#856a5d" font-size="14">复审最新整合版</text>
+      <rect x="1360" y="148" width="192" height="114" rx="8" fill="#ffffff" stroke="#cfd9e4"/>
+      <text x="1456" y="180" fill="#27384e" font-size="19" font-weight="700">S6 · 交付</text>
+      <text x="1456" y="211" fill="#52627a" font-size="14">行为 / 证据 / 限制</text>
+      <text x="1456" y="238" fill="#52627a" font-size="14">不自动提交推送</text>
+    </g>
+    <g fill="none" stroke="#74869b" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M464 205H478"/><path d="M640 205H654"/><path d="M816 205H830"/>
+      <path d="M992 205H1006"/><path d="M1168 205H1182"/><path d="M1344 205H1358"/>
     </g>
 
-    <g fill="#101828" font-size="20" font-weight="700">
-      <text x="80" y="305">需求接入</text>
-      <text x="290" y="305">证据底座</text>
-      <text x="500" y="305">变更规格</text>
-      <text x="710" y="305">实现</text>
-      <text x="920" y="305">验证</text>
-      <text x="1130" y="305">独立评审</text>
-      <text x="1340" y="305">交付</text>
-    </g>
+    <line x1="48" y1="296" x2="1552" y2="296" stroke="#d9e2ec"/>
+    <text x="48" y="333" fill="#27384e" font-size="20" font-weight="700">执行泳道</text>
+    <text x="304" y="333" fill="#52627a" font-size="14">位置对应主要检查点；同一代理可跨阶段复用，独立工作可重叠</text>
 
-    <g fill="#52627a" font-size="16">
-      <text x="80" y="350">理解卡</text>
-      <text x="80" y="378">范围 / 非目标</text>
-      <text x="80" y="406">成功标准</text>
-      <text x="290" y="350">项目文件证据</text>
-      <text x="290" y="378">path:line</text>
-      <text x="290" y="406">证据矩阵</text>
-      <text x="500" y="350">文件与落点</text>
-      <text x="500" y="378">优先现有能力</text>
-      <text x="500" y="406">范围与验证</text>
-      <text x="710" y="350">只改授权范围</text>
-      <text x="710" y="378">小步实现</text>
-      <text x="710" y="406">自审记录</text>
-      <text x="920" y="350">先列探针</text>
-      <text x="920" y="378">再跑验证</text>
-      <text x="920" y="406">诚实记录</text>
-      <text x="1130" y="350">最新整合版本</text>
-      <text x="1130" y="378">范围内修复</text>
-      <text x="1130" y="406">未解 P1/P2 阻断</text>
-      <text x="1340" y="350">所需交接信息</text>
-      <text x="1340" y="378">证据与未验证项</text>
-      <text x="1340" y="406">提交边界</text>
+    <g stroke="#dde4ed" stroke-width="1" stroke-dasharray="4 6">
+      <path d="M383 350V820"/><path d="M559 350V820"/><path d="M735 350V820"/>
+      <path d="M911 350V820"/><path d="M1087 350V820"/><path d="M1263 350V820"/><path d="M1456 350V820"/>
     </g>
+    <text x="48" y="394" fill="#27384e" font-size="18" font-weight="700">主代理</text>
+    <text x="48" y="420" fill="#718096" font-size="14">全程统筹，持续推进</text>
+    <rect x="304" y="364" width="1248" height="66" rx="8" fill="#20334c"/>
+    <text x="330" y="393" fill="#ffffff" font-size="17" font-weight="700">锁定目标 → 拆分任务与接口 → 持续关键路径 → 整合组合契约 → 确认缺陷 → 对账交付</text>
+    <text x="330" y="416" fill="#cbd7e5" font-size="13">授权内连续推进；不把实施委派后闲等，也不把阶段编号当作代理编号</text>
 
-    <g font-size="15" font-weight="700">
-      <rect x="77" y="476" width="152" height="46" rx="9" fill="#e8f8f3"/>
-      <text x="153" y="505" text-anchor="middle" fill="#237b69">仅真实决策需确认</text>
-      <rect x="287" y="476" width="152" height="46" rx="9" fill="#e8f8f3"/>
-      <text x="363" y="505" text-anchor="middle" fill="#237b69">证据支撑再推进</text>
-      <rect x="497" y="476" width="152" height="46" rx="9" fill="#eceeff"/>
-      <text x="573" y="505" text-anchor="middle" fill="#4c5dd2">授权内连续推进</text>
-      <rect x="707" y="476" width="152" height="46" rx="9" fill="#fff4df"/>
-      <text x="783" y="505" text-anchor="middle" fill="#96651f">单一写入者</text>
-      <rect x="917" y="476" width="152" height="46" rx="9" fill="#fff4df"/>
-      <text x="993" y="505" text-anchor="middle" fill="#96651f">如实记录结果</text>
-      <rect x="1127" y="476" width="152" height="46" rx="9" fill="#fce9ef"/>
-      <text x="1203" y="505" text-anchor="middle" fill="#a33d60">修复后复验复审</text>
-      <rect x="1340" y="476" width="180" height="46" rx="9" fill="#fce9ef"/>
-      <text x="1430" y="505" text-anchor="middle" fill="#a33d60">不自动提交推送</text>
+    <text x="48" y="486" fill="#217c6b" font-size="18" font-weight="700">证据子代理</text>
+    <text x="48" y="512" fill="#718096" font-size="14">独立问题同时查证</text>
+    <rect x="480" y="459" width="158" height="36" rx="6" fill="#e6f6f0" stroke="#b9ded1"/>
+    <text x="559" y="483" text-anchor="middle" fill="#217c6b" font-size="14">A · 调用链 / 所有权</text>
+    <rect x="480" y="511" width="158" height="36" rx="6" fill="#e6f6f0" stroke="#b9ded1"/>
+    <text x="559" y="535" text-anchor="middle" fill="#217c6b" font-size="14">B · 配置 / 资产</text>
+    <g fill="none" stroke="#74869b" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M450 445V529H478"/>
+      <path d="M450 477H478"/>
     </g>
+    <g fill="none" stroke="#74869b" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M640 477H646V503H654"/><path d="M640 529H646V503"/>
+    </g>
+    <rect x="656" y="459" width="158" height="88" rx="8" fill="#ffffff" stroke="#cfd9e4"/>
+    <text x="735" y="491" text-anchor="middle" fill="#27384e" font-size="16" font-weight="700">证据 + 规格就绪</text>
+    <text x="735" y="518" text-anchor="middle" fill="#52627a" font-size="13">才能启动依赖的实施</text>
+
+    <text x="48" y="610" fill="#4e5fc2" font-size="18" font-weight="700">实施子代理</text>
+    <text x="48" y="636" fill="#718096" font-size="14">分块归属，接口先对齐</text>
+    <rect x="832" y="575" width="158" height="40" rx="6" fill="#edf0ff" stroke="#cdd5f6"/>
+    <text x="911" y="601" text-anchor="middle" fill="#4e5fc2" font-size="14">C · 文件组 A</text>
+    <rect x="832" y="635" width="158" height="40" rx="6" fill="#edf0ff" stroke="#cdd5f6"/>
+    <text x="911" y="661" text-anchor="middle" fill="#4e5fc2" font-size="14">D · 文件组 B</text>
+    <g fill="none" stroke="#74869b" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M735 549V625H816V595H830"/>
+      <path d="M816 625V655H830"/>
+      <path d="M992 595H998V625H1006"/>
+      <path d="M992 655H998V625"/>
+    </g>
+    <rect x="1008" y="585" width="158" height="80" rx="8" fill="#ffffff" stroke="#cfd9e4"/>
+    <text x="1087" y="617" text-anchor="middle" fill="#27384e" font-size="16" font-weight="700">稳定分块 diff</text>
+    <text x="1087" y="644" text-anchor="middle" fill="#52627a" font-size="13">不必等其他分块全部结束</text>
+
+    <text x="48" y="745" fill="#aa5d44" font-size="18" font-weight="700">验证 / 独立审查子代理</text>
+    <text x="48" y="771" fill="#718096" font-size="14">对稳定 diff 可重叠开展</text>
+    <g fill="none" stroke="#74869b" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M1087 667V705H1080V726"/>
+      <path d="M1087 705H1255V726"/>
+    </g>
+    <rect x="1008" y="728" width="144" height="56" rx="8" fill="#e6f6f0" stroke="#b9ded1"/>
+    <text x="1080" y="762" text-anchor="middle" fill="#217c6b" font-size="16" font-weight="700">受影响验证</text>
+    <rect x="1184" y="728" width="144" height="56" rx="8" fill="#fff0e9" stroke="#edcdbf"/>
+    <text x="1256" y="762" text-anchor="middle" fill="#aa5d44" font-size="16" font-weight="700">独立审查</text>
+    <text x="1008" y="811" fill="#856a5d" font-size="13">移动文件的发现暂定；最终必须重读最新整合版本</text>
+
+    <line x1="48" y1="846" x2="1552" y2="846" stroke="#d9e2ec"/>
+    <text x="48" y="884" fill="#27384e" font-size="20" font-weight="700">收敛回环</text>
+    <text x="48" y="913" fill="#718096" font-size="14">授权范围内修复</text>
+    <g text-anchor="middle">
+      <rect x="304" y="872" width="190" height="66" rx="8" fill="#ffffff" stroke="#cfd9e4"/>
+      <text x="399" y="912" fill="#27384e" font-size="17" font-weight="700">主代理确认缺陷</text>
+      <rect x="558" y="872" width="190" height="66" rx="8" fill="#edf0ff" stroke="#cdd5f6"/>
+      <text x="653" y="912" fill="#4e5fc2" font-size="17" font-weight="700">范围内修复</text>
+      <rect x="812" y="872" width="190" height="66" rx="8" fill="#e6f6f0" stroke="#b9ded1"/>
+      <text x="907" y="912" fill="#217c6b" font-size="17" font-weight="700">受影响路径复验</text>
+      <rect x="1066" y="872" width="222" height="66" rx="8" fill="#fff0e9" stroke="#edcdbf"/>
+      <text x="1177" y="912" fill="#aa5d44" font-size="17" font-weight="700">最新版独立复审</text>
+      <rect x="1360" y="872" width="192" height="66" rx="8" fill="#ffffff" stroke="#cfd9e4"/>
+      <text x="1456" y="912" fill="#27384e" font-size="17" font-weight="700">对账后交付</text>
+    </g>
+    <g fill="none" stroke="#74869b" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M496 905H556"/><path d="M750 905H810"/><path d="M1004 905H1064"/><path d="M1290 905H1358"/>
+    </g>
+    <path d="M1177 940V980H399V940" fill="none" stroke="#ba5d48" stroke-width="2.5" marker-end="url(#loop)"/>
+    <rect x="684" y="967" width="230" height="26" fill="#f5f7fb"/>
+    <text x="799" y="986" text-anchor="middle" fill="#aa5d44" font-size="14" font-weight="700">仍有确认缺陷 → 回到修复</text>
+
+    <rect x="48" y="1030" width="1504" height="62" rx="8" fill="#20334c"/>
+    <text x="72" y="1056" fill="#ffffff" font-size="15" font-weight="700">依赖约束始终有效：实施不越过必需证据与范围；优先复用、配置与局部修复；每文件 / 资产同一时间仅一个写入者</text>
+    <text x="72" y="1079" fill="#cbd7e5" font-size="13">规划、诊断、审查和不改文件请求保持只读；真实决策、范围扩张及未授权额外操作才需确认；并发按运行时容量安排，不强制填满</text>
   </g>
-
-  <rect x="76" y="632" width="1448" height="70" rx="13" fill="#101828"/>
-  <text x="108" y="675" fill="#ffffff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">最重要的边界</text>
-  <text x="302" y="675" fill="#c6d1e1" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="17">只读请求保持只读；真实决策、范围扩张及未授权的构建、外部写入和版本控制操作需确认。</text>
 </svg>
